@@ -1,0 +1,353 @@
+/*
+   ATENÇÃO:
+   - Este arquivo contém seu CSS personalizado e variáveis.
+   - As classes Tailwind CSS são carregadas via CDN no seu index.html.
+   - As animações `@keyframes` usadas pelo `scrollReveal.js` precisam ser definidas aqui.
+   - REMOVA a borda universal (*) se ela não for intencional (geralmente era para debug).
+*/
+
+/* ----------------------------------------------------------------------------------------------------------------
+   1. Font Imports
+   ---------------------------------------------------------------------------------------------------------------- */
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+   /* ----------------------------------------------------------------------------------------------------------------
+      2. Custom CSS Variables (Themes)
+      ---------------------------------------------------------------------------------------------------------------- */
+   :root {
+     --radius: 0.625rem; /* 10px */
+   
+     /* Cores Claras (Light Theme) */
+     --background: #ffffff;
+     --foreground: #1a1a1a;
+   
+     --card: #ffffff;
+     --card-foreground: #1a1a1a;
+   
+     --popover: #ffffff;
+     --popover-foreground: #1a1a1a;
+   
+     --primary: #007bff; /* Azul */
+     --primary-foreground: #ffffff;
+   
+     --secondary: #ff6f61; /* Laranja */
+     --secondary-foreground: #ffffff;
+   
+     --muted: #f1f5f9; /* slate-100 */
+     --muted-foreground: #64748b; /* slate-500 */
+   
+     --accent: #e2e8f0; /* slate-200 */
+     --accent-foreground: #1a1a1a;
+   
+     --destructive: #ef4444; /* red-500 */
+     --destructive-foreground: #ffffff;
+   
+     --border: #e2e8f0; /* slate-200 */
+     --input: #e2e8f0; /* slate-200 */
+     --ring: #007bff; /* primary */
+   
+     /* Cores Adicionais para Habilidades (Tailwind já as associa em index.html) */
+     --orange-500: #f97316;
+     --blue-500: #3b82f6;
+     --yellow-500: #eab308;
+     --cyan-500: #06b6d4;
+     --green-600: #22c55e;
+
+     /* Variáveis HSL para compatibilidade com Tailwind */
+     /* Estas são necessárias se você usa as variáveis como `hsl(var(--primary-hsl))` */
+     /* Se o Tailwind estiver configurado para ler diretamente o hex/rgb das variáveis --primary, --secondary etc.
+        isso pode não ser estritamente necessário, mas é uma boa prática.
+        Por enquanto, as cores acima são hex/rgb, então o Tailwind as usaria diretamente. */
+     --background-hsl: var(--background);
+     --foreground-hsl: var(--foreground);
+     --card-hsl: var(--card);
+     --card-foreground-hsl: var(--card-foreground);
+     --popover-hsl: var(--popover);
+     --popover-foreground-hsl: var(--popover-foreground);
+     --primary-hsl: var(--primary);
+     --primary-foreground-hsl: var(--primary-foreground);
+     --secondary-hsl: var(--secondary);
+     --secondary-foreground-hsl: var(--secondary-foreground);
+     --muted-hsl: var(--muted);
+     --muted-foreground-hsl: var(--muted-foreground);
+     --accent-hsl: var(--accent);
+     --accent-foreground-hsl: var(--accent-foreground);
+     --destructive-hsl: var(--destructive);
+     --destructive-foreground-hsl: var(--destructive-foreground);
+     --border-hsl: var(--border);
+     --input-hsl: var(--input);
+     --ring-hsl: var(--ring);
+   }
+   
+   .dark {
+     /* Cores Escuras (Dark Theme) */
+     --background: #1a1a1a;
+     --foreground: #f1f5f9; /* slate-100 */
+   
+     --card: #262626; /* neutral-800 */
+     --card-foreground: #f1f5f9;
+   
+     --popover: #262626;
+     --popover-foreground: #f1f5f9;
+   
+     --primary: #60a5fa; /* blue-400 */
+     --primary-foreground: #1a1a1a;
+   
+     --secondary: #fca5a5; /* red-300 */
+     --secondary-foreground: #1a1a1a;
+   
+     --muted: #262626; /* neutral-800 */
+     --muted-foreground: #94a3b8; /* slate-400 */
+   
+     --accent: #3f3f46; /* neutral-700 */
+     --accent-foreground: #f1f5f9;
+   
+     --destructive: #f87171; /* red-400 */
+     --destructive-foreground: #1a1a1a;
+   
+     --border: #3f3f46; /* neutral-700 */
+     --input: #3f3f46; /* neutral-700 */
+     --ring: #60a5fa; /* primary dark */
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      3. Base Styles
+      ---------------------------------------------------------------------------------------------------------------- */
+   /* REMOVIDO: Borda universal de DEBUG (conforme sua solicitação anterior) */
+   /*
+   * {
+     border: 1px solid var(--border);
+     outline: 2px solid var(--ring);
+     outline-offset: 0.5rem;
+   }
+   */
+   body {
+     /* Usando var() diretamente, já que as variáveis acima são hex/rgb */
+     background-color: var(--background);
+     color: var(--foreground);
+     font-family: 'Roboto', sans-serif;
+     line-height: 1.6;
+     scroll-behavior: smooth; /* Para smooth scrolling */
+   }
+   h1, h2, h3, h4, h5, h6 {
+     font-family: 'Poppins', sans-serif;
+     font-weight: 600;
+     line-height: 1.2;
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      4. Scrollbar Styles
+      ---------------------------------------------------------------------------------------------------------------- */
+   /* Firefox */
+   html {
+     scrollbar-color: var(--primary) var(--muted);
+     scrollbar-width: thin;
+   }
+   
+   /* Chrome, Edge, Safari */
+   ::-webkit-scrollbar {
+     width: 8px;
+     height: 8px; /* Para scrollbars horizontais */
+   }
+   
+   ::-webkit-scrollbar-track {
+     background: var(--muted);
+   }
+   
+   ::-webkit-scrollbar-thumb {
+     background: var(--primary);
+     border-radius: 4px;
+   }
+   
+   ::-webkit-scrollbar-thumb:hover {
+     background: color-mix(in srgb, var(--primary) 90%, #000000 10%); /* Um pouco mais escuro no hover */
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      5. Loading States / Skeleton
+      ---------------------------------------------------------------------------------------------------------------- */
+   .skeleton {
+     background: linear-gradient(90deg, var(--muted) 25%, rgba(100, 116, 139, 0.2) 50%, var(--muted) 75%);
+     background-size: 200% 100%;
+     animation: loading 1.5s infinite;
+   }
+   
+   @keyframes loading {
+     0% {
+       background-position: 200% 0;
+     }
+     100% {
+       background-position: -200% 0;
+     }
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      6. Focus States for Accessibility
+      ---------------------------------------------------------------------------------------------------------------- */
+   /* Tailwind CSS já deve lidar com a maioria dos outlines, mas esta é uma fallback ou override */
+   .focus-visible:focus-visible {
+     outline: 2px solid var(--primary);
+     outline-offset: 2px;
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      7. Hover Effects
+      ---------------------------------------------------------------------------------------------------------------- */
+   .hover-lift {
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+   .hover-lift:hover {
+     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Revertendo para a sombra original */
+     transform: translateY(-5px);
+   }
+   
+   .hover-scale {
+     transition: transform 0.3s ease;
+   }
+   .hover-scale:hover {
+     transform: scale(1.03);
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      8. Gradient Styles
+      ---------------------------------------------------------------------------------------------------------------- */
+   .gradient-text {
+     background: linear-gradient(135deg, var(--primary), var(--secondary));
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text; /* Fallback para browsers que não suportam -webkit-text-fill-color */
+   }
+   
+   .gradient-bg-primary {
+     background: linear-gradient(135deg, var(--primary), color-mix(in srgb, var(--primary) 70%, #000000 30%));
+   }
+   
+   .gradient-bg-secondary {
+     background: linear-gradient(135deg, var(--secondary), color-mix(in srgb, var(--secondary) 70%, #000000 30%));
+   }
+   
+   .gradient-bg-mixed {
+     background: linear-gradient(135deg, var(--primary), var(--secondary));
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      9. Custom Animations (para uso com data-reveal em js/scrollReveal.js)
+      ---------------------------------------------------------------------------------------------------------------- */
+   /* Importante: a classe `opacity-0` deve ser definida no HTML para os elementos que serão revelados */
+   
+   /* Fade In Up */
+   @keyframes fadeInUp {
+     from {
+       opacity: 0;
+       transform: translateY(30px);
+     }
+     to {
+       opacity: 1;
+       transform: translateY(0);
+     }
+   }
+   .animate-fade-in-up {
+     animation-name: fadeInUp;
+     animation-fill-mode: both; /* Mantém o estado final da animação */
+   }
+   
+   /* Slide In Left */
+   @keyframes slideInLeft {
+     from {
+       opacity: 0;
+       transform: translateX(-50px);
+     }
+     to {
+       opacity: 1;
+       transform: translateX(0);
+     }
+   }
+   .animate-slide-in-left {
+     animation-name: slideInLeft;
+     animation-fill-mode: both;
+   }
+   
+   /* Slide In Right */
+   @keyframes slideInRight {
+     from {
+       opacity: 0;
+       transform: translateX(50px);
+     }
+     to {
+       opacity: 1;
+       transform: translateX(0);
+     }
+   }
+   .animate-slide-in-right {
+     animation-name: slideInRight;
+     animation-fill-mode: both;
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      10. Mobile Optimizations (via Media Queries)
+      ---------------------------------------------------------------------------------------------------------------- */
+   @media (max-width: 768px) {
+     /* Remove hover effects em dispositivos de toque para uma melhor experiência */
+     .hover-lift:hover {
+       transform: none;
+       box-shadow: none;
+     }
+     
+     .hover-scale:hover {
+       transform: none;
+     }
+     
+     /* Garante que botões e links sejam amigáveis ao toque */
+     button, a {
+       min-height: 44px; /* Aumenta a área clicável */
+       min-width: 44px;
+     }
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      11. Print Styles
+      ---------------------------------------------------------------------------------------------------------------- */
+   @media print {
+     .no-print {
+       display: none !important;
+     }
+     
+     /* Garante fundo branco para impressão */
+     * {
+       background: white !important;
+       color: black !important;
+       box-shadow: none !important;
+       text-shadow: none !important;
+     }
+   
+     /* Remove decorações de link e mostra URLs */
+     a:link, a:visited {
+       text-decoration: underline;
+       color: #000 !important;
+     }
+   
+     a[href]:after {
+       content: " (" attr(href) ")";
+     }
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      12. Reduced Motion Accessibility
+      ---------------------------------------------------------------------------------------------------------------- */
+   @media (prefers-reduced-motion: reduce) {
+     *,
+     ::before,
+     ::after {
+       animation-duration: 0.01ms !important;
+       animation-iteration-count: 1 !important;
+       transition-duration: 0.01ms !important;
+       scroll-behavior: auto !important;
+     }
+   }
+   
+   /* ----------------------------------------------------------------------------------------------------------------
+      13. High Contrast Accessibility
+      ---------------------------------------------------------------------------------------------------------------- */
+   @media (prefers-contrast: high) {
+    
+   }
