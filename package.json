@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:js": "terser js/script.js -o js/script.min.js -c -m",
+    "build:css": "cleancss -o css/styles.min.css css/styles.css",
+    "build:html": "node build.mjs",
+    "build": "npm run clean && npm run build:js && npm run build:css && npm run build:html",
+    "serve:dist": "npx http-server dist -c-1 --cors"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.0.0",
+    "html-minifier-terser": "^7.2.0",
+    "rimraf": "^5.0.0",
+    "terser": "^5.36.0"
+  }
+}

@@ -3,832 +3,597 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description"
-        content="Portfólio de Ismael Nunes - Desenvolvedor Front-End especializado em HTML, CSS, JavaScript e React" />
-    <title>Ismael Nunes - Desenvolvedor Front-End</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Configuração opcional do Tailwind para suas cores customizadas
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // Copie suas variáveis CSS do :root e .dark de volta para cá
-                        // Isso permite que o Tailwind CDN interprete suas cores customizadas
-                        primary: 'var(--primary)',
-                        'primary-foreground': 'var(--primary-foreground)',
-                        secondary: 'var(--secondary)',
-                        'secondary-foreground': 'var(--secondary-foreground)',
-                        muted: 'var(--muted)',
-                        'muted-foreground': 'var(--muted-foreground)',
-                        accent: 'var(--accent)',
-                        'accent-foreground': 'var(--accent-foreground)',
-                        destructive: 'var(--destructive)',
-                        'destructive-foreground': 'var(--destructive-foreground)',
-                        border: 'var(--border)',
-                        input: 'var(--input)',
-                        ring: 'var(--ring)',
-                        background: 'var(--background)',
-                        foreground: 'var(--foreground)',
-                        card: 'var(--card)',
-                        'card-foreground': 'var(--card-foreground)',
-                        popover: 'var(--popover)',
-                        'popover-foreground': 'var(--popover-foreground)',
-                    },
-                }
+        content="Desenvolvedor Web Full Stack especializado em React, Node.js e IA Generativa. Confira meus projetos e entre em contato!" />
+    <meta property="og:title" content="Ismael Nunes – Dev Full Stack" />
+    <meta property="og:description"
+        content="Portfólio de desenvolvedor web com foco em soluções inovadoras, PWA e IA." />
+    <meta property="og:image" content="https://seudominio.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://seudominio.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ismael Nunes - Dev Full Stack</title>
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- Performance: preconnect p/ fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- CRITICAL CSS inline (navbar + hero acima da dobra) -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --text-color: #1f2937;
+            --bg-color: #fff
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, .95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color)
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: inherit
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: 0
+        }
+
+        @media (max-width:768px) {
+            .hamburger {
+                display: flex
+            }
+
+            .nav-menu {
+                display: none
             }
         }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
+        }
+
+        .hero-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: left
+        }
+
+        .hero-title {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
+            font-size: clamp(2.25rem, 2rem + 2vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            margin: 1.25rem 0 1.75rem;
+            opacity: .95;
+            max-width: 56ch
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-block
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff
+        }
+    </style>
+
+    <!-- CSS principal (dev) -->
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'" />
+    <noscript>
+        <link rel="stylesheet" href="css/styles.css" />
+    </noscript>
+
+    <!-- Font Poppins async + swap -->
+    <style>
+        .wf-loaded .hero-title {
+            font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif
+        }
+    </style>
+    <script>
+        (function () {
+            var l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap';
+            l.onload = function () { document.documentElement.classList.add('wf-loaded'); };
+            document.head.appendChild(l);
+        })();
     </script>
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Ismael Nunes dos Santos",
+    "url":"https://seudominio.com/",
+    "jobTitle":"Desenvolvedor Full Stack",
+    "knowsAbout":["React","Node.js","JavaScript","IA Generativa","PWA"],
+    "sameAs":[
+      "https://www.linkedin.com/in/ismaelnunes6094",
+      "https://github.com/Ismaelly1984",
+      "https://wa.me/5514991920560"
+    ]
+  }
+  </script>
 </head>
 
 <body>
-    <header id="header-section" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <img src="assets/logo_IN.png" alt="IN Logo" class="h-8 w-8" />
-                <span class="text-xl font-bold text-primary">Ismael Nunes</span>
-            </div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
 
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#home"
-                    class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Home</a>
-                <a href="#about"
-                    class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Sobre</a>
-                <a href="#skills"
-                    class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Habilidades</a>
-                <a href="#projects"
-                    class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Projetos</a>
-                <a href="#contact"
-                    class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Contato</a>
-            </div>
+    <!-- NAVBAR -->
+    <nav class="navbar" aria-label="Barra de navegação">
+        <div class="container">
+            <div class="logo">Ismael<span class="highlight">Dev</span></div>
 
-            <div class="md:hidden">
-                <button id="mobile-menu-button"
-                    class="text-foreground hover:text-primary transition-colors duration-200">
-                    <!-- Ícone Font Awesome para o menu (bars) -->
-                    <i class="fas fa-bars text-2xl" id="menu-icon"></i>
-                </button>
-            </div>
-        </nav>
+            <ul id="primary-navigation" class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#education" class="nav-link">Formação</a></li>
+                <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                <li><a href="#projects" class="nav-link">Projetos</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
 
-        <div id="mobile-menu"
-            class="hidden md:hidden bg-white/95 backdrop-blur-sm rounded-lg mt-2 p-4 shadow-lg absolute w-[calc(100%-2rem)] left-4 right-4 z-40">
-            <a href="#home"
-                class="block w-full text-left py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Home</a>
-            <a href="#about"
-                class="block w-full text-left py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Sobre</a>
-            <a href="#skills"
-                class="block w-full text-left py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Habilidades</a>
-            <a href="#projects"
-                class="block w-full text-left py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Projetos</a>
-            <a href="#contact"
-                class="block w-full text-left py-2 text-foreground hover:text-primary transition-colors duration-200 font-medium">Contato</a>
+            <!-- era <div class="hamburger"> -->
+            <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation"
+                aria-expanded="false" aria-label="Abrir menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section id="home"
-        class="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted relative overflow-hidden">
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl"></div>
-            <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/10 rounded-full blur-3xl"></div>
-        </div>
-    
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <div class="opacity-0" data-reveal data-animation="fade-in-up">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-                        Prazer, sou <span class="gradient-text">Ismael Nunes</span>
-                    </h1>
-    
-                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-muted-foreground mb-8">
-                        Desenvolvedor Front-End
-                    </h2>
-    
-                    <p class="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
-                        Crio interfaces modernas, acessíveis e que geram valor de verdade.
-                    </p>
-    
-                    <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
-                        <a href="#contact"
-                            class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover-lift transition-all duration-300 hover:bg-primary/90">
-                            Fale Comigo
-                        </a>
-                        <a href="#projects"
-                            class="border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover-lift transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
-                            Ver Projetos
-                        </a>
-                    </div>
-    
-                    <div class="flex justify-center space-x-6">
-                        <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
-                            class="text-muted-foreground hover:text-primary transition-colors duration-300 hover-lift"
-                            aria-label="GitHub">
-                            <i class="fab fa-github" style="font-size: 24px;"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
-                            class="text-muted-foreground hover:text-primary transition-colors duration-300 hover-lift"
-                            aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in" style="font-size: 24px;"></i>
-                        </a>
-                        <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer"
-                            class="text-muted-foreground hover:text-primary transition-colors duration-300 hover-lift"
-                            aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
-                        </a>
-                    </div>
+
+    <!-- HERO -->
+    <section id="home" class="hero" aria-label="Início">
+        <div class="container hero-center">
+            <div class="hero-content">
+                <!-- O LCP principal agora -->
+                <h1 class="hero-title">
+                    Olá, sou <span class="highlight">Ismael Nunes</span>
+                </h1>
+
+                <!-- Subtítulo continua, mas não será mais LCP -->
+                <p class="hero-subtitle">
+                    Desenvolvedor Web Full Stack apaixonado por unir criatividade e lógica
+                    para criar soluções digitais inovadoras
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+                    <a href="#contact" class="btn btn-secondary">Entrar em Contato</a>
                 </div>
             </div>
         </div>
-    
-        <!-- Scroll para a próxima seção -->
-        <button id="scroll-to-next-section"
-            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors duration-300 animate-bounce"
-            aria-label="Scroll para próxima seção">
-            <i class="fas fa-chevron-down" style="font-size: 32px;"></i>
-        </button>
     </section>
-    
 
-        <button id="scroll-to-next-section"
-            class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors duration-300 animate-bounce"
-            aria-label="Scroll para próxima seção">
-            <i class="fas fa-chevron-down" style="font-size: 32px;"></i>
-        </button>
+
+    <!-- ABOUT -->
+    <section id="about" class="about" aria-label="Sobre mim">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="about-content">
+                <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com 40 anos,
+                    transformo ideias em produtos digitais através de código limpo, performance e experiência
+                    excepcional.</p>
+                <ul class="about-highlights">
+                    <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado
+                            ADS – UNIMAR</span></li>
+                    <li class="highlight-item"><i class="fas fa-brain" aria-hidden="true"></i><span>Especialista em
+                            IA
+                            Generativa</span></li>
+                    <li class="highlight-item"><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Projetos
+                            PWA &
+                            Responsivos</span></li>
+                </ul>
+            </div>
         </div>
-        </section>
+    </section>
 
-        <section id="about" class="py-20 bg-muted/30">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-16 opacity-0" data-reveal data-animation="fade-in-up">
-                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                            Sobre <span class="gradient-text">Mim</span>
-                        </h2>
-                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Transformo ideias em interfaces bonitas, funcionais e pensadas para o usuário.
-                        </p>
+    <!-- EDUCATION -->
+    <section id="education" class="education" aria-label="Formação e Certificações">
+        <div class="container">
+            <h2 class="section-title">Formação & Certificações</h2>
+            <div class="education-grid">
+                <article class="education-card">
+                    <i class="fas fa-university" aria-hidden="true"></i>
+                    <h3>Graduação</h3>
+                    <h4>Análise e Desenvolvimento de Sistemas</h4>
+                    <p>UNIMAR</p>
+                </article>
+                <article class="education-card">
+                    <i class="fab fa-node-js" aria-hidden="true"></i>
+                    <h3>Node.js</h3>
+                    <h4>Backend com JavaScript</h4>
+                    <p>Curso completo</p>
+                </article>
+                <article class="education-card">
+                    <i class="fab fa-react" aria-hidden="true"></i>
+                    <h3>React</h3>
+                    <h4>Frontend Moderno</h4>
+                    <p>SPAs e hooks</p>
+                </article>
+                <article class="education-card">
+                    <i class="fas fa-robot" aria-hidden="true"></i>
+                    <h3>IA Generativa</h3>
+                    <h4>Inteligência Artificial Aplicada</h4>
+                    <p>ChatGPT & aplicações</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills" aria-label="Habilidades e Tecnologias">
+        <div class="container">
+            <h2 class="section-title">Habilidades & Tecnologias</h2>
+            <p class="section-subtitle">Stack completa que utilizo para criar soluções digitais</p>
+
+            <div class="skills-showcase">
+                <!-- Frontend -->
+                <div class="skill-category premium-card">
+                    <div class="skill-header"><i class="fas fa-paint-brush" aria-hidden="true"></i>
+                        <h3>Frontend</h3>
                     </div>
-        
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div class="text-center md:text-left opacity-0" data-reveal data-animation="slide-in-left">
-                            <div
-                                class="w-64 h-64 bg-gray-300 rounded-full mx-auto md:mx-0 flex items-center justify-center text-gray-500 text-sm overflow-hidden shadow-lg border-4 border-primary/20">
-                                <img src="assets/profile-placeholder.jpg" alt="Ismael Nunes"
-                                    class="w-full h-full object-cover" />
+                    <div class="skill-progress">
+                        <div class="skill-bar" data-skill="95"><span class="skill-name">HTML5</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.95"></div>
                             </div>
-                            <p class="mt-4 text-sm text-muted-foreground">Ismael Nunes - Desenvolvedor Front-End</p>
                         </div>
-        
-                        <div class="opacity-0" data-reveal data-animation="slide-in-right">
-                            <h3 class="text-2xl font-bold mb-4">Minha História</h3>
-                            <p class="text-muted-foreground leading-relaxed mb-6">
-                                Domino HTML, CSS, JavaScript e React para criar soluções modernas com foco em performance, usabilidade e visual incrível. Estou sempre evoluindo e buscando as melhores práticas do mercado.
-                            </p>
-                            <p class="text-muted-foreground leading-relaxed mb-8">
-                                Cada projeto é uma nova oportunidade de entregar resultado real com código limpo e experiência impecável.
-                            </p>
-        
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                                    data-reveal data-animation="fade-in-up" data-delay="100">
-                                    <div class="text-primary mb-3">
-                                        <i class="fas fa-code w-6 h-6"></i>
-                                    </div>
-                                    <h3 class="font-semibold mb-2">Código Limpo</h3>
-                                    <p class="text-sm text-muted-foreground leading-relaxed">
-                                        Código limpo, semântico e organizado.
-                                    </p>
-                                </div>
-                                <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                                    data-reveal data-animation="fade-in-up" data-delay="200">
-                                    <div class="text-primary mb-3">
-                                        <i class="fas fa-heart w-6 h-6"></i>
-                                    </div>
-                                    <h3 class="font-semibold mb-2">Paixão por UX</h3>
-                                    <p class="text-sm text-muted-foreground leading-relaxed">
-                                        Foco total na experiência do usuário, sempre acessível.
-                                    </p>
-                                </div>
-                                <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                                    data-reveal data-animation="fade-in-up" data-delay="300">
-                                    <div class="text-primary mb-3">
-                                        <i class="fas fa-lightbulb w-6 h-6"></i>
-                                    </div>
-                                    <h3 class="font-semibold mb-2">Inovação</h3>
-                                    <p class="text-sm text-muted-foreground leading-relaxed">
-                                        Trago soluções modernas com tecnologia de ponta.
-                                    </p>
-                                </div>
-                                <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                                    data-reveal data-animation="fade-in-up" data-delay="400">
-                                    <div class="text-primary mb-3">
-                                        <i class="fas fa-bullseye w-6 h-6"></i>
-                                    </div>
-                                    <h3 class="font-semibold mb-2">Foco em Resultados</h3>
-                                    <p class="text-sm text-muted-foreground leading-relaxed">
-                                        Cada projeto com objetivo claro e impacto real.
-                                    </p>
-                                </div>
+                        <div class="skill-bar" data-skill="92"><span class="skill-name">CSS3</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar" data-skill="90"><span class="skill-name">JavaScript</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar" data-skill="85"><span class="skill-name">React</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.85"></div>
                             </div>
                         </div>
                     </div>
-        
-                    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                        <div class="opacity-0" data-reveal data-animation="fade-in-up" data-delay="500">
-                            <div class="text-2xl sm:text-3xl font-bold text-primary mb-2">
-                                3+
-                            </div>
-                            <div class="text-sm text-muted-foreground">
-                                Anos de Experiência
-                            </div>
-                        </div>
-                        <div class="opacity-0" data-reveal data-animation="fade-in-up" data-delay="600">
-                            <div class="text-2xl sm:text-3xl font-bold text-primary mb-2">
-                                50+
-                            </div>
-                            <div class="text-sm text-muted-foreground">
-                                Projetos Concluídos
+                </div>
+
+                <!-- Backend -->
+                <div class="skill-category premium-card">
+                    <div class="skill-header"><i class="fas fa-server" aria-hidden="true"></i>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-bar" data-skill="88"><span class="skill-name">Node.js</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.88"></div>
                             </div>
                         </div>
-                        <div class="opacity-0" data-reveal data-animation="fade-in-up" data-delay="700">
-                            <div class="text-2xl sm:text-3xl font-bold text-primary mb-2">
-                                100%
-                            </div>
-                            <div class="text-sm text-muted-foreground">
-                                Satisfação do Cliente
+                        <div class="skill-bar" data-skill="82"><span class="skill-name">Flask</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.82"></div>
                             </div>
                         </div>
-                        <div class="opacity-0" data-reveal data-animation="fade-in-up" data-delay="800">
-                            <div class="text-2xl sm:text-3xl font-bold text-primary mb-2">
-                                24/7
+                        <div class="skill-bar" data-skill="80"><span class="skill-name">Express</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.80"></div>
                             </div>
-                            <div class="text-sm text-muted-foreground">
-                                Suporte Dedicado
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database -->
+                <div class="skill-category premium-card">
+                    <div class="skill-header"><i class="fas fa-database" aria-hidden="true"></i>
+                        <h3>Banco de Dados</h3>
+                    </div>
+                    <div class="skill-progress">
+                        <div class="skill-bar" data-skill="85"><span class="skill-name">SQLite</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.85"></div>
                             </div>
+                        </div>
+                        <div class="skill-bar" data-skill="75"><span class="skill-name">MongoDB</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="--width:0.75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-category premium-card">
+                    <div class="skill-header"><i class="fas fa-tools" aria-hidden="true"></i>
+                        <h3>Ferramentas & IA</h3>
+                    </div>
+                    <div class="tech-icons">
+                        <div class="tech-icon" data-tooltip="Git/GitHub"><i class="fab fa-git-alt"
+                                aria-hidden="true"></i></div>
+                        <div class="tech-icon" data-tooltip="Figma"><i class="fab fa-figma" aria-hidden="true"></i>
+                        </div>
+                        <div class="tech-icon" data-tooltip="VS Code"><i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <div class="tech-icon" data-tooltip="IA Generativa"><i class="fas fa-robot"
+                                aria-hidden="true"></i></div>
+                        <div class="tech-icon" data-tooltip="Docker"><i class="fab fa-docker" aria-hidden="true"></i>
+                        </div>
+                        <div class="tech-icon" data-tooltip="AWS"><i class="fab fa-aws" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        
+        </div>
+    </section>
 
-        <section id="skills" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div class="max-w-6xl mx-auto">
-                <div class="text-center mb-16 opacity-0" data-reveal data-animation="fade-in-up">
-                  <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                    Minhas <span class="gradient-text">Habilidades</span>
-                  </h2>
-                  <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    As techs que uso para transformar ideias em produtos digitais incríveis.
-                  </p>
-                </div>
-          
-                <!-- Cards principais (HTML, CSS, JS, React, IA) - textos otimizados -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                    data-reveal data-animation="fade-in-up" data-delay="0">
-                    <div class="flex items-center space-x-4 mb-4">
-                      <div class="text-orange-500"><i class="fas fa-code w-8 h-8"></i></div>
-                      <h3 class="text-xl font-semibold">HTML5</h3>
-                    </div>
-                    <p class="text-muted-foreground mb-4">Estrutura semântica e acessível para a web moderna.</p>
-                    <div class="w-full bg-muted rounded-full h-2.5">
-                      <div class="bg-orange-500 h-2.5 rounded-full" style="width: 95%"></div>
-                    </div>
-                    <p class="text-right text-sm text-muted-foreground mt-2">95%</p>
-                  </div>
-          
-                  <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                    data-reveal data-animation="fade-in-up" data-delay="100">
-                    <div class="flex items-center space-x-4 mb-4">
-                      <div class="text-blue-500"><i class="fas fa-palette w-8 h-8"></i></div>
-                      <h3 class="text-xl font-semibold">CSS3</h3>
-                    </div>
-                    <p class="text-muted-foreground mb-4">Estilos responsivos com Flexbox, Grid e animações.</p>
-                    <div class="w-full bg-muted rounded-full h-2.5">
-                      <div class="bg-blue-500 h-2.5 rounded-full" style="width: 90%"></div>
-                    </div>
-                    <p class="text-right text-sm text-muted-foreground mt-2">90%</p>
-                  </div>
-          
-                  <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                    data-reveal data-animation="fade-in-up" data-delay="200">
-                    <div class="flex items-center space-x-4 mb-4">
-                      <div class="text-yellow-500"><i class="fas fa-bolt w-8 h-8"></i></div>
-                      <h3 class="text-xl font-semibold">JavaScript</h3>
-                    </div>
-                    <p class="text-muted-foreground mb-4">Interatividade, DOM, APIs e recursos modernos do ES6+.</p>
-                    <div class="w-full bg-muted rounded-full h-2.5">
-                      <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 85%"></div>
-                    </div>
-                    <p class="text-right text-sm text-muted-foreground mt-2">85%</p>
-                  </div>
-          
-                  <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                    data-reveal data-animation="fade-in-up" data-delay="300">
-                    <div class="flex items-center space-x-4 mb-4">
-                      <div class="text-cyan-500"><i class="fas fa-layer-group w-8 h-8"></i></div>
-                      <h3 class="text-xl font-semibold">React</h3>
-                    </div>
-                    <p class="text-muted-foreground mb-4">Interfaces reativas com hooks e gerenciamento de estado.</p>
-                    <div class="w-full bg-muted rounded-full h-2.5">
-                      <div class="bg-cyan-500 h-2.5 rounded-full" style="width: 88%"></div>
-                    </div>
-                    <p class="text-right text-sm text-muted-foreground mt-2">88%</p>
-                  </div>
-          
-                  <div class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border opacity-0"
-                    data-reveal data-animation="fade-in-up" data-delay="400">
-                    <div class="flex items-center space-x-4 mb-4">
-                      <div class="text-green-600"><i class="fas fa-brain w-8 h-8"></i></div>
-                      <h3 class="text-xl font-semibold">Generative AI</h3>
-                    </div>
-                    <p class="text-muted-foreground mb-4">Integração de IA generativa para experiências mais inteligentes.</p>
-                    <div class="w-full bg-muted rounded-full h-2.5">
-                      <div class="bg-green-600 h-2.5 rounded-full" style="width: 75%"></div>
-                    </div>
-                    <p class="text-right text-sm text-muted-foreground mt-2">75%</p>
-                  </div>
-                </div>
-          
-                <!-- Outras ferramentas -->
-                <div class="mt-16 text-center opacity-0" data-reveal data-animation="fade-in-up" data-delay="500">
-                  <h3 class="text-2xl font-bold mb-6">Outras <span class="gradient-text">Ferramentas & Tecnologias</span></h3>
-                  <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                    <!-- Mesma lista que você já tem, sem alterações -->
-                  </div>
-                </div>
-          
-                <!-- Sempre Aprendendo -->
-                <div class="mt-12 text-center opacity-0" data-reveal data-animation="fade-in-up" data-delay="600">
-                  <h3 class="text-xl font-semibold mb-4">
-                    Sempre <span class="text-primary">Aprendendo</span>
-                  </h3>
-                  <p class="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                    Estou sempre explorando novas ferramentas como
-                    <strong class="text-secondary">TypeScript</strong>,
-                    <strong class="text-secondary">Next.js</strong> e
-                    <strong class="text-secondary">Three.js</strong> para criar experiências mais ricas, fluidas e interativas.
-                  </p>
-                </div>
-              </div>
+    <!-- PROJECTS -->
+<section id="projects" class="projects" aria-label="Projetos em Destaque">
+  <div class="container">
+    <h2 class="section-title">Projetos em Destaque</h2>
+
+    <div class="projects-grid">
+      <!-- PROJETO: MeuFinanceiro -->
+      <article class="project-card">
+        <div class="project-image">
+          <picture>
+            <!-- AVIF -->
+            <source
+              type="image/avif"
+              srcset="
+                images/meufinanceiro-400.avif 400w,
+                images/meufinanceiro-800.avif 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <!-- WebP -->
+            <source
+              type="image/webp"
+              srcset="
+                images/meufinanceiro-400.webp 400w,
+                images/meufinanceiro-800.webp 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <!-- JPG fallback (800px) -->
+            <img
+              src="images/meufinanceiro-800.jpg"
+              alt="MeuFinanceiro - Controle financeiro PWA"
+              width="800" height="450"
+              loading="lazy" decoding="async" fetchpriority="low">
+          </picture>
+
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer" aria-label="Abrir projeto MeuFinanceiro">
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório no GitHub">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
             </div>
-          </section>
-          
+          </div>
+        </div>
 
-        <section id="projects" class="py-20 bg-muted/30">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-16 opacity-0" data-reveal data-animation="fade-in-up">
-                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                            Meus <span class="gradient-text">Projetos</span>
-                        </h2>
-                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Uma seleção dos meus trabalhos mais recentes, demonstrando minhas habilidades e paixão
-                            por desenvolvimento.
-                        </p>
-                    </div>
+        <div class="project-info">
+          <h3>MeuFinanceiro (PWA)</h3>
+          <p>Controle financeiro completo com suporte offline.</p>
+          <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+        </div>
+      </article>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover-lift opacity-0"
-                            data-reveal data-animation="fade-in-up" data-delay="0">
-                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop"
-                                alt="E-commerce Moderno" class="w-full h-48 object-cover" />
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">E-commerce Moderno</h3>
-                                <p class="text-muted-foreground text-sm mb-4">
-                                    Plataforma de e-commerce completa com React, integração de pagamentos e painel
-                                    administrativo. Interface moderna e responsiva com foco na experiência do
-                                    usuário.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">React</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Node.js</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">MongoDB</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Stripe</span>
-                                </div>
-                                <div class="flex justify-end space-x-4">
-                                    <a href="https://exemplo-ecommerce.com" target="_blank" rel="noopener noreferrer"
-                                        class="text-primary hover:text-primary/80 transition-colors"
-                                        aria-label="Ver projeto E-commerce Moderno">
-                                        <i class="fas fa-external-link-alt text-xl"></i>
-                                    </a>
-                                    <a href="https://github.com/ismaelnunes/ecommerce-moderno" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-foreground transition-colors"
-                                        aria-label="Código do projeto E-commerce Moderno">
-                                        <i class="fab fa-github text-xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+      <!-- PROJETO: E-commerce Flask -->
+      <article class="project-card">
+        <div class="project-image">
+          <picture>
+            <!-- AVIF -->
+            <source
+              type="image/avif"
+              srcset="
+                images/premiumstore-400.avif 400w,
+                images/premiumstore-800.avif 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <!-- WebP (corrigido para .webp) -->
+            <source
+              type="image/webp"
+              srcset="
+                images/premiumstore-400.webp 400w,
+                images/premiumstore-800.webp 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <!-- JPG fallback (800px) -->
+            <img
+              src="images/flask-ecommerce-800.jpg"
+              alt="E-commerce em Flask - loja virtual em Python"
+              width="800" height="450"
+              loading="lazy" decoding="async" fetchpriority="low">
+          </picture>
 
-                        <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover-lift opacity-0"
-                            data-reveal data-animation="fade-in-up" data-delay="100">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
-                                alt="Dashboard Analytics" class="w-full h-48 object-cover" />
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">Dashboard Analytics</h3>
-                                <p class="text-muted-foreground text-sm mb-4">
-                                    Dashboard interativo para análise de dados com gráficos dinâmicos, filtros
-                                    avançados e relatórios em tempo real. Desenvolvido com React e Chart.js.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">React</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Chart.js</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Tailwind
-                                        CSS</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">API
-                                        REST</span>
-                                </div>
-                                <div class="flex justify-end space-x-4">
-                                    <a href="https://exemplo-dashboard.com" target="_blank" rel="noopener noreferrer"
-                                        class="text-primary hover:text-primary/80 transition-colors"
-                                        aria-label="Ver projeto Dashboard Analytics">
-                                        <i class="fas fa-external-link-alt text-xl"></i>
-                                    </a>
-                                    <a href="https://github.com/ismaelnunes/dashboard-analytics" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-foreground transition-colors"
-                                        aria-label="Código do projeto Dashboard Analytics">
-                                        <i class="fab fa-github text-xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover-lift opacity-0"
-                            data-reveal data-animation="fade-in-up" data-delay="200">
-                            <img src="https://images.unsplash.com/photo-1579783902677-ecc9700ad64d?w=600&h=400&fit=crop"
-                                alt="Landing Page Marketing" class="w-full h-48 object-cover" />
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">Landing Page Marketing</h3>
-                                <p class="text-muted-foreground text-sm mb-4">
-                                    Página de destino otimizada para conversão, com design moderno, formulários
-                                    integrados e animações suaves. Construída com HTML, CSS e JavaScript puro.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">HTML5</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">CSS3</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">JavaScript</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Responsivo</span>
-                                </div>
-                                <div class="flex justify-end space-x-4">
-                                    <a href="https://exemplo-landingpage.com" target="_blank" rel="noopener noreferrer"
-                                        class="text-primary hover:text-primary/80 transition-colors"
-                                        aria-label="Ver projeto Landing Page Marketing">
-                                        <i class="fas fa-external-link-alt text-xl"></i>
-                                    </a>
-                                    <a href="https://github.com/ismaelnunes/landingpage-marketing" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-foreground transition-colors"
-                                        aria-label="Código do projeto Landing Page Marketing">
-                                        <i class="fab fa-github text-xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover-lift opacity-0"
-                            data-reveal data-animation="fade-in-up" data-delay="300">
-                            <img src="https://images.unsplash.com/photo-1542831371-d6480f2d9ef4?w=600&h=400&fit=crop"
-                                alt="Aplicativo de Tarefas (PWA)" class="w-full h-48 object-cover" />
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">Aplicativo de Tarefas (PWA)</h3>
-                                <p class="text-muted-foreground text-sm mb-4">
-                                    Progressive Web App (PWA) para gerenciamento de tarefas, com funcionalidade
-                                    offline, notificações e sincronização em nuvem.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">React</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">IndexedDB</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Service
-                                        Workers</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">PWA</span>
-                                </div>
-                                <div class="flex justify-end space-x-4">
-                                    <a href="https://exemplo-todo-pwa.com" target="_blank" rel="noopener noreferrer"
-                                        class="text-primary hover:text-primary/80 transition-colors"
-                                        aria-label="Ver projeto Aplicativo de Tarefas (PWA)">
-                                        <i class="fas fa-external-link-alt text-xl"></i>
-                                    </a>
-                                    <a href="https://github.com/ismaelnunes/todo-pwa" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-foreground transition-colors"
-                                        aria-label="Código do projeto Aplicativo de Tarefas (PWA)">
-                                        <i class="fab fa-github text-xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-card rounded-xl shadow-lg border border-border overflow-hidden hover-lift opacity-0"
-                            data-reveal data-animation="fade-in-up" data-delay="400">
-                            <img src="https://images.unsplash.com/photo-1504711432028-cb487f739260?w=600&h=400&fit=crop"
-                                alt="Blog Pessoal com CMS" class="w-full h-48 object-cover" />
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2">Blog Pessoal com CMS</h3>
-                                <p class="text-muted-foreground text-sm mb-4">
-                                    Plataforma de blog completa, integrando um CMS headless para fácil gerenciamento
-                                    de conteúdo. Design minimalista e otimizado para SEO.
-                                </p>
-                                <div class="flex flex-wrap gap-2 mb-4">
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Next.js</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">GraphQL</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">Strapi
-                                        CMS</span>
-                                    <span
-                                        class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">SSR</span>
-                                </div>
-                                <div class="flex justify-end space-x-4">
-                                    <a href="https://exemplo-blog.com" target="_blank" rel="noopener noreferrer"
-                                        class="text-primary hover:text-primary/80 transition-colors"
-                                        aria-label="Ver projeto Blog Pessoal com CMS">
-                                        <i class="fas fa-external-link-alt text-xl"></i>
-                                    </a>
-                                    <a href="https://github.com/ismaelnunes/blog-pessoal-cms" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-foreground transition-colors"
-                                        aria-label="Código do projeto Blog Pessoal com CMS">
-                                        <i class="fab fa-github text-xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center mt-12 opacity-0" data-reveal data-animation="fade-in-up" data-delay="500">
-                        <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                            Gostou do que viu? Vamos trabalhar juntos no seu próximo projeto!
-                        </p>
-                        <a href="#contact"
-                            class="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover-lift transition-all duration-300 hover:bg-primary/90">
-                            Iniciar Projeto
-                        </a>
-                    </div>
-                </div>
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir e-commerce Flask">
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório no GitHub">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
             </div>
-        </section>
+          </div>
+        </div>
 
-        <section id="contact" class="py-20">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-6xl mx-auto">
-                    <div class="text-center mb-16 opacity-0" data-reveal data-animation="fade-in-up">
-                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">
-                            Vamos <span class="gradient-text">Conversar?</span>
-                        </h2>
-                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            Estou disponível para novos projetos, colaborações ou apenas para um bate-papo. Envie
-                            uma mensagem!
-                        </p>
-                    </div>
+        <div class="project-info">
+          <h3>E-commerce Flask</h3>
+          <p>Loja virtual completa com backend Python.</p>
+          <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div class="space-y-8 opacity-0" data-reveal data-animation="slide-in-left">
-                            <div
-                                class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border flex items-start space-x-4">
-                                <div class="text-primary pt-1">
-                                    <i class="fas fa-envelope w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold mb-1">Email</h3>
-                                    <p class="text-muted-foreground">ismael.nunes@email.com</p>
-                                    <a href="mailto:ismael.nunes@email.com"
-                                        class="text-primary text-sm hover:underline">
-                                        Enviar um Email
-                                    </a>
-                                </div>
-                            </div>
 
-                            <div
-                                class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border flex items-start space-x-4">
-                                <div class="text-primary pt-1">
-                                    <i class="fas fa-phone w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold mb-1">Telefone</h3>
-                                    <p class="text-muted-foreground">+55 (11) 99999-9999</p>
-                                    <a href="tel:+5511999999999" class="text-primary text-sm hover:underline">
-                                        Ligar Agora
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div
-                                class="bg-card p-6 rounded-xl shadow-sm hover-lift border border-border flex items-start space-x-4">
-                                <div class="text-primary pt-1">
-                                    <i class="fas fa-map-marker-alt w-6 h-6"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-lg font-semibold mb-1">Localização</h3>
-                                    <p class="text-muted-foreground">São Paulo, Brasil</p>
-                                    <p class="text-sm text-muted-foreground">Disponível para trabalho remoto</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-8">
-                                <h3 class="text-lg font-semibold mb-4">Me encontre nas Redes Sociais</h3>
-                                <div class="flex space-x-6 justify-center lg:justify-start">
-                                    <a href="https://github.com/ismaelnunes" target="_blank" rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-primary transition-colors duration-300 hover-lift"
-                                        aria-label="GitHub de Ismael Nunes">
-                                        <i class="fab fa-github text-2xl"></i>
-                                    </a>
-                                    <a href="https://linkedin.com/in/ismaelnunes" target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-primary transition-colors duration-300 hover-lift"
-                                        aria-label="LinkedIn de Ismael Nunes">
-                                        <i class="fab fa-linkedin text-2xl"></i>
-                                    </a>
-                                    <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"
-                                        class="text-muted-foreground hover:text-primary transition-colors duration-300 hover-lift"
-                                        aria-label="WhatsApp de Ismael Nunes">
-                                        <i class="fab fa-whatsapp text-2xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-card p-8 rounded-xl shadow-lg border border-border opacity-0" data-reveal
-                            data-animation="slide-in-right">
-                            <h3 class="text-2xl font-bold mb-6">Envie uma Mensagem</h3>
-                            <form id="contact-form" class="space-y-6">
-                                <div>
-                                    <label for="name" class="block text-sm font-medium text-muted-foreground mb-2">Seu
-                                        Nome</label>
-                                    <input type="text" id="name" name="name" placeholder="Seu nome completo" required
-                                        class="w-full p-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-muted-foreground mb-2">Seu
-                                        Email</label>
-                                    <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com"
-                                        required
-                                        class="w-full p-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
-                                </div>
-                                <div>
-                                    <label for="subject"
-                                        class="block text-sm font-medium text-muted-foreground mb-2">Assunto</label>
-                                    <input type="text" id="subject" name="subject" placeholder="Assunto da mensagem"
-                                        required
-                                        class="w-full p-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200" />
-                                </div>
-                                <div>
-                                    <label for="message"
-                                        class="block text-sm font-medium text-muted-foreground mb-2">Sua
-                                        Mensagem</label>
-                                    <textarea id="message" name="message" rows="5"
-                                        placeholder="Escreva sua mensagem aqui..." required
-                                        class="w-full p-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 resize-y"></textarea>
-                                </div>
-                                <button type="submit"
-                                    class="w-full bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover-lift transition-all duration-300 hover:bg-primary/90 flex items-center justify-center space-x-2">
-                                    <i class="fas fa-paper-plane text-xl"></i>
-                                    <span>Enviar Mensagem</span>
-                                </button>
-                                <div id="submission-message" class="text-center mt-4 text-green-600 font-medium hidden">
-                                    <i class="fas fa-check-circle text-xl inline-block mr-2"></i>
-                                    Mensagem enviada com sucesso!
-                                </div>
-                            </form>
+    <!-- CONTACT -->
+    <section id="contact" class="contact" aria-label="Contato">
+        <div class="container">
+            <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Entre em Contato</h3>
+                    <p>Estou sempre aberto a novos desafios e oportunidades.</p>
+                    <div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p>
                         </div>
                     </div>
-
-                    <div class="text-center mt-16 bg-gradient-bg-mixed text-primary-foreground p-8 rounded-2xl shadow-xl opacity-0"
-                        data-reveal data-animation="fade-in-up">
-                        <h3 class="text-2xl font-semibold mb-4">
-                            Pronto para começar seu projeto?
-                        </h3>
-                        <p class="mb-6 max-w-2xl mx-auto">
-                            Seja um site institucional, e-commerce, aplicativo web ou qualquer outra solução
-                            digital,
-                            estou aqui para transformar sua visão em realidade com qualidade e dedicação.
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"
-                                class="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover-lift transition-all duration-300 hover:bg-green-700 flex items-center justify-center space-x-2">
-                                <i class="fab fa-whatsapp text-xl"></i>
-                                <span>WhatsApp</span>
-                            </a>
-                            <a href="mailto:ismael.nunes@email.com"
-                                class="bg-transparent border-2 border-primary text-primary px-8 py-3 rounded-lg font-semibold hover-lift transition-all duration-300 hover:bg-primary/90 flex items-center justify-center space-x-2">
-                                <i class="fas fa-envelope text-xl"></i>
-                                <span>Email</span>
-                            </a>
+                    <div class="contact-item"><i class="fas fa-phone" aria-hidden="true"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer">+55
+                                    14
+                                    99192-0560</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>Canitar, SP - Brasil</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- Formulário -->
+                <form id="contactForm" class="contact-form" aria-label="Formulário de contato">
+                    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none"
+                        aria-hidden="true" />
+                    <label class="sr-only" for="name">Seu Nome</label>
+                    <input id="name" name="user_name" type="text" placeholder="Seu Nome" required />
+                    <label class="sr-only" for="email">Seu Email</label>
+                    <input id="email" name="user_email" type="email" placeholder="Seu Email" required />
+                    <label class="sr-only" for="subject">Assunto</label>
+                    <input id="subject" name="subject" type="text" placeholder="Assunto" required />
+                    <label class="sr-only" for="message">Sua Mensagem</label>
+                    <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <div id="formStatus" aria-live="polite"></div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        Enviar</button>
+                </form>
             </div>
-        </section>
-    </main>
-    <footer class="bg-card border-t border-border">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="max-w-6xl mx-auto">
-                <div class="grid md:grid-cols-3 gap-8 mb-8 text-center md:text-left">
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-2 justify-center md:justify-start">
-                            <img src="assets/logo_IN.png" alt="IN Logo" class="h-8 w-8" />
-                            <span class="text-xl font-bold text-primary">Ismael Nunes</span>
-                        </div>
-                        <p class="text-muted-foreground leading-relaxed">
-                            Desenvolvedor Front-End apaixonado por criar experiências digitais
-                            intuitivas e acessíveis que conectam pessoas e tecnologia.
-                        </p>
-                    </div>
+        </div>
+    </section>
 
-                    <div class="space-y-4">
-                        <h3 class="font-semibold">Links Rápidos</h3>
-                        <nav class="flex flex-col space-y-2 items-center md:items-start">
-                            <a href="#home" class="hover:text-primary transition-colors duration-200">Home</a>
-                            <a href="#about" class="hover:text-primary transition-colors duration-200">Sobre</a>
-                            <a href="#skills" class="hover:text-primary transition-colors duration-200">Habilidades</a>
-                            <a href="#projects" class="hover:text-primary transition-colors duration-200">Projetos</a>
-                            <a href="#contact" class="hover:text-primary transition-colors duration-200">Contato</a>
-                        </nav>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h3 class="font-semibold">Contato</h3>
-                        <div class="flex space-x-4 justify-center md:justify-start">
-                            <a href="https://github.com/seu-usuario" target="_blank" rel="noopener noreferrer"
-                                class="text-muted-foreground hover:text-primary transition-colors duration-200"
-                                aria-label="GitHub">
-                                <i class="fab fa-github" style="font-size: 24px;"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/seu-perfil" target="_blank" rel="noopener noreferrer"
-                                class="text-muted-foreground hover:text-primary transition-colors duration-200"
-                                aria-label="LinkedIn">
-                                <i class="fab fa-linkedin-in" style="font-size: 24px;"></i>
-                            </a>
-                            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer"
-                                class="text-muted-foreground hover:text-primary transition-colors duration-200"
-                                aria-label="WhatsApp">
-                                <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
-                            </a>
-                        </div>
-                        <div class="text-muted-foreground flex flex-col items-center md:items-start">
-                            <a href="mailto:ismael.nunes@email.com"
-                                class="block hover:text-primary transition-colors duration-200">
-                                ismael.nunes@email.com
-                            </a>
-                            <a href="tel:+5511999999999"
-                                class="block hover:text-primary transition-colors duration-200">
-                                +55 (11) 99999-9999
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="border-t border-border pt-8">
-                    <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <div class="flex items-center space-x-2 text-muted-foreground text-sm text-center md:text-left">
-                            <span>© <span id="current-year"></span> Ismael Nunes dos Santos</span>
-                        </div>
-
-                        <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-                            class="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors duration-200 hover-lift"
-                            aria-label="Voltar ao topo">
-                            <span class="text-sm">Voltar ao topo</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-arrow-up">
-                                <path d="m5 12 7-7 7 7" />
-                                <path d="M12 19V5" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+    <!-- FOOTER -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="social-links" aria-label="Redes sociais">
+                <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
+                    aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
+                        class="fab fa-whatsapp" aria-hidden="true"></i></a>
             </div>
+            <p>&copy; 2025 Ismael Nunes dos Santos. Desenvolvido com ❤️ e JavaScript.</p>
         </div>
     </footer>
-    <script type="module" src="js/main.js"></script>
+
+    <!-- JS (DEV): EmailJS + script.js (apenas UMA vez) -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+
+    <!-- Pós-load: remover preloader + carregar Font Awesome -->
+    <script>
+        window.addEventListener('load', function () {
+            var pre = document.getElementById('preloader'); if (pre) pre.remove();
+            var l = document.createElement('link');
+            l.rel = 'stylesheet';
+            l.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+            l.crossOrigin = 'anonymous';
+            l.referrerPolicy = 'no-referrer';
+            document.head.appendChild(l);
+        });
+    </script>
+
+    <noscript>Ative o JavaScript para melhor experiência.</noscript>
 </body>
 
 </html>
