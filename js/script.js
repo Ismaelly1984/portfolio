@@ -20,32 +20,32 @@ const EMAILJS_PUBLIC_KEY = 'sua_public_key_xxx';
 })();
 
 /* ========= SELECTORS ========= */
-const $  = (sel, root = document) => root.querySelector(sel);
+const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-const menuToggle  = $('#menuToggle');                 // <button>
-const navMenu     = $('#primary-navigation');         // <ul>
-const darkToggle  = $('#darkToggle');
+const menuToggle = $('#menuToggle');                 // <button>
+const navMenu = $('#primary-navigation');         // <ul>
+const darkToggle = $('#darkToggle');
 const contactForm = $('#contactForm');
-const body        = document.body;
+const body = document.body;
 
 /* ========= MENU MOBILE (A11y) ========= */
 if (menuToggle && navMenu) {
   let focusables = [];
   let firstEl = null;
-  let lastEl  = null;
+  let lastEl = null;
 
   const refreshFocusables = () => {
     focusables = $$('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])', navMenu)
       .filter(el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
     firstEl = focusables[0] || null;
-    lastEl  = focusables[focusables.length - 1] || null;
+    lastEl = focusables[focusables.length - 1] || null;
   };
 
   const trapTabKey = (e) => {
     if (e.key !== 'Tab' || focusables.length === 0) return;
     const isFirst = document.activeElement === firstEl;
-    const isLast  = document.activeElement === lastEl;
+    const isLast = document.activeElement === lastEl;
     if (e.shiftKey && isFirst) { e.preventDefault(); lastEl?.focus(); }
     else if (!e.shiftKey && isLast) { e.preventDefault(); firstEl?.focus(); }
   };
@@ -102,150 +102,95 @@ if (navbar) {
 /* ========= DARK MODE =========
    - Guarda escolha do usuário em localStorage
    - Se não houver escolha, segue o sistema (auto)
-*/
-(function setupTheme() {
+*/(function setupTheme() {
+  const body = document.body;
+  const darkToggle = document.getElementById('darkToggle');
   const icon = darkToggle?.querySelector('i');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+  const THEME_COLORS = {
+    light: '#6366f1', // igual ao seu primário
+    dark: '#0f172a', // combine com seu fundo no escuro
+  };
+
+  const safeGet = (key) => {
+    try { return localStorage.getItem(key); } catch { return null; }
+  };
+  const safeSet = (key, val) => {
+    try { localStorage.setItem(key, val); } catch { }
+  };
+  const safeRemove = (key) => {
+    try { localStorage.removeItem(key); } catch { }
+  };
+
+  const systemPrefersDark = () =>
+    !!(window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+
   const setIcon = (isDark) => {
     if (!icon) return;
     icon.classList.toggle('fa-moon', !isDark);
     icon.classList.toggle('fa-sun', isDark);
+    darkToggle.setAttribute('aria-label', isDark ? 'Alternar para tema claro' : 'Alternar para tema escuro');
+    darkToggle.setAttribute('title', isDark ? 'Tema claro' : 'Tema escuro');
   };
 
-  const systemPrefersDark = matchMedia?.('(prefers-color-scheme: dark)').matches;
+  const setThemeColorMeta = (isDark) => {
+    if (!themeMeta) return;
+    themeMeta.setAttribute('content', isDark ? THEME_COLORS.dark : THEME_COLORS.light);
+  };
 
   const applyTheme = (mode, { persist = false } = {}) => {
+    let isDark = false;
+
     if (mode === 'dark') {
       body.classList.add('dark-mode');
       body.classList.remove('light-forced');
-      setIcon(true);
-      if (persist) localStorage.setItem('theme', 'dark');
+      isDark = true;
+      if (persist) safeSet('theme', 'dark');
     } else if (mode === 'light') {
       body.classList.remove('dark-mode');
       body.classList.add('light-forced');
-      setIcon(false);
-      if (persist) localStorage.setItem('theme', 'light');
+      isDark = false;
+      if (persist) safeSet('theme', 'light');
     } else {
-      localStorage.removeItem('theme');
+      // auto: segue o sistema
+      safeRemove('theme');
       body.classList.remove('light-forced');
-      systemPrefersDark ? body.classList.add('dark-mode') : body.classList.remove('dark-mode');
-      setIcon(systemPrefersDark);
+      isDark = systemPrefersDark();
+      body.classList.toggle('dark-mode', isDark);
     }
+
+    // Mantém <html> em sincronia para evitar flash residual
+    document.documentElement.classList.toggle('dark-mode', isDark);
+    document.documentElement.classList.toggle('light-forced', !isDark && body.classList.contains('light-forced'));
+
+    setIcon(isDark);
+    setThemeColorMeta(isDark);
   };
 
-  const stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
-  stored ? applyTheme(stored) : applyTheme('auto');
+  // Tema inicial
+  const stored = safeGet('theme'); // 'dark' | 'light' | null
+  applyTheme(stored ?? 'auto');
 
-  if (matchMedia) {
+  // Reage à mudança do sistema quando em "auto"
+  if (window.matchMedia) {
     const mq = matchMedia('(prefers-color-scheme: dark)');
-    mq.addEventListener?.('change', () => {
-      if (!localStorage.getItem('theme')) applyTheme('auto');
-    });
+    const onSysChange = () => { if (!safeGet('theme')) applyTheme('auto'); };
+    mq.addEventListener ? mq.addEventListener('change', onSysChange)
+      : mq.addListener && mq.addListener(onSysChange); // suporte antigo
   }
 
+  // Clique do botão
   darkToggle?.addEventListener('click', () => {
     const isDark = body.classList.contains('dark-mode');
     applyTheme(isDark ? 'light' : 'dark', { persist: true });
   });
-})();
 
-/* ========= EMAILJS (envio do formulário) ========= */
-if (contactForm) {
-  const isSpam = () => {
-    const hp = contactForm.querySelector('input[name="website"]');
-    return hp && hp.value.trim() !== '';
-  };
-
-  const getSubmitButton = () => contactForm.querySelector('button[type="submit"]');
-
-  const setSubmitting = (submitting) => {
-    const btn = getSubmitButton();
-    if (!btn) return;
-    if (submitting) {
-      btn.dataset.originalText = btn.innerHTML;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-      btn.disabled = true;
-    } else {
-      btn.innerHTML = btn.dataset.originalText || 'Enviar';
-      btn.disabled = false;
+  // Sincroniza escolha entre múltiplas abas
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'theme') {
+      applyTheme(e.newValue ?? 'auto');
     }
-  };
-
-  const showStatus = (msg, ok = true) => {
-    const statusEl = $('#formStatus');
-    if (statusEl) {
-      statusEl.textContent = msg;
-      statusEl.className = ok ? 'status ok' : 'status error';
-    } else {
-      alert(msg);
-    }
-  };
-
-  // Validação baseada em [required] (não depende de data-required)
-  const validate = () => {
-    const required = $$('[required]', contactForm);
-    for (const el of required) {
-      if (!el.value || !el.value.trim()) {
-        el.focus();
-        return { ok: false, msg: 'Por favor, preencha todos os campos obrigatórios.' };
-      }
-    }
-    const email = contactForm.querySelector('input[type="email"]');
-    if (email && !/^\S+@\S+\.\S+$/.test(email.value)) {
-      email.focus();
-      return { ok: false, msg: 'Informe um e-mail válido.' };
-    }
-    return { ok: true };
-  };
-
-  contactForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    if (isSpam()) {
-      showStatus('Falha no envio.', false);
-      return;
-    }
-
-    const v = validate();
-    if (!v.ok) { showStatus(v.msg, false); return; }
-
-    if (!window.emailjs || typeof emailjs.sendForm !== 'function') {
-      showStatus('Serviço de e-mail indisponível. Tente novamente em instantes.', false);
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this);
-      showStatus('Mensagem enviada com sucesso! 😊', true);
-      this.reset();
-    } catch (err) {
-      console.error('EmailJS error:', err);
-      showStatus('Erro ao enviar. Tente novamente.', false);
-    } finally {
-      setSubmitting(false);
-    }
-  });
-}
-
-/* ========= ROLAGEM SUAVE (offset da navbar fixa) ========= */
-(function smoothScrollWithOffset() {
-  const links = $$('a[href^="#"]:not([href="#"])');
-  const targetOrNull = (hash) => { try { return document.querySelector(hash); } catch { return null; } };
-  const getOffsetTop = (el) => {
-    const rect = el.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const navH = $('.navbar')?.offsetHeight || 0;
-    return rect.top + scrollTop - (navH + 8);
-  };
-  links.forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      const hash = anchor.getAttribute('href');
-      const target = targetOrNull(hash);
-      if (!target) return;
-      e.preventDefault();
-      window.scrollTo({ top: getOffsetTop(target), behavior: 'smooth' });
-      history.pushState(null, '', hash);
-    });
   });
 })();
 
