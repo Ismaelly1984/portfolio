@@ -1,0 +1,13 @@
+# Ignora todos os arquivos do diretório node_modules
+node_modules/
+
+# Ignora arquivos de build e minificação
+dist/
+build/
+
+# Ignora arquivos temporários e de cache
+.DS_Store
+Thumbs.db
+*.swp
+*~
+npm-debug.log

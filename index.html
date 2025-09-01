@@ -1,213 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ismael Nunes – Dev Full Stack</title>
+  <meta name="description" content="Desenvolvedor Web Full Stack especializado em React, Node.js e IA Generativa. Confira meus projetos!"/>
 
-    <title>Ismael Nunes - Dev Full Stack</title>
-    <meta name="description"
-        content="Desenvolvedor Web Full Stack especializado em React, Node.js e IA Generativa. Confira meus projetos e entre em contato!">
+  <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/fav-IN-32.png?v=4">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/fav-IN-16.png?v=4">
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/fav-IN-180.png?v=4">
+  <meta name="theme-color" content="#6366f1"/>
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/">
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Ismael Nunes – Dev Full Stack">
+  <meta property="og:description" content="Portfólio de desenvolvedor web com foco em soluções inovadoras, PWA e IA.">
+  <meta property="og:url" content="https://ismaelly1984.github.io/portif-lio/">
+  <meta property="og:image" content="./images/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="images/fav-IN-32.png?v=4">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/fav-IN-16.png?v=4">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/fav-IN-180.png?v=4">
-    <meta name="theme-color" content="#6366f1">
+  <!-- CSS crítico inline -->
+  <style>
+    :root{--primary-color:#6366f1;--text-color:#1f2937;--bg-color:#fff}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif;color:var(--text-color);background:var(--bg-color);line-height:1.6}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb}
+    .navbar .container{display:flex;justify-content:space-between;align-items:center;padding:1rem 20px}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary-color)}
+    .nav-menu{display:flex;list-style:none;gap:2rem}
+    .nav-link{text-decoration:none;color:inherit}
+    .hamburger{display:none;background:none;border:0}
+    @media (max-width:768px){.hamburger{display:flex}.nav-menu{display:none}}
+    .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;color:#fff;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+    .hero-center{display:flex;align-items:center;justify-content:center;text-align:left}
+    .hero-title{font-size:clamp(2.25rem,2rem + 2vw,3.5rem);font-weight:700;line-height:1.2}
+    .highlight{color:#d97706}
+    .hero-subtitle{font-size:1.125rem;margin:1.25rem 0 1.75rem;opacity:.95;max-width:56ch}
+    .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn{padding:12px 30px;border:none;border-radius:50px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+    .btn-primary{background:var(--primary-color);color:#fff}
+    .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;padding:.5rem 1rem;background:#0f172a;color:#fff;border-radius:8px;z-index:2000}
+  </style>
 
-    <!-- Open Graph / Twitter -->
-    <meta property="og:title" content="Ismael Nunes – Dev Full Stack">
-    <meta property="og:description" content="Portfólio de desenvolvedor web com foco em soluções inovadoras, PWA e IA.">
-    <meta property="og:url" content="https://ismaelly1984.github.io/portif-lio/">
-    <meta property="og:image" content="https://ismaelly1984.github.io/portif-lio/images/og-image.jpg">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
+  <!-- CSS principal -->
+  <link rel="preload" href="./css/styles.css" as="style">
+  <link rel="stylesheet" href="./css/styles.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="./css/styles.css"></noscript>
 
-    <!-- Fonts (performático) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script>
-        /* Evita flash de tema errado antes do CSS/JS carregar */
-        (function () {
-            try {
-                var stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
-                var sysDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
-                var useDark = stored ? stored === 'dark' : sysDark;
-                var html = document.documentElement;
-                if (useDark) html.classList.add('dark-mode');
-                if (stored === 'light') html.classList.add('light-forced');
-            } catch (e) { }
-        })();
-    </script>
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    (function () {
+      const l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap';
+      l.onload = () => document.documentElement.classList.add('wf-loaded');
+      document.head.appendChild(l);
+    })();
+  </script>
 
-    <!-- Critical CSS inline -->
-    <style>
-        :root {
-            --primary-color: #6366f1;
-            --text-color: #1f2937;
-            --bg-color: #fff
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
-            color: var(--text-color);
-            background: var(--bg-color);
-            line-height: 1.6
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255, 255, 255, .95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb
-        }
-
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 20px
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color)
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: inherit
-        }
-
-        .hamburger {
-            display: none;
-            background: none;
-            border: 0
-        }
-
-        @media (max-width:768px) {
-            .hamburger {
-                display: flex
-            }
-
-            .nav-menu {
-                display: none
-            }
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 120px 0 80px;
-            color: #fff;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)
-        }
-
-        .hero-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: left
-        }
-
-        .hero-title {
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
-            font-size: clamp(2.25rem, 2rem + 2vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.2
-        }
-
-        .hero-subtitle {
-            font-size: 1.125rem;
-            margin: 1.25rem 0 1.75rem;
-            opacity: .95;
-            max-width: 56ch
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: #fff
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 2px solid #fff
-        }
-    </style>
-
-    <!-- CSS principal -->
-    <link rel="preload" href="css/styles.css" as="style">
-    <link rel="stylesheet" href="css/styles.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="css/styles.css">
-    </noscript>
-
-    <!-- Poppins async -->
-    <style>
-        .wf-loaded .hero-title {
-            font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif
-        }
-    </style>
-    <script>
-        (function () {
-            const l = document.createElement('link');
-            l.rel = 'stylesheet';
-            l.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap';
-            l.onload = () => document.documentElement.classList.add('wf-loaded');
-            document.head.appendChild(l);
-        })();
-    </script>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
+  <!-- Schema.org -->
+  <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"Person",
@@ -225,356 +84,266 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="spinner"></div>
+  <!-- Skip-link -->
+  <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+  <!-- Preloader -->
+  <div id="preloader"><div class="spinner" aria-hidden="true"></div></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Barra de navegação">
+    <div class="container">
+      <div class="logo">Ismael<span class="highlight">Dev</span></div>
+      <ul id="primary-navigation" class="nav-menu">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">Sobre</a></li>
+        <li><a href="#education" class="nav-link">Formação</a></li>
+        <li><a href="#skills" class="nav-link">Habilidades</a></li>
+        <li><a href="#projects" class="nav-link">Projetos</a></li>
+        <li><a href="#contact" class="nav-link">Contato</a></li>
+        <li><button id="darkToggle" aria-label="Alternar modo escuro"><i class="fas fa-moon" aria-hidden="true"></i></button></li>
+      </ul>
+      <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span><span></span></button>
     </div>
+  </nav>
 
-    <!-- NAVBAR -->
-    <nav class="navbar" aria-label="Barra de navegação">
-        <div class="container">
-            <div class="logo">Ismael<span class="highlight">Dev</span></div>
-            <ul id="primary-navigation" class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">Sobre</a></li>
-                <li><a href="#education" class="nav-link">Formação</a></li>
-                <li><a href="#skills" class="nav-link">Habilidades</a></li>
-                <li><a href="#projects" class="nav-link">Projetos</a></li>
-                <li><a href="#contact" class="nav-link">Contato</a></li>
-                <li>
-                    <button id="darkToggle" aria-label="Alternar modo escuro" title="Alternar tema">
-                        <i class="fas fa-moon" aria-hidden="true"></i>
-                    </button>
-                </li>
-            </ul>
-            <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation"
-                aria-expanded="false" aria-label="Abrir menu">
-                <span></span><span></span><span></span>
-            </button>
+  <!-- HERO -->
+  <section id="home" class="hero" aria-label="Início">
+    <div class="container hero-center">
+      <div class="hero-content">
+        <h1 class="hero-title">Olá, sou <span class="highlight">Ismael Nunes</span></h1>
+        <p class="hero-subtitle">Desenvolvedor Web Full Stack apaixonado por unir criatividade e lógica para criar soluções digitais inovadoras</p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">Ver Projetos</a>
+          <a href="#contact" class="btn btn-secondary">Entrar em Contato</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section id="home" class="hero" aria-label="Início">
-        <div class="container hero-center">
-            <div class="hero-content">
-                <h1 class="hero-title">Olá, sou <span class="highlight">Ismael Nunes</span></h1>
-                <p class="hero-subtitle">Desenvolvedor Web Full Stack apaixonado por unir criatividade e lógica
-                    para criar soluções digitais inovadoras</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Ver Projetos</a>
-                    <a href="#contact" class="btn btn-secondary">Entrar em Contato</a>
-                </div>
+  <!-- ABOUT -->
+  <section id="about" class="about" aria-label="Sobre mim">
+    <div class="container">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="about-content">
+        <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com 40 anos, transformo ideias em produtos digitais através de código limpo, performance e experiência excepcional.</p>
+        <ul class="about-highlights">
+          <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduação ADS – UNIMAR</span></li>
+          <li class="highlight-item"><i class="fas fa-brain" aria-hidden="true"></i><span>Especialista em IA Generativa</span></li>
+          <li class="highlight-item"><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Projetos PWA & Responsivos</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="education" aria-label="Formação e Certificações">
+    <div class="container">
+      <h2 class="section-title">Formação & Certificações</h2>
+      <div class="education-grid">
+        <article class="education-card"><i class="fas fa-university" aria-hidden="true"></i><h3>Graduação</h3><h4>Análise e Desenvolvimento de Sistemas</h4><p>UNIMAR</p></article>
+        <article class="education-card"><i class="fab fa-node-js" aria-hidden="true"></i><h3>Node.js</h3><h4>Backend com JavaScript</h4><p>Curso completo</p></article>
+        <article class="education-card"><i class="fab fa-react" aria-hidden="true"></i><h3>React</h3><h4>Frontend Moderno</h4><p>SPAs e hooks</p></article>
+        <article class="education-card"><i class="fas fa-robot" aria-hidden="true"></i><h3>IA Generativa</h3><h4>Inteligência Artificial Aplicada</h4><p>ChatGPT & aplicações</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills" aria-label="Habilidades e Tecnologias">
+    <div class="container">
+      <h2 class="section-title">Habilidades & Tecnologias</h2>
+      <p class="section-subtitle">Stack completa que utilizo para criar soluções digitais</p>
+      <div class="skills-showcase">
+        <div class="skill-category premium-card">
+          <div class="skill-header"><i class="fas fa-paint-brush" aria-hidden="true"></i><h3>Frontend</h3></div>
+          <div class="skill-progress">
+            <div class="skill-bar" data-skill="95"><span class="skill-name">HTML5</span><div class="progress-track"><div class="progress-fill" style="--width:0.95"></div></div></div>
+            <div class="skill-bar" data-skill="92"><span class="skill-name">CSS3</span><div class="progress-track"><div class="progress-fill" style="--width:0.92"></div></div></div>
+            <div class="skill-bar" data-skill="90"><span class="skill-name">JavaScript</span><div class="progress-track"><div class="progress-fill" style="--width:0.90"></div></div></div>
+            <div class="skill-bar" data-skill="85"><span class="skill-name">React</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
+          </div>
+        </div>
+        <div class="skill-category premium-card">
+          <div class="skill-header"><i class="fas fa-server" aria-hidden="true"></i><h3>Backend</h3></div>
+          <div class="skill-progress">
+            <div class="skill-bar" data-skill="88"><span class="skill-name">Node.js</span><div class="progress-track"><div class="progress-fill" style="--width:0.88"></div></div></div>
+            <div class="skill-bar" data-skill="82"><span class="skill-name">Flask</span><div class="progress-track"><div class="progress-fill" style="--width:0.82"></div></div></div>
+            <div class="skill-bar" data-skill="80"><span class="skill-name">Express</span><div class="progress-track"><div class="progress-fill" style="--width:0.80"></div></div></div>
+          </div>
+        </div>
+        <div class="skill-category premium-card">
+          <div class="skill-header"><i class="fas fa-database" aria-hidden="true"></i><h3>Banco de Dados</h3></div>
+          <div class="skill-progress">
+            <div class="skill-bar" data-skill="85"><span class="skill-name">SQLite</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
+            <div class="skill-bar" data-skill="75"><span class="skill-name">MongoDB</span><div class="progress-track"><div class="progress-fill" style="--width:0.75"></div></div></div>
+          </div>
+        </div>
+        <div class="skill-category premium-card">
+          <div class="skill-header"><i class="fas fa-tools" aria-hidden="true"></i><h3>Ferramentas & IA</h3></div>
+          <div class="tech-icons">
+            <div class="tech-icon" data-tooltip="Git/GitHub"><i class="fab fa-git-alt" aria-hidden="true"></i></div>
+            <div class="tech-icon" data-tooltip="Figma"><i class="fab fa-figma" aria-hidden="true"></i></div>
+            <div class="tech-icon" data-tooltip="VS Code"><i class="fas fa-code" aria-hidden="true"></i></div>
+            <div class="tech-icon" data-tooltip="IA Generativa"><i class="fas fa-robot" aria-hidden="true"></i></div>
+            <div class="tech-icon" data-tooltip="Docker"><i class="fab fa-docker" aria-hidden="true"></i></div>
+            <div class="tech-icon" data-tooltip="AWS"><i class="fab fa-aws" aria-hidden="true"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects" aria-label="Projetos em Destaque">
+    <div class="container">
+      <h2 class="section-title">Projetos em Destaque</h2>
+      <div class="projects-grid">
+        <!-- MeuFinanceiro -->
+        <article class="project-card">
+          <div class="project-image">
+            <picture>
+              <source type="image/avif"
+                      srcset="./images/meufinanceiro-600.avif 600w,
+                              ./images/meufinanceiro-800.avif 800w"
+                      sizes="(max-width: 768px) 600px, 800px">
+              <img src="./images/meufinanceiro-600.avif"
+                   width="600" height="337" loading="lazy"
+                   alt="MeuFinanceiro - Controle financeiro PWA">
+            </picture>
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer" aria-label="Abrir projeto MeuFinanceiro"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório no GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+          <div class="project-info">
+            <h3>MeuFinanceiro (PWA)</h3>
+            <p>Controle financeiro completo com suporte offline.</p>
+            <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+          </div>
+        </article>
 
-    <!-- ABOUT -->
-    <section id="about" class="about" aria-label="Sobre mim">
-        <div class="container">
-            <h2 class="section-title">Sobre Mim</h2>
-            <div class="about-content">
-                <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com 40 anos,
-                    transformo ideias em produtos digitais através de código limpo, performance e experiência
-                    excepcional.</p>
-                <ul class="about-highlights">
-                    <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado
-                            ADS – UNIMAR</span></li>
-                    <li class="highlight-item"><i class="fas fa-brain" aria-hidden="true"></i><span>Especialista em IA
-                            Generativa</span></li>
-                    <li class="highlight-item"><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Projetos PWA &
-                            Responsivos</span></li>
-                </ul>
+        <!-- E-commerce Flask -->
+        <article class="project-card">
+          <div class="project-image">
+            <picture>
+              <source type="image/avif"
+                      srcset="./images/premiumstore-600.avif 600w,
+                              ./images/premiumstore-800.avif 800w"
+                      sizes="(max-width: 768px) 600px, 800px">
+              <img src="./images/premiumstore-600.avif"
+                   width="600" height="337" loading="lazy"
+                   alt="E-commerce em Flask – loja virtual em Python">
+            </picture>
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir e-commerce Flask"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório no GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
+          <div class="project-info">
+            <h3>E-commerce Flask</h3>
+            <p>Loja virtual completa com backend Python.</p>
+            <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="education" aria-label="Formação e Certificações">
-        <div class="container">
-            <h2 class="section-title">Formação & Certificações</h2>
-            <div class="education-grid">
-                <article class="education-card"><i class="fas fa-university" aria-hidden="true"></i>
-                    <h3>Graduação</h3>
-                    <h4>Análise e Desenvolvimento de Sistemas</h4>
-                    <p>UNIMAR</p>
-                </article>
-                <article class="education-card"><i class="fab fa-node-js" aria-hidden="true"></i>
-                    <h3>Node.js</h3>
-                    <h4>Backend com JavaScript</h4>
-                    <p>Curso completo</p>
-                </article>
-                <article class="education-card"><i class="fab fa-react" aria-hidden="true"></i>
-                    <h3>React</h3>
-                    <h4>Frontend Moderno</h4>
-                    <p>SPAs e hooks</p>
-                </article>
-                <article class="education-card"><i class="fas fa-robot" aria-hidden="true"></i>
-                    <h3>IA Generativa</h3>
-                    <h4>Inteligência Artificial Aplicada</h4>
-                    <p>ChatGPT & aplicações</p>
-                </article>
+  <!-- CONTACT -->
+  <section id="contact" class="contact" aria-label="Contato">
+    <div class="container">
+      <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Entre em Contato</h3>
+          <p>Estou sempre aberto a novos desafios e oportunidades.</p>
+
+          <div class="contact-item">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+            <div>
+              <h4>Email</h4>
+              <p><a href="mailto:ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- SKILLS -->
-    <section id="skills" class="skills" aria-label="Habilidades e Tecnologias">
-        <div class="container">
-            <h2 class="section-title">Habilidades & Tecnologias</h2>
-            <p class="section-subtitle">Stack completa que utilizo para criar soluções digitais</p>
-
-            <div class="skills-showcase">
-                <!-- Frontend -->
-                <div class="skill-category premium-card">
-                    <div class="skill-header"><i class="fas fa-paint-brush" aria-hidden="true"></i>
-                        <h3>Frontend</h3>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" data-skill="95"><span class="skill-name">HTML5</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-skill="92"><span class="skill-name">CSS3</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.92"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-skill="90"><span class="skill-name">JavaScript</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-skill="85"><span class="skill-name">React</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Backend -->
-                <div class="skill-category premium-card">
-                    <div class="skill-header"><i class="fas fa-server" aria-hidden="true"></i>
-                        <h3>Backend</h3>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" data-skill="88"><span class="skill-name">Node.js</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-skill="82"><span class="skill-name">Flask</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.82"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-skill="80"><span class="skill-name">Express</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Database -->
-                <div class="skill-category premium-card">
-                    <div class="skill-header"><i class="fas fa-database" aria-hidden="true"></i>
-                        <h3>Banco de Dados</h3>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-bar" data-skill="85"><span class="skill-name">SQLite</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar" data-skill="75"><span class="skill-name">MongoDB</span>
-                            <div class="progress-track">
-                                <div class="progress-fill" style="--width:0.75"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tools -->
-                <div class="skill-category premium-card">
-                    <div class="skill-header"><i class="fas fa-tools" aria-hidden="true"></i>
-                        <h3>Ferramentas & IA</h3>
-                    </div>
-                    <div class="tech-icons">
-                        <div class="tech-icon" data-tooltip="Git/GitHub"><i class="fab fa-git-alt"
-                                aria-hidden="true"></i></div>
-                        <div class="tech-icon" data-tooltip="Figma"><i class="fab fa-figma" aria-hidden="true"></i>
-                        </div>
-                        <div class="tech-icon" data-tooltip="VS Code"><i class="fas fa-code" aria-hidden="true"></i>
-                        </div>
-                        <div class="tech-icon" data-tooltip="IA Generativa"><i class="fas fa-robot"
-                                aria-hidden="true"></i></div>
-                        <div class="tech-icon" data-tooltip="Docker"><i class="fab fa-docker" aria-hidden="true"></i>
-                        </div>
-                        <div class="tech-icon" data-tooltip="AWS"><i class="fab fa-aws" aria-hidden="true"></i></div>
-                    </div>
-                </div>
+          <div class="contact-item">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer">+55 14 99192-0560</a></p>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- PROJECTS -->
-    <section id="projects" class="projects" aria-label="Projetos em Destaque">
-        <div class="container">
-            <h2 class="section-title">Projetos em Destaque</h2>
-
-            <div class="projects-grid">
-                <!-- MeuFinanceiro -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <picture>
-                            <source type="image/avif"
-                                srcset="images/meufinanceiro-400.avif 400w, images/meufinanceiro-800.avif 800w"
-                                sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                            <source type="image/webp"
-                                srcset="images/meufinanceiro-400.webp 400w, images/meufinanceiro-800.webp 800w"
-                                sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                            <img src="images/meufinanceiro-800.jpg" alt="MeuFinanceiro - Controle financeiro PWA"
-                                width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
-                        </picture>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://ismaelly1984.github.io/financeiro/" target="_blank"
-                                    rel="noopener noreferrer" aria-label="Abrir projeto MeuFinanceiro"><i
-                                        class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                                <a href="https://github.com/Ismaelly1984/financeiro" target="_blank"
-                                    rel="noopener noreferrer" aria-label="Abrir repositório no GitHub"><i
-                                        class="fab fa-github" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>MeuFinanceiro (PWA)</h3>
-                        <p>Controle financeiro completo com suporte offline.</p>
-                        <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
-                    </div>
-                </article>
-
-                <!-- E-commerce Flask -->
-                <article class="project-card">
-                    <div class="project-image">
-                        <picture>
-                            <source type="image/avif"
-                                srcset="images/premiumstore-400.avif 400w, images/premiumstore-800.avif 800w"
-                                sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                            <source type="image/webp"
-                                srcset="images/premiumstore-400.webp 400w, images/premiumstore-800.webp 800w"
-                                sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                            <img src="images/flask-ecommerce-800.jpg" alt="E-commerce em Flask - loja virtual em Python"
-                                width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
-                        </picture>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    aria-label="Abrir e-commerce Flask">
-                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                                </a>
-                                <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank"
-                                    rel="noopener noreferrer" aria-label="Abrir repositório no GitHub">
-                                    <i class="fab fa-github" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>E-commerce Flask</h3>
-                        <p>Loja virtual completa com backend Python.</p>
-                        <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
-                    </div>
-                </article>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div>
+              <h4>Localização</h4>
+              <p>Canitar, SP – Brasil</p>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact" aria-label="Contato">
-        <div class="container">
-            <h2 class="section-title">Vamos Trabalhar Juntos</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Entre em Contato</h3>
-                    <p>Estou sempre aberto a novos desafios e oportunidades.</p>
-                    <div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p><a href="mailto:ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item"><i class="fas fa-phone" aria-hidden="true"></i>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer">+55 14
-                                    99192-0560</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <div>
-                            <h4>Localização</h4>
-                            <p>Canitar, SP - Brasil</p>
-                        </div>
-                    </div>
-                </div>
+        <form id="contactForm" class="contact-form" aria-label="Formulário de contato" novalidate>
+          <label class="sr-only" for="website">Não preencha</label>
+          <input type="text" id="website" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 
-                <form id="contactForm" class="contact-form" aria-label="Formulário de contato">
-                    <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none"
-                        aria-hidden="true" />
-                    <label class="sr-only" for="name">Seu Nome</label>
-                    <input id="name" name="user_name" type="text" placeholder="Seu Nome" required />
-                    <label class="sr-only" for="email">Seu Email</label>
-                    <input id="email" name="user_email" type="email" placeholder="Seu Email" required />
-                    <label class="sr-only" for="subject">Assunto</label>
-                    <input id="subject" name="subject" type="text" placeholder="Assunto" required />
-                    <label class="sr-only" for="message">Sua Mensagem</label>
-                    <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-                    <div id="formStatus" aria-live="polite"></div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+          <label class="sr-only" for="name">Seu Nome</label>
+          <input id="name" name="user_name" type="text" placeholder="Seu Nome" required>
 
-    <!-- FOOTER -->
-    <footer class="footer" role="contentinfo">
-        <div class="container">
-            <div class="social-links" aria-label="Redes sociais">
-                <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
-                    aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-                <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
-                    aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-                <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i
-                        class="fab fa-whatsapp" aria-hidden="true"></i></a>
-            </div>
-            <p>&copy; 2025 Ismael Nunes dos Santos. Desenvolvido com ❤️ e JavaScript.</p>
-        </div>
-    </footer>
+          <label class="sr-only" for="email">Seu Email</label>
+          <input id="email" name="user_email" type="email" placeholder="Seu Email" required>
 
-    <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
-    <script src="js/script.js" defer></script>
+          <label class="sr-only" for="subject">Assunto</label>
+          <input id="subject" name="subject" type="text" placeholder="Assunto" required>
 
-    <!-- Font Awesome + remove preloader -->
-    <script>
-        window.addEventListener('load', () => {
-            document.getElementById('preloader')?.remove();
-            const link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-            link.crossOrigin = 'anonymous';
-            link.referrerPolicy = 'no-referrer';
-            document.head.appendChild(link);
-        });
-    </script>
+          <label class="sr-only" for="message">Sua Mensagem</label>
+          <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
 
-    <noscript>Ative o JavaScript para melhor experiência.</noscript>
+          <div id="formStatus" aria-live="polite" role="status"></div>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="social-links" aria-label="Redes sociais">
+        <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+      </div>
+      <p>&copy; 2025 Ismael Nunes dos Santos. Desenvolvido com ❤️ e JavaScript.</p>
+    </div>
+  </footer>
+
+  <main id="main-content"></main>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script src="./js/script.js" defer></script>
+
+  <!-- Font Awesome -->
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('preloader')?.remove();
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+      link.crossOrigin = 'anonymous';
+      link.referrerPolicy = 'no-referrer';
+      document.head.appendChild(link);
+    });
+  </script>
+
+  <noscript>Ative o JavaScript para melhor experiência.</noscript>
 </body>
-
 </html>

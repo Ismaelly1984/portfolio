@@ -1,19 +1,15 @@
 {
-  "name": "portfolio",
+  "name": "portif-lio",
   "private": true,
-  "type": "module",
   "scripts": {
-    "clean": "rimraf dist",
-    "build:js": "terser js/script.js -o js/script.min.js -c -m",
-    "build:css": "cleancss -o css/styles.min.css css/styles.css",
-    "build:html": "node build.mjs",
-    "build": "npm run clean && npm run build:js && npm run build:css && npm run build:html",
-    "serve:dist": "npx http-server dist -c-1 --cors"
+    "build:images": "node scripts/build-images.mjs",
+    "build:minify": "node scripts/minify.mjs",
+    "build": "npm run build:images && npm run build:minify",
+    "serve": "npx serve -s -l 5501 --compress ."
   },
   "devDependencies": {
-    "clean-css-cli": "^5.0.0",
-    "html-minifier-terser": "^7.2.0",
-    "rimraf": "^5.0.0",
-    "terser": "^5.36.0"
+    "esbuild": "^0.23.0",
+    "lightningcss": "^1.25.1",
+    "sharp": "^0.33.5"
   }
 }
