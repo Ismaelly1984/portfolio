@@ -383,3 +383,16 @@ i.fas, i.fab, i.far { display:inline-block; width:1.25em; text-align:center; lin
   background:transparent;border:2px solid currentColor;color:inherit;
   padding:.4rem .6rem;border-radius:50%;font-size:1rem;cursor:pointer;
 }
+/* Preloader não bloqueante – se ficar na árvore por algum motivo */
+#preloader{
+  position: fixed;
+  inset: 0;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  /* se o JS atrasar, ele some sozinho em 1.2s para não estragar SI */
+  animation: preloaderAutoHide 1.2s ease 0.3s forwards;
+}
+@keyframes preloaderAutoHide { to { opacity: 0; visibility: hidden; } }

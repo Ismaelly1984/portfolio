@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Ismael Nunes – Dev Full Stack</title>
-  <meta name="description" content="Desenvolvedor Web Full Stack especializado em React, Node.js e IA Generativa. Confira meus projetos!"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/fav-IN-32.png?v=4">
-  <link rel="icon" type="image/png" sizes="16x16" href="./images/fav-IN-16.png?v=4">
-  <link rel="apple-touch-icon" sizes="180x180" href="./images/fav-IN-180.png?v=4">
-  <meta name="theme-color" content="#6366f1"/>
+  <title>Ismael Nunes - Dev Full Stack</title>
+  <meta name="description" content="Desenvolvedor Web Full Stack especializado em React, Node.js e IA Generativa. Confira meus projetos e entre em contato!">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/">
+
+  <!-- Favicons (caminhos relativos à subpasta do GitHub Pages) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fav-IN-32.png?v=6">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fav-IN-16.png?v=6">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/fav-IN-180.png?v=6">
+  <meta name="theme-color" content="#6366f1">
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Ismael Nunes – Dev Full Stack">
   <meta property="og:description" content="Portfólio de desenvolvedor web com foco em soluções inovadoras, PWA e IA.">
   <meta property="og:url" content="https://ismaelly1984.github.io/portif-lio/">
-  <meta property="og:image" content="./images/og-image.jpg">
+  <meta property="og:image" content="https://ismaelly1984.github.io/portif-lio/images/og-image.jpg">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- CSS crítico inline -->
+  <!-- Evita flash de tema errado antes do CSS/JS -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
+        var sysDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+        var useDark = stored ? stored === 'dark' : sysDark;
+        var html = document.documentElement;
+        if (useDark) html.classList.add('dark-mode');
+        if (stored === 'light') html.classList.add('light-forced');
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fonts (performático) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Critical CSS mínimo (nav + hero tokens) -->
   <style>
-    :root{--primary-color:#6366f1;--text-color:#1f2937;--bg-color:#fff}
+    :root{--primary-color:#4f46e5;--text-color:#111827;--bg-color:#fff}
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif;color:var(--text-color);background:var(--bg-color);line-height:1.6}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
     .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb}
     .navbar .container{display:flex;justify-content:space-between;align-items:center;padding:1rem 20px}
-    .logo{font-size:1.5rem;font-weight:700;color:var(--primary-color)}
+    .logo{font-size:1.5rem;font-weight:800;color:#111827}
+    .logo .brand{color:#4f46e5}
     .nav-menu{display:flex;list-style:none;gap:2rem}
-    .nav-link{text-decoration:none;color:inherit}
+    .nav-link{text-decoration:none;color:#111827;font-weight:600}
+    .nav-link:hover{color:#4f46e5;text-decoration:underline}
     .hamburger{display:none;background:none;border:0}
     @media (max-width:768px){.hamburger{display:flex}.nav-menu{display:none}}
     .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;color:#fff;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
     .hero-center{display:flex;align-items:center;justify-content:center;text-align:left}
-    .hero-title{font-size:clamp(2.25rem,2rem + 2vw,3.5rem);font-weight:700;line-height:1.2}
-    .highlight{color:#d97706}
-    .hero-subtitle{font-size:1.125rem;margin:1.25rem 0 1.75rem;opacity:.95;max-width:56ch}
-    .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
-    .btn{padding:12px 30px;border:none;border-radius:50px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
-    .btn-primary{background:var(--primary-color);color:#fff}
+    .hero-title{font-size:clamp(2.4rem,2.1rem + 3vw,4rem);font-weight:800;line-height:1.15}
+    .hero-title .highlight{color:#fbbf24}
+    .hero-subtitle{font-size:1rem;margin:1rem 0 1.5rem;max-width:44ch;opacity:.95}
+    .btn{padding:12px 30px;border:none;border-radius:999px;font-weight:700;cursor:pointer;display:inline-block}
+    .btn-primary{background:#4f46e5;color:#fff}
     .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;padding:.5rem 1rem;background:#0f172a;color:#fff;border-radius:8px;z-index:2000}
   </style>
 
-  <!-- CSS principal -->
-  <link rel="preload" href="./css/styles.css" as="style">
-  <link rel="stylesheet" href="./css/styles.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="./css/styles.css"></noscript>
+  <!-- CSS principal (minificado) -->
+  <link rel="preload" href="css/styles.css?v=6" as="style">
+  <link rel="stylesheet" href="css/styles.css?v=6">
+  <noscript><link rel="stylesheet" href="css/styles.css?v=6"></noscript>
 
-  <!-- Fontes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Poppins async + swap -->
+  <style>
+    .wf-loaded .hero-title{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif}
+  </style>
   <script>
     (function () {
       const l = document.createElement('link');
@@ -65,7 +87,7 @@
     })();
   </script>
 
-  <!-- Schema.org -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -82,18 +104,17 @@
   }
   </script>
 </head>
-
 <body>
-  <!-- Skip-link -->
-  <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
-
-  <!-- Preloader -->
-  <div id="preloader"><div class="spinner" aria-hidden="true"></div></div>
+  <!-- Preloader (não bloqueante; some sozinho se JS atrasar) -->
+  <div id="preloader" aria-hidden="true">
+    <div class="spinner" role="status" aria-label="Carregando"></div>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="navbar" aria-label="Barra de navegação">
     <div class="container">
-      <div class="logo">Ismael<span class="highlight">Dev</span></div>
+      <div class="logo">Ismael<span class="brand">Dev</span></div>
+
       <ul id="primary-navigation" class="nav-menu">
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">Sobre</a></li>
@@ -101,9 +122,16 @@
         <li><a href="#skills" class="nav-link">Habilidades</a></li>
         <li><a href="#projects" class="nav-link">Projetos</a></li>
         <li><a href="#contact" class="nav-link">Contato</a></li>
-        <li><button id="darkToggle" aria-label="Alternar modo escuro"><i class="fas fa-moon" aria-hidden="true"></i></button></li>
+        <li>
+          <button id="darkToggle" aria-label="Alternar modo escuro" title="Alternar tema" class="btn btn-ghost" style="background:transparent;border:2px solid currentColor;color:inherit;padding:.4rem .6rem;border-radius:50%;font-size:1rem">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </button>
+        </li>
       </ul>
-      <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+
+      <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -128,7 +156,7 @@
       <div class="about-content">
         <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com 40 anos, transformo ideias em produtos digitais através de código limpo, performance e experiência excepcional.</p>
         <ul class="about-highlights">
-          <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduação ADS – UNIMAR</span></li>
+          <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado ADS – UNIMAR</span></li>
           <li class="highlight-item"><i class="fas fa-brain" aria-hidden="true"></i><span>Especialista em IA Generativa</span></li>
           <li class="highlight-item"><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Projetos PWA & Responsivos</span></li>
         </ul>
@@ -141,10 +169,30 @@
     <div class="container">
       <h2 class="section-title">Formação & Certificações</h2>
       <div class="education-grid">
-        <article class="education-card"><i class="fas fa-university" aria-hidden="true"></i><h3>Graduação</h3><h4>Análise e Desenvolvimento de Sistemas</h4><p>UNIMAR</p></article>
-        <article class="education-card"><i class="fab fa-node-js" aria-hidden="true"></i><h3>Node.js</h3><h4>Backend com JavaScript</h4><p>Curso completo</p></article>
-        <article class="education-card"><i class="fab fa-react" aria-hidden="true"></i><h3>React</h3><h4>Frontend Moderno</h4><p>SPAs e hooks</p></article>
-        <article class="education-card"><i class="fas fa-robot" aria-hidden="true"></i><h3>IA Generativa</h3><h4>Inteligência Artificial Aplicada</h4><p>ChatGPT & aplicações</p></article>
+        <article class="education-card">
+          <i class="fas fa-university" aria-hidden="true"></i>
+          <h3>Graduação</h3>
+          <h4>Análise e Desenvolvimento de Sistemas</h4>
+          <p>UNIMAR</p>
+        </article>
+        <article class="education-card">
+          <i class="fab fa-node-js" aria-hidden="true"></i>
+          <h3>Node.js</h3>
+          <h4>Backend com JavaScript</h4>
+          <p>Curso completo</p>
+        </article>
+        <article class="education-card">
+          <i class="fab fa-react" aria-hidden="true"></i>
+          <h3>React</h3>
+          <h4>Frontend Moderno</h4>
+          <p>SPAs e hooks</p>
+        </article>
+        <article class="education-card">
+          <i class="fas fa-robot" aria-hidden="true"></i>
+          <h3>IA Generativa</h3>
+          <h4>Inteligência Artificial Aplicada</h4>
+          <p>ChatGPT & aplicações</p>
+        </article>
       </div>
     </div>
   </section>
@@ -154,7 +202,9 @@
     <div class="container">
       <h2 class="section-title">Habilidades & Tecnologias</h2>
       <p class="section-subtitle">Stack completa que utilizo para criar soluções digitais</p>
+
       <div class="skills-showcase">
+        <!-- Frontend -->
         <div class="skill-category premium-card">
           <div class="skill-header"><i class="fas fa-paint-brush" aria-hidden="true"></i><h3>Frontend</h3></div>
           <div class="skill-progress">
@@ -164,6 +214,8 @@
             <div class="skill-bar" data-skill="85"><span class="skill-name">React</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
           </div>
         </div>
+
+        <!-- Backend -->
         <div class="skill-category premium-card">
           <div class="skill-header"><i class="fas fa-server" aria-hidden="true"></i><h3>Backend</h3></div>
           <div class="skill-progress">
@@ -172,6 +224,8 @@
             <div class="skill-bar" data-skill="80"><span class="skill-name">Express</span><div class="progress-track"><div class="progress-fill" style="--width:0.80"></div></div></div>
           </div>
         </div>
+
+        <!-- Database -->
         <div class="skill-category premium-card">
           <div class="skill-header"><i class="fas fa-database" aria-hidden="true"></i><h3>Banco de Dados</h3></div>
           <div class="skill-progress">
@@ -179,6 +233,8 @@
             <div class="skill-bar" data-skill="75"><span class="skill-name">MongoDB</span><div class="progress-track"><div class="progress-fill" style="--width:0.75"></div></div></div>
           </div>
         </div>
+
+        <!-- Tools -->
         <div class="skill-category premium-card">
           <div class="skill-header"><i class="fas fa-tools" aria-hidden="true"></i><h3>Ferramentas & IA</h3></div>
           <div class="tech-icons">
@@ -198,18 +254,17 @@
   <section id="projects" class="projects" aria-label="Projetos em Destaque">
     <div class="container">
       <h2 class="section-title">Projetos em Destaque</h2>
+
       <div class="projects-grid">
         <!-- MeuFinanceiro -->
         <article class="project-card">
           <div class="project-image">
             <picture>
-              <source type="image/avif"
-                      srcset="./images/meufinanceiro-600.avif 600w,
-                              ./images/meufinanceiro-800.avif 800w"
-                      sizes="(max-width: 768px) 600px, 800px">
-              <img src="./images/meufinanceiro-600.avif"
-                   width="600" height="337" loading="lazy"
-                   alt="MeuFinanceiro - Controle financeiro PWA">
+              <source type="image/avif" srcset="images/meufinanceiro-400.avif 400w, images/meufinanceiro-800.avif 800w"
+                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+              <source type="image/webp" srcset="images/meufinanceiro-400.webp 400w, images/meufinanceiro-800.webp 800w"
+                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+              <img src="images/meufinanceiro-800.jpg" alt="MeuFinanceiro - Controle financeiro PWA" width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
             </picture>
             <div class="project-overlay">
               <div class="project-links">
@@ -229,13 +284,11 @@
         <article class="project-card">
           <div class="project-image">
             <picture>
-              <source type="image/avif"
-                      srcset="./images/premiumstore-600.avif 600w,
-                              ./images/premiumstore-800.avif 800w"
-                      sizes="(max-width: 768px) 600px, 800px">
-              <img src="./images/premiumstore-600.avif"
-                   width="600" height="337" loading="lazy"
-                   alt="E-commerce em Flask – loja virtual em Python">
+              <source type="image/avif" srcset="images/premiumstore-400.avif 400w, images/premiumstore-800.avif 800w"
+                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+              <source type="image/webp" srcset="images/premiumstore-400.webp 400w, images/premiumstore-800.webp 800w"
+                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+              <img src="images/flask-ecommerce-800.jpg" alt="E-commerce em Flask - loja virtual em Python" width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
             </picture>
             <div class="project-overlay">
               <div class="project-links">
@@ -262,52 +315,30 @@
         <div class="contact-info">
           <h3>Entre em Contato</h3>
           <p>Estou sempre aberto a novos desafios e oportunidades.</p>
-
-          <div class="contact-item">
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-            <div>
-              <h4>Email</h4>
-              <p><a href="mailto:ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p>
-            </div>
+          <div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i>
+            <div><h4>Email</h4><p><a href="mailto:ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p></div>
           </div>
-
-          <div class="contact-item">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <div>
-              <h4>WhatsApp</h4>
-              <p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer">+55 14 99192-0560</a></p>
-            </div>
+          <div class="contact-item"><i class="fas fa-phone" aria-hidden="true"></i>
+            <div><h4>WhatsApp</h4><p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer">+55 14 99192-0560</a></p></div>
           </div>
-
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            <div>
-              <h4>Localização</h4>
-              <p>Canitar, SP – Brasil</p>
-            </div>
+          <div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+            <div><h4>Localização</h4><p>Canitar, SP - Brasil</p></div>
           </div>
         </div>
 
-        <form id="contactForm" class="contact-form" aria-label="Formulário de contato" novalidate>
-          <label class="sr-only" for="website">Não preencha</label>
-          <input type="text" id="website" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
-
+        <!-- Formulário -->
+        <form id="contactForm" class="contact-form" aria-label="Formulário de contato">
+          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
           <label class="sr-only" for="name">Seu Nome</label>
-          <input id="name" name="user_name" type="text" placeholder="Seu Nome" required>
-
+          <input id="name" name="user_name" type="text" placeholder="Seu Nome" required />
           <label class="sr-only" for="email">Seu Email</label>
-          <input id="email" name="user_email" type="email" placeholder="Seu Email" required>
-
+          <input id="email" name="user_email" type="email" placeholder="Seu Email" required />
           <label class="sr-only" for="subject">Assunto</label>
-          <input id="subject" name="subject" type="text" placeholder="Assunto" required>
-
+          <input id="subject" name="subject" type="text" placeholder="Assunto" required />
           <label class="sr-only" for="message">Sua Mensagem</label>
           <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-
-          <div id="formStatus" aria-live="polite" role="status"></div>
-          <button type="submit" class="btn btn-primary">
-            <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar
-          </button>
+          <div id="formStatus" aria-live="polite"></div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar</button>
         </form>
       </div>
     </div>
@@ -325,23 +356,66 @@
     </div>
   </footer>
 
-  <main id="main-content"></main>
+  <!-- JS do site (minificado) -->
+  <script src="js/script.min.js?v=6" defer></script>
 
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
-  <script src="./js/script.js" defer></script>
-
-  <!-- Font Awesome -->
+  <!-- Remoção cedo do preloader + Font Awesome pós-load + Lazy EmailJS -->
   <script>
-    window.addEventListener('load', () => {
-      document.getElementById('preloader')?.remove();
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-      link.crossOrigin = 'anonymous';
-      link.referrerPolicy = 'no-referrer';
-      document.head.appendChild(link);
-    });
+    (function () {
+      // 1) Remover preloader no DOM pronto (fallback extra)
+      const kill = () => document.getElementById('preloader')?.remove();
+      document.addEventListener('DOMContentLoaded', kill, { once: true });
+      setTimeout(kill, 800);
+
+      // 2) Carregar Font Awesome depois de tudo (não afeta SI/LCP)
+      window.addEventListener('load', () => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+        link.crossOrigin = 'anonymous';
+        link.referrerPolicy = 'no-referrer';
+        document.head.appendChild(link);
+      });
+
+      // 3) Lazy-load do EmailJS: carrega ao ver o form ou ao enviar
+      const FORM_ID = "contactForm";
+      const EMAILJS_PUBLIC_KEY = "COLOQUE_SUA_PUBLIC_KEY_AQUI"; // <--- troque pela sua
+
+      let emailJsLoaded = false;
+      function loadEmailJs(cb){
+        if (emailJsLoaded) return cb?.();
+        const s = document.createElement('script');
+        s.src = "https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js";
+        s.defer = true;
+        s.onload = () => {
+          emailJsLoaded = true;
+          try { window.emailjs?.init(EMAILJS_PUBLIC_KEY); } catch(e){}
+          cb?.();
+        };
+        document.head.appendChild(s);
+      }
+
+      const form = document.getElementById(FORM_ID);
+
+      if (form && "IntersectionObserver" in window){
+        const obs = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{
+            if (e.isIntersecting){
+              loadEmailJs();
+              obs.disconnect();
+            }
+          });
+        }, { rootMargin: "300px" });
+        obs.observe(form);
+      }
+
+      form?.addEventListener('submit', (ev)=>{
+        if (!emailJsLoaded) {
+          ev.preventDefault();
+          loadEmailJs(() => form.requestSubmit());
+        }
+      });
+    })();
   </script>
 
   <noscript>Ative o JavaScript para melhor experiência.</noscript>
