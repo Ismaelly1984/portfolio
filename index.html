@@ -4,31 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Ismael Nunes - Dev Full Stack</title>
-  <meta name="description" content="Desenvolvedor Web Full Stack especializado em React, Node.js e IA Generativa. Confira meus projetos e entre em contato!">
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/">
-
-  <!-- Favicons (caminhos relativos à subpasta do GitHub Pages) -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/fav-IN-32.png?v=6">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/fav-IN-16.png?v=6">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/fav-IN-180.png?v=6">
-  <meta name="theme-color" content="#6366f1">
+  <!-- SEO -->
+  <title>Desenvolvedor Full Stack em São Paulo | React, Node.js, PWA e IA Generativa – Ismael Nunes</title>
+  <meta name="description" content="Portfólio do desenvolvedor full stack em São Paulo, especialista em React, Node.js, PWA e IA Generativa. Veja projetos web performáticos, acessíveis e entre em contato." />
+  <meta name="keywords" content="desenvolvedor full stack, React, Node.js, PWA, IA Generativa, São Paulo, portfolio, frontend, backend, web performance, acessibilidade" />
+  <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Ismael Nunes – Dev Full Stack">
-  <meta property="og:description" content="Portfólio de desenvolvedor web com foco em soluções inovadoras, PWA e IA.">
-  <meta property="og:url" content="https://ismaelly1984.github.io/portif-lio/">
-  <meta property="og:image" content="https://ismaelly1984.github.io/portif-lio/images/og-image.jpg">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:title" content="Desenvolvedor Full Stack | React, Node.js, PWA e IA – Ismael Nunes" />
+  <meta property="og:description" content="Dev full stack em São Paulo com foco em React, Node.js, PWA e IA Generativa. Confira cases e projetos." />
+  <meta property="og:url" content="https://ismaelly1984.github.io/portif-lio/" />
+  <meta property="og:image" content="https://ismaelly1984.github.io/portif-lio/images/og-image.jpg?v=7" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Evita flash de tema errado antes do CSS/JS -->
+  <!-- Favicons / Preload -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fav-IN-32.png?v=7">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fav-IN-16.png?v=7">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/fav-IN-180.png?v=7">
+  <meta name="theme-color" content="#6366f1">
+
+  <!-- Fonts com font-display: swap (reduz CLS) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"></noscript>
+
+  <!-- Prevenção de flash de tema -->
   <script>
     (function () {
       try {
-        var stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
+        var stored = localStorage.getItem('theme');
         var sysDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
         var useDark = stored ? stored === 'dark' : sysDark;
         var html = document.documentElement;
@@ -38,45 +42,71 @@
     })();
   </script>
 
-  <!-- Fonts (performático) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- Critical CSS mínimo (nav + hero tokens) -->
+  <!-- Critical CSS mínimo -->
   <style>
-    :root{--primary-color:#4f46e5;--text-color:#111827;--bg-color:#fff}
+    :root{--primary-color:#6366f1;--text-color:#1f2937;--bg-color:#fff}
     *{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif;color:var(--text-color);background:var(--bg-color);line-height:1.6}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
     .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb}
     .navbar .container{display:flex;justify-content:space-between;align-items:center;padding:1rem 20px}
-    .logo{font-size:1.5rem;font-weight:800;color:#111827}
-    .logo .brand{color:#4f46e5}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary-color)}
     .nav-menu{display:flex;list-style:none;gap:2rem}
-    .nav-link{text-decoration:none;color:#111827;font-weight:600}
-    .nav-link:hover{color:#4f46e5;text-decoration:underline}
+    .nav-link{text-decoration:none;color:inherit}
     .hamburger{display:none;background:none;border:0}
     @media (max-width:768px){.hamburger{display:flex}.nav-menu{display:none}}
-    .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;color:#fff;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
-    .hero-center{display:flex;align-items:center;justify-content:center;text-align:left}
-    .hero-title{font-size:clamp(2.4rem,2.1rem + 3vw,4rem);font-weight:800;line-height:1.15}
-    .hero-title .highlight{color:#fbbf24}
-    .hero-subtitle{font-size:1rem;margin:1rem 0 1.5rem;max-width:44ch;opacity:.95}
-    .btn{padding:12px 30px;border:none;border-radius:999px;font-weight:700;cursor:pointer;display:inline-block}
-    .btn-primary{background:#4f46e5;color:#fff}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 80px;
+      color: #fff;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      text-align: center;
+    }
+    .hero-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+    .hero-content { max-width: 800px; margin: 0 auto; }
+    .hero-title {
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif;
+      font-size: clamp(2.25rem, 2rem + 2vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      min-height: 3rem; /* reserva espaço para evitar CLS */
+    }
+    .hero-subtitle {
+      font-size: 1.125rem;
+      margin: 1.25rem 0 1.75rem;
+      opacity:.95;
+      max-width: 56ch;
+      min-height: 4rem; /* reserva espaço para evitar CLS */
+    }
+    .hero-buttons {display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+    .btn{padding:12px 30px;border:none;border-radius:50px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+    .btn-primary{background:var(--primary-color);color:#fff}
     .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
+    #preloader{position:fixed;inset:0;background:var(--bg-color);display:flex;align-items:center;justify-content:center;z-index:2000;transition:opacity .4s ease, visibility .4s ease}
+    #preloader.hidden{opacity:0;visibility:hidden}
+    .spinner{width:40px;height:40px;border-radius:50%;border:4px solid rgba(0,0,0,.1);border-top-color:var(--primary-color);animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    img{aspect-ratio: attr(width) / attr(height);}
   </style>
 
-  <!-- CSS principal (minificado) -->
-  <link rel="preload" href="css/styles.css?v=6" as="style">
-  <link rel="stylesheet" href="css/styles.css?v=6">
-  <noscript><link rel="stylesheet" href="css/styles.css?v=6"></noscript>
-
-  <!-- Poppins async + swap -->
-  <style>
-    .wf-loaded .hero-title{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif}
-  </style>
+  <!-- CSS principal -->
+  <link rel="preload" href="css/styles.css?v=7" as="style">
+  <link rel="stylesheet" href="css/styles.css?v=7" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="css/styles.css?v=7"></noscript>
+  <!-- Poppins async -->
+  <style>.wf-loaded .hero-title{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif}</style>
   <script>
     (function () {
       const l = document.createElement('link');
@@ -87,335 +117,331 @@
     })();
   </script>
 
-  <!-- Structured Data -->
+  <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Ismael Nunes dos Santos",
-    "url":"https://ismaelly1984.github.io/portif-lio/",
-    "jobTitle":"Desenvolvedor Full Stack",
-    "knowsAbout":["React","Node.js","JavaScript","IA Generativa","PWA"],
-    "sameAs":[
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ismael Nunes dos Santos",
+    "jobTitle": "Desenvolvedor Full Stack",
+    "description": "Desenvolvedor full stack em São Paulo com foco em React, Node.js, PWA e IA Generativa.",
+    "url": "https://ismaelly1984.github.io/portif-lio/",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Canitar",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
       "https://www.linkedin.com/in/ismaelnunes6094",
       "https://github.com/Ismaelly1984",
       "https://wa.me/5514991920560"
-    ]
+    ],
+    "knowsAbout": ["React", "Node.js", "JavaScript", "IA Generativa", "PWA"]
   }
   </script>
 </head>
+
 <body>
-  <!-- Preloader (não bloqueante; some sozinho se JS atrasar) -->
-  <div id="preloader" aria-hidden="true">
-    <div class="spinner" role="status" aria-label="Carregando"></div>
-  </div>
+  <!-- Preloader -->
+  <div id="preloader" aria-hidden="true"><div class="spinner"></div></div>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" aria-label="Barra de navegação">
-    <div class="container">
-      <div class="logo">Ismael<span class="brand">Dev</span></div>
-
-      <ul id="primary-navigation" class="nav-menu">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">Sobre</a></li>
-        <li><a href="#education" class="nav-link">Formação</a></li>
-        <li><a href="#skills" class="nav-link">Habilidades</a></li>
-        <li><a href="#projects" class="nav-link">Projetos</a></li>
-        <li><a href="#contact" class="nav-link">Contato</a></li>
-        <li>
-          <button id="darkToggle" aria-label="Alternar modo escuro" title="Alternar tema" class="btn btn-ghost" style="background:transparent;border:2px solid currentColor;color:inherit;padding:.4rem .6rem;border-radius:50%;font-size:1rem">
-            <i class="fas fa-moon" aria-hidden="true"></i>
-          </button>
-        </li>
-      </ul>
-
-      <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section id="home" class="hero" aria-label="Início">
-    <div class="container hero-center">
-      <div class="hero-content">
-        <h1 class="hero-title">Olá, sou <span class="highlight">Ismael Nunes</span></h1>
-        <p class="hero-subtitle">Desenvolvedor Web Full Stack apaixonado por unir criatividade e lógica para criar soluções digitais inovadoras</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">Ver Projetos</a>
-          <a href="#contact" class="btn btn-secondary">Entrar em Contato</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="about" aria-label="Sobre mim">
-    <div class="container">
-      <h2 class="section-title">Sobre Mim</h2>
-      <div class="about-content">
-        <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com 40 anos, transformo ideias em produtos digitais através de código limpo, performance e experiência excepcional.</p>
-        <ul class="about-highlights">
-          <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado ADS – UNIMAR</span></li>
-          <li class="highlight-item"><i class="fas fa-brain" aria-hidden="true"></i><span>Especialista em IA Generativa</span></li>
-          <li class="highlight-item"><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Projetos PWA & Responsivos</span></li>
+  <!-- HEADER / NAV -->
+  <header>
+    <nav class="navbar" aria-label="Barra de navegação">
+      <div class="container">
+        <a href="#home" class="logo">Ismael<span class="highlight">Dev</span></a>
+        <ul id="primary-navigation" class="nav-menu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#formacao" class="nav-link">Formação</a></li>
+          <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#projetos-web" class="nav-link">Projetos</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+          <li>
+            <button id="darkToggle" type="button" aria-label="Alternar modo escuro" class="btn-icon">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+          </li>
         </ul>
+        <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </div>
-  </section>
+    </nav>
+  </header>
 
-  <!-- EDUCATION -->
-  <section id="education" class="education" aria-label="Formação e Certificações">
-    <div class="container">
-      <h2 class="section-title">Formação & Certificações</h2>
-      <div class="education-grid">
-        <article class="education-card">
-          <i class="fas fa-university" aria-hidden="true"></i>
-          <h3>Graduação</h3>
-          <h4>Análise e Desenvolvimento de Sistemas</h4>
-          <p>UNIMAR</p>
-        </article>
-        <article class="education-card">
-          <i class="fab fa-node-js" aria-hidden="true"></i>
-          <h3>Node.js</h3>
-          <h4>Backend com JavaScript</h4>
-          <p>Curso completo</p>
-        </article>
-        <article class="education-card">
-          <i class="fab fa-react" aria-hidden="true"></i>
-          <h3>React</h3>
-          <h4>Frontend Moderno</h4>
-          <p>SPAs e hooks</p>
-        </article>
-        <article class="education-card">
-          <i class="fas fa-robot" aria-hidden="true"></i>
-          <h3>IA Generativa</h3>
-          <h4>Inteligência Artificial Aplicada</h4>
-          <p>ChatGPT & aplicações</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="skills" aria-label="Habilidades e Tecnologias">
-    <div class="container">
-      <h2 class="section-title">Habilidades & Tecnologias</h2>
-      <p class="section-subtitle">Stack completa que utilizo para criar soluções digitais</p>
-
-      <div class="skills-showcase">
-        <!-- Frontend -->
-        <div class="skill-category premium-card">
-          <div class="skill-header"><i class="fas fa-paint-brush" aria-hidden="true"></i><h3>Frontend</h3></div>
-          <div class="skill-progress">
-            <div class="skill-bar" data-skill="95"><span class="skill-name">HTML5</span><div class="progress-track"><div class="progress-fill" style="--width:0.95"></div></div></div>
-            <div class="skill-bar" data-skill="92"><span class="skill-name">CSS3</span><div class="progress-track"><div class="progress-fill" style="--width:0.92"></div></div></div>
-            <div class="skill-bar" data-skill="90"><span class="skill-name">JavaScript</span><div class="progress-track"><div class="progress-fill" style="--width:0.90"></div></div></div>
-            <div class="skill-bar" data-skill="85"><span class="skill-name">React</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="skill-category premium-card">
-          <div class="skill-header"><i class="fas fa-server" aria-hidden="true"></i><h3>Backend</h3></div>
-          <div class="skill-progress">
-            <div class="skill-bar" data-skill="88"><span class="skill-name">Node.js</span><div class="progress-track"><div class="progress-fill" style="--width:0.88"></div></div></div>
-            <div class="skill-bar" data-skill="82"><span class="skill-name">Flask</span><div class="progress-track"><div class="progress-fill" style="--width:0.82"></div></div></div>
-            <div class="skill-bar" data-skill="80"><span class="skill-name">Express</span><div class="progress-track"><div class="progress-fill" style="--width:0.80"></div></div></div>
-          </div>
-        </div>
-
-        <!-- Database -->
-        <div class="skill-category premium-card">
-          <div class="skill-header"><i class="fas fa-database" aria-hidden="true"></i><h3>Banco de Dados</h3></div>
-          <div class="skill-progress">
-            <div class="skill-bar" data-skill="85"><span class="skill-name">SQLite</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
-            <div class="skill-bar" data-skill="75"><span class="skill-name">MongoDB</span><div class="progress-track"><div class="progress-fill" style="--width:0.75"></div></div></div>
-          </div>
-        </div>
-
-        <!-- Tools -->
-        <div class="skill-category premium-card">
-          <div class="skill-header"><i class="fas fa-tools" aria-hidden="true"></i><h3>Ferramentas & IA</h3></div>
-          <div class="tech-icons">
-            <div class="tech-icon" data-tooltip="Git/GitHub"><i class="fab fa-git-alt" aria-hidden="true"></i></div>
-            <div class="tech-icon" data-tooltip="Figma"><i class="fab fa-figma" aria-hidden="true"></i></div>
-            <div class="tech-icon" data-tooltip="VS Code"><i class="fas fa-code" aria-hidden="true"></i></div>
-            <div class="tech-icon" data-tooltip="IA Generativa"><i class="fas fa-robot" aria-hidden="true"></i></div>
-            <div class="tech-icon" data-tooltip="Docker"><i class="fab fa-docker" aria-hidden="true"></i></div>
-            <div class="tech-icon" data-tooltip="AWS"><i class="fab fa-aws" aria-hidden="true"></i></div>
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero" aria-label="Início">
+      <div class="container hero-center">
+        <div class="hero-content">
+          <h1 class="hero-title">Desenvolvedor Full Stack em São Paulo <span class="highlight">Ismael Nunes</span></h1>
+          <p class="hero-subtitle">Especialista em <strong>React</strong>, <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>. Crio experiências rápidas, acessíveis e escaláveis para web.</p>
+          <div class="hero-buttons">
+            <a href="#projetos-web" class="btn btn-primary">Ver Projetos</a>
+            <a href="#contato" class="btn btn-secondary">Entrar em Contato</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    
+    <!-- SOBRE -->
+    <section id="sobre" class="about" aria-label="Sobre mim">
+      <div class="container">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about-content">
+          <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com foco em <strong>React</strong>, <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>, transformo ideias em produtos digitais performáticos e acessíveis a partir de São Paulo (Canitar, SP).</p>
+          <ul class="about-highlights">
+            <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado ADS – UNIMAR</span></li>
+            <li class="highlight-item"><i class="fas fa-brain" aria-hidden="true"></i><span>Atuação com IA Generativa</span></li>
+            <li class="highlight-item"><i class="fas fa-mobile-alt" aria-hidden="true"></i><span>Projetos PWA & Responsivos</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects" aria-label="Projetos em Destaque">
-    <div class="container">
-      <h2 class="section-title">Projetos em Destaque</h2>
+    <!-- FORMAÇÃO -->
+    <section id="formacao" class="education" aria-label="Formação e Certificações">
+      <div class="container">
+        <h2 class="section-title">Formação & Certificações</h2>
+        <div class="education-grid">
+          <article class="education-card">
+            <i class="fas fa-university" aria-hidden="true"></i>
+            <h3>Graduação</h3>
+            <h4>Análise e Desenvolvimento de Sistemas</h4>
+            <p>UNIMAR</p>
+          </article>
+          <article class="education-card">
+            <i class="fab fa-node-js" aria-hidden="true"></i>
+            <h3>Node.js</h3>
+            <h4>Backend com JavaScript</h4>
+            <p>Curso completo</p>
+          </article>
+          <article class="education-card">
+            <i class="fab fa-react" aria-hidden="true"></i>
+            <h3>React</h3>
+            <h4>Frontend Moderno</h4>
+            <p>SPAs e hooks</p>
+          </article>
+          <article class="education-card">
+            <i class="fas fa-robot" aria-hidden="true"></i>
+            <h3>IA Generativa</h3>
+            <h4>Inteligência Artificial Aplicada</h4>
+            <p>ChatGPT & aplicações</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <div class="projects-grid">
-        <!-- MeuFinanceiro -->
-        <article class="project-card">
-          <div class="project-image">
-            <picture>
-              <source type="image/avif" srcset="images/meufinanceiro-400.avif 400w, images/meufinanceiro-800.avif 800w"
-                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-              <source type="image/webp" srcset="images/meufinanceiro-400.webp 400w, images/meufinanceiro-800.webp 800w"
-                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-              <img src="images/meufinanceiro-800.jpg" alt="MeuFinanceiro - Controle financeiro PWA" width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
-            </picture>
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer" aria-label="Abrir projeto MeuFinanceiro"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório no GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+    <!-- HABILIDADES -->
+    <section id="habilidades" class="skills" aria-label="Habilidades e Tecnologias">
+      <div class="container">
+        <h2 class="section-title">Habilidades & Tecnologias</h2>
+        <p class="section-subtitle">Stack completa para criar soluções digitais com <strong>React</strong>, <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>.</p>
+
+        <div class="skills-showcase">
+          <!-- Frontend -->
+          <div class="skill-category premium-card">
+            <div class="skill-header"><i class="fas fa-paint-brush" aria-hidden="true"></i><h3>Frontend</h3></div>
+            <div class="skill-progress">
+              <div class="skill-bar" data-skill="95"><span class="skill-name">HTML5</span><div class="progress-track"><div class="progress-fill" style="--width:0.95"></div></div></div>
+              <div class="skill-bar" data-skill="92"><span class="skill-name">CSS3</span><div class="progress-track"><div class="progress-fill" style="--width:0.92"></div></div></div>
+              <div class="skill-bar" data-skill="90"><span class="skill-name">JavaScript</span><div class="progress-track"><div class="progress-fill" style="--width:0.90"></div></div></div>
+              <div class="skill-bar" data-skill="85"><span class="skill-name">React</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
+            </div>
+          </div>
+
+          <!-- Backend -->
+          <div class="skill-category premium-card">
+            <div class="skill-header"><i class="fas fa-server" aria-hidden="true"></i><h3>Backend</h3></div>
+            <div class="skill-progress">
+              <div class="skill-bar" data-skill="88"><span class="skill-name">Node.js</span><div class="progress-track"><div class="progress-fill" style="--width:0.88"></div></div></div>
+              <div class="skill-bar" data-skill="82"><span class="skill-name">Flask</span><div class="progress-track"><div class="progress-fill" style="--width:0.82"></div></div></div>
+              <div class="skill-bar" data-skill="80"><span class="skill-name">Express</span><div class="progress-track"><div class="progress-fill" style="--width:0.80"></div></div></div>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="skill-category premium-card">
+            <div class="skill-header"><i class="fas fa-database" aria-hidden="true"></i><h3>Banco de Dados</h3></div>
+            <div class="skill-progress">
+              <div class="skill-bar" data-skill="85"><span class="skill-name">SQLite</span><div class="progress-track"><div class="progress-fill" style="--width:0.85"></div></div></div>
+              <div class="skill-bar" data-skill="75"><span class="skill-name">MongoDB</span><div class="progress-track"><div class="progress-fill" style="--width:0.75"></div></div></div>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-category premium-card">
+            <div class="skill-header"><i class="fas fa-tools" aria-hidden="true"></i><h3>Ferramentas & IA</h3></div>
+            <div class="tech-icons">
+              <div class="tech-icon" data-tooltip="Git/GitHub" aria-label="Git e GitHub"><i class="fab fa-git-alt" aria-hidden="true"></i></div>
+              <div class="tech-icon" data-tooltip="Figma" aria-label="Figma"><i class="fab fa-figma" aria-hidden="true"></i></div>
+              <div class="tech-icon" data-tooltip="VS Code" aria-label="VS Code"><i class="fas fa-code" aria-hidden="true"></i></div>
+              <div class="tech-icon" data-tooltip="IA Generativa" aria-label="IA Generativa"><i class="fas fa-robot" aria-hidden="true"></i></div>
+              <div class="tech-icon" data-tooltip="Docker" aria-label="Docker"><i class="fab fa-docker" aria-hidden="true"></i></div>
+              <div class="tech-icon" data-tooltip="AWS" aria-label="AWS"><i class="fab fa-aws" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETOS -->
+    <section id="projetos-web" class="projects" aria-label="Projetos em Destaque">
+      <div class="container">
+        <h2 class="section-title">Projetos em Destaque</h2>
+
+        <div class="projects-grid">
+          <!-- MeuFinanceiro -->
+          <article class="project-card">
+            <div class="project-image">
+              <picture>
+                <source type="image/avif" srcset="images/meufinanceiro-400.avif 400w, images/meufinanceiro-800.avif 800w" sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <source type="image/webp" srcset="images/meufinanceiro-400.webp 400w, images/meufinanceiro-800.webp 800w" sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <img src="images/meufinanceiro-800.jpg" width="800" height="450" loading="lazy" decoding="async" fetchpriority="low"
+                     alt="Projeto MeuFinanceiro em PWA por desenvolvedor full stack em São Paulo com React e Node.js" />
+              </picture>
+
+              <div class="project-overlay" aria-hidden="true">
+                <div class="project-links">
+                  <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer"
+                     aria-label="Abrir projeto PWA MeuFinanceiro em nova aba">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer"
+                     aria-label="Abrir repositório do projeto MeuFinanceiro no GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <h3>MeuFinanceiro (PWA)</h3>
+              <p>Controle financeiro completo com suporte offline, React e melhores práticas de PWA.</p>
+              <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+            </div>
+          </article>
+
+          <!-- E-commerce Flask -->
+          <article class="project-card">
+            <div class="project-image">
+              <picture>
+                <source type="image/avif" srcset="images/premiumstore-400.avif 400w, images/premiumstore-800.avif 800w" sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <source type="image/webp" srcset="images/premiumstore-400.webp 400w, images/premiumstore-800.webp 800w" sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <img src="images/flask-ecommerce-800.jpg" width="800" height="450" loading="lazy" decoding="async"
+                     alt="Projeto E-commerce com backend em Python Flask por desenvolvedor full stack em São Paulo" />
+              </picture>
+
+              <div class="project-overlay" aria-hidden="true">
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir demonstração do E-commerce Flask">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank" rel="noopener noreferrer"
+                     aria-label="Abrir repositório do E-commerce Flask no GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <h3>E-commerce Flask</h3>
+              <p>Loja virtual completa com backend Python (Flask), performance e boas práticas de SEO técnico.</p>
+              <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="contact" aria-label="Contato">
+      <div class="container">
+        <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+        <div class="contact-content" id="contactContent">
+          <div class="contact-info">
+            <h3>Entre em Contato</h3>
+            <p>Atendo São Paulo e remoto. Envie uma mensagem para falar sobre seu projeto em React, Node.js, PWA ou IA Generativa.</p>
+            <div class="contact-item">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+              <div>
+                <h4>Email</h4>
+                <p><a href="mailto:ismael.nunes.dev@gmail.com" aria-label="Enviar email para ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone" aria-hidden="true"></i>
+              <div>
+                <h4>WhatsApp</h4>
+                <p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp para 14 99192-0560">+55 14 99192-0560</a></p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              <div>
+                <h4>Localização</h4>
+                <p>Canitar, SP – Brasil</p>
               </div>
             </div>
           </div>
-          <div class="project-info">
-            <h3>MeuFinanceiro (PWA)</h3>
-            <p>Controle financeiro completo com suporte offline.</p>
-            <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
-          </div>
-        </article>
 
-        <!-- E-commerce Flask -->
-        <article class="project-card">
-          <div class="project-image">
-            <picture>
-              <source type="image/avif" srcset="images/premiumstore-400.avif 400w, images/premiumstore-800.avif 800w"
-                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-              <source type="image/webp" srcset="images/premiumstore-400.webp 400w, images/premiumstore-800.webp 800w"
-                      sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-              <img src="images/flask-ecommerce-800.jpg" alt="E-commerce em Flask - loja virtual em Python" width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
-            </picture>
-            <div class="project-overlay">
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir e-commerce Flask"><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank" rel="noopener noreferrer" aria-label="Abrir repositório no GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3>E-commerce Flask</h3>
-            <p>Loja virtual completa com backend Python.</p>
-            <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="contact" aria-label="Contato">
-    <div class="container">
-      <h2 class="section-title">Vamos Trabalhar Juntos</h2>
-      <div class="contact-content">
-        <div class="contact-info">
-          <h3>Entre em Contato</h3>
-          <p>Estou sempre aberto a novos desafios e oportunidades.</p>
-          <div class="contact-item"><i class="fas fa-envelope" aria-hidden="true"></i>
-            <div><h4>Email</h4><p><a href="mailto:ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p></div>
-          </div>
-          <div class="contact-item"><i class="fas fa-phone" aria-hidden="true"></i>
-            <div><h4>WhatsApp</h4><p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer">+55 14 99192-0560</a></p></div>
-          </div>
-          <div class="contact-item"><i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-            <div><h4>Localização</h4><p>Canitar, SP - Brasil</p></div>
-          </div>
+          <!-- Formulário -->
+          <form id="contactForm" class="contact-form" aria-label="Formulário de contato">
+            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+            <label class="sr-only" for="name">Seu Nome</label>
+            <input id="name" name="user_name" type="text" placeholder="Seu Nome" required data-required="true" />
+            <label class="sr-only" for="email">Seu Email</label>
+            <input id="email" name="user_email" type="email" placeholder="Seu Email" required data-required="true" />
+            <label class="sr-only" for="subject">Assunto</label>
+            <input id="subject" name="subject" type="text" placeholder="Assunto" required data-required="true" />
+            <label class="sr-only" for="message">Sua Mensagem</label>
+            <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required data-required="true"></textarea>
+            <div id="formStatus" aria-live="polite"></div>
+            <button type="submit" class="btn btn-primary" aria-label="Enviar mensagem pelo formulário">
+              <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar
+            </button>
+          </form>
         </div>
-
-        <!-- Formulário -->
-        <form id="contactForm" class="contact-form" aria-label="Formulário de contato">
-          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
-          <label class="sr-only" for="name">Seu Nome</label>
-          <input id="name" name="user_name" type="text" placeholder="Seu Nome" required />
-          <label class="sr-only" for="email">Seu Email</label>
-          <input id="email" name="user_email" type="email" placeholder="Seu Email" required />
-          <label class="sr-only" for="subject">Assunto</label>
-          <input id="subject" name="subject" type="text" placeholder="Assunto" required />
-          <label class="sr-only" for="message">Sua Mensagem</label>
-          <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required></textarea>
-          <div id="formStatus" aria-live="polite"></div>
-          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar</button>
-        </form>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="social-links" aria-label="Redes sociais">
-        <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-        <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
-        <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer" aria-label="Perfil LinkedIn do desenvolvedor full stack em São Paulo">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer" aria-label="Perfil GitHub de projetos em React, Node.js e PWA">
+          <i class="fab fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="Conversar via WhatsApp com desenvolvedor full stack">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
       </div>
-      <p>&copy; 2025 Ismael Nunes dos Santos. Desenvolvido com ❤️ e JavaScript.</p>
+      <p>&copy; 2025 Ismael Nunes dos Santos — Desenvolvedor Full Stack em São Paulo, especialista em React, Node.js, PWA e IA Generativa. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- JS do site (minificado) -->
-  <script src="js/script.min.js?v=6" defer></script>
+  <!-- JS (EmailJS + script principal) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script src="js/script.js?v=7" defer></script>
 
-  <!-- Remoção cedo do preloader + Font Awesome pós-load + Lazy EmailJS -->
+  <!-- Pós-load: remover preloader + carregar Font Awesome (não bloqueia render) -->
   <script>
-    (function () {
-      // 1) Remover preloader no DOM pronto (fallback extra)
-      const kill = () => document.getElementById('preloader')?.remove();
-      document.addEventListener('DOMContentLoaded', kill, { once: true });
-      setTimeout(kill, 800);
-
-      // 2) Carregar Font Awesome depois de tudo (não afeta SI/LCP)
-      window.addEventListener('load', () => {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-        link.crossOrigin = 'anonymous';
-        link.referrerPolicy = 'no-referrer';
-        document.head.appendChild(link);
-      });
-
-      // 3) Lazy-load do EmailJS: carrega ao ver o form ou ao enviar
-      const FORM_ID = "contactForm";
-      const EMAILJS_PUBLIC_KEY = "COLOQUE_SUA_PUBLIC_KEY_AQUI"; // <--- troque pela sua
-
-      let emailJsLoaded = false;
-      function loadEmailJs(cb){
-        if (emailJsLoaded) return cb?.();
-        const s = document.createElement('script');
-        s.src = "https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js";
-        s.defer = true;
-        s.onload = () => {
-          emailJsLoaded = true;
-          try { window.emailjs?.init(EMAILJS_PUBLIC_KEY); } catch(e){}
-          cb?.();
-        };
-        document.head.appendChild(s);
-      }
-
-      const form = document.getElementById(FORM_ID);
-
-      if (form && "IntersectionObserver" in window){
-        const obs = new IntersectionObserver((entries)=>{
-          entries.forEach(e=>{
-            if (e.isIntersecting){
-              loadEmailJs();
-              obs.disconnect();
-            }
-          });
-        }, { rootMargin: "300px" });
-        obs.observe(form);
-      }
-
-      form?.addEventListener('submit', (ev)=>{
-        if (!emailJsLoaded) {
-          ev.preventDefault();
-          loadEmailJs(() => form.requestSubmit());
-        }
-      });
-    })();
+    window.addEventListener('load', function () {
+      document.getElementById('preloader')?.remove();
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+      l.crossOrigin = 'anonymous';
+      l.referrerPolicy = 'no-referrer';
+      document.head.appendChild(l);
+    });
   </script>
 
   <noscript>Ative o JavaScript para melhor experiência.</noscript>

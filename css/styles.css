@@ -15,8 +15,7 @@
   --border-color:#e5e7eb;       /* slate-200 */
 
   /* Destaque: no claro precisa ser escuro para AA sobre #fff */
-  --highlight:#b45309;          /* amber-700 – AA sobre #fff */
-
+  --highlight: #fbbf24;  /* amber-400, mais vivo */
   /* Misc */
   --shadow:0 4px 6px -1px rgba(0,0,0,.08);
   --shadow-lg:0 20px 25px -5px rgba(0,0,0,.08);
@@ -42,7 +41,7 @@ body.dark-mode{
   --shadow:0 4px 6px -1px rgba(0,0,0,.30);
   --shadow-lg:0 20px 25px -5px rgba(0,0,0,.35);
   /* No escuro o destaque pode ser mais claro para AA sobre fundo escuro */
-  --highlight:#f59e0b;          /* amber-500 – AA sobre #0f172a */
+ --highlight: #facc15;  /* amber-300, contrasta sobre roxo escuro */
 }
 
 /* Tema escuro (auto) quando o usuário não forçou claro */
@@ -157,18 +156,38 @@ body.dark-mode .navbar{background:rgba(15,23,42,.9)}
   padding:120px 0 80px;color:#fff;
   background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
 }
-.hero-center{display:flex;align-items:center;justify-content:center;text-align:left}
-.hero-title{
-  font-size:clamp(2.6rem,2.2rem + 3.2vw,4.2rem);
-  font-weight:800;line-height:1.15;margin-bottom:1rem;color:#fff;
-  text-wrap:balance;max-width:20ch;font-size-adjust:0.5;
+.hero-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center; /* centraliza igual Sobre */
 }
-.hero-subtitle{
-  font-size:1rem;line-height:1.55;margin:1rem 0 1.5rem;
-  color:#fff; /* sem opacity para manter contraste */
-  max-width:44ch;
+
+.hero-title {
+  font-size: clamp(2.5rem, 2rem + 3vw, 4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 100%; /* libera largura total no desktop */
 }
-.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin: 1.25rem auto 1.75rem;
+  max-width: 720px; /* igual subtítulo de seções */
+  text-align: center;
+  color: var(--text-muted); /* mantém consistência */
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
 
 /* ==========================================
    ABOUT
