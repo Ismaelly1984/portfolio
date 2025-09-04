@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "title": "Introdução ao React Hooks",
+    "category": "React",
+    "excerpt": "Aprenda os fundamentos dos React Hooks e como utilizá-los para simplificar seu código.",
+    "content": "<p>React Hooks permitem usar estado e ciclo de vida sem classes...</p>",
+    "tags": ["React", "Hooks", "JavaScript"],
+    "image": "images/blog/react-hooks.jpg",
+    "date": "2025-01-15",
+    "readTime": "5 min"
+  },
+  {
+  "titulo": "Introdução ao React Hooks",
+  "data_publicacao": "2025-01-15",
+  "tempo_leitura": "5 min",
+  "conteudo": "Os React Hooks revolucionaram a forma como escrevemos componentes React ao permitir o uso de estado e ciclo de vida sem a necessidade de classes. Introduzidos na versão 16.8, os Hooks trouxeram uma maneira mais direta e funcional de gerenciar a lógica de estado e efeitos colaterais em componentes funcionais.",
+  "secoes": [
+    {
+      "titulo": "O que são React Hooks?",
+      "conteudo": "React Hooks são funções especiais que permitem 'conectar' recursos do React como estado e ciclo de vida a componentes funcionais. Eles resolvem vários problemas comuns encontrados no desenvolvimento com React, como a complexidade de reutilizar lógica de estado entre componentes e a dificuldade de entender componentes de classe."
+    },
+    {
+      "titulo": "Principais Hooks e seus usos",
+      "subsecoes": [
+        {
+          "titulo": "useState",
+          "conteudo": "O Hook useState é um dos mais utilizados, permitindo adicionar estado a componentes funcionais:",
+          "exemplo": "import React, { useState } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Você clicou {count} vezes</p>\n      <button onClick={() => setCount(count + 1)}>\n        Clique aqui\n      </button>\n    </div>\n  );\n}"
+        },
+        {
+          "titulo": "useEffect",
+          "conteudo": "O Hook useEffect permite executar efeitos colaterais em componentes funcionais, substituindo componentDidMount, componentDidUpdate e componentWillUnmount:",
+          "exemplo": "import React, { useState, useEffect } from 'react';\n\nfunction Example() {\n  const [data, setData] = useState([]);\n\n  useEffect(() => {\n    // Buscar dados quando o componente montar\n    fetch('https://api.example.com/data')\n      .then(response => response.json())\n      .then(data => setData(data));\n    \n    // Limpeza (equivalente a componentWillUnmount)\n    return () => {\n      console.log('Componente será desmontado');\n    };\n  }, []); // Array de dependências vazio = executa apenas uma vez\n}"
+        },
+        {
+          "titulo": "useContext",
+          "conteudo": "O Hook useContext facilita o acesso ao contexto do React sem a necessidade de componentes aninhados:",
+          "exemplo": "import React, { useContext } from 'react';\n\nconst ThemeContext = React.createContext('light');\n\nfunction ThemedButton() {\n  const theme = useContext(ThemeContext);\n  \n  return <button className={theme}>Botão com tema</button>;\n}"
+        }
+      ]
+    },
+    {
+      "titulo": "Vantagens dos Hooks",
+      "itens": [
+        "Código mais limpo: Elimina a necessidade de classes e do binding de this",
+        "Reutilização de lógica: Custom Hooks permitem extrair e compartilhar lógica entre componentes",
+        "Organização melhor: Agrupar lógica relacionada em vez de dividi-la entre métodos de ciclo de vida"
+      ]
+    },
+    {
+      "titulo": "Regras dos Hooks",
+      "itens": [
+        "Chame Hooks apenas no nível superior: Não use Hooks dentro de loops, condições ou funções aninhadas",
+        "Chame Hooks apenas em componentes React: Ou em custom Hooks"
+      ]
+    },
+    {
+      "titulo": "Criando seu próprio Hook",
+      "conteudo": "Custom Hooks permitem extrair lógica de componente para funções reutilizáveis:",
+      "exemplo": "function useLocalStorage(key, initialValue) {\n  const [storedValue, setStoredValue] = useState(() => {\n    try {\n      const item = window.localStorage.getItem(key);\n      return item ? JSON.parse(item) : initialValue;\n    } catch (error) {\n      return initialValue;\n    }\n  });\n\n  const setValue = (value) => {\n    try {\n      setStoredValue(value);\n      window.localStorage.setItem(key, JSON.stringify(value));\n    } catch (error) {\n      console.log(error);\n    }\n  };\n\n  return [storedValue, setValue];\n}\n\n// Usando o custom Hook\nfunction MyComponent() {\n  const [name, setName] = useLocalStorage('name', 'João');\n  return <input value={name} onChange={e => setName(e.target.value)} />;\n}"
+    },
+    {
+      "titulo": "Conclusão",
+      "conteudo": "React Hooks representam uma evolução significativa no ecossistema React, oferecendo uma API mais simples e poderosa para gerenciar estado e efeitos colaterais. Ao dominar os Hooks, você pode escrever código mais limpo, modular e reutilizável.\n\nÀ medida que você se familiariza com os Hooks básicos, explore Hooks adicionais como useReducer, useCallback, useMemo e useRef para aproveitar todo o potencial dessa funcionalidade."
+    }
+  ],
+  "tags": ["React", "Hooks", "JavaScript"]
+}
+]

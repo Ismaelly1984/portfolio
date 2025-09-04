@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Ismael Nunes - Desenvolvedor Full Stack</title>
+  <link rel="stylesheet" href="css/styles.css?v=7">
+  <link rel="stylesheet" href="css/blog.css">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var sysDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var useDark = stored ? stored === 'dark' : sysDark;
+        if (useDark) document.body?.classList.add('dark-mode');
+      } catch (e) {}
+    })();
+  </script>
+
+   <!-- Critical CSS mínimo -->
+  <style>
+    :root{--primary-color:#6366f1;--text-color:#1f2937;--bg-color:#fff}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif;color:var(--text-color);background:var(--bg-color);line-height:1.6}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #e5e7eb}
+    .navbar .container{display:flex;justify-content:space-between;align-items:center;padding:1rem 20px}
+    .logo{font-size:1.5rem;font-weight:700;color:var(--primary-color)}
+    .nav-menu{display:flex;list-style:none;gap:2rem}
+    .nav-link{text-decoration:none;color:inherit}
+    .hamburger{display:none;background:none;border:0}
+    @media (max-width:768px){.hamburger{display:flex}.nav-menu{display:none}}
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 20px 80px;
+      color: #fff;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      text-align: center;
+    }
+    .hero-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+    .hero-content { max-width: 800px; margin: 0 auto; }
+    .hero-title {
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Noto Sans',Arial,sans-serif;
+      font-size: clamp(2.25rem, 2rem + 2vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      min-height: 3rem; /* reserva espaço para evitar CLS */
+    }
+    .hero-subtitle {
+      font-size: 1.125rem;
+      margin: 1.25rem 0 1.75rem;
+      opacity:.95;
+      max-width: 56ch;
+      min-height: 4rem; /* reserva espaço para evitar CLS */
+    }
+    .hero-buttons {display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+    .btn{padding:12px 30px;border:none;border-radius:50px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block}
+    .btn-primary{background:var(--primary-color);color:#fff}
+    .btn-secondary{background:transparent;color:#fff;border:2px solid #fff}
+    #preloader{position:fixed;inset:0;background:var(--bg-color);display:flex;align-items:center;justify-content:center;z-index:2000;transition:opacity .4s ease, visibility .4s ease}
+    #preloader.hidden{opacity:0;visibility:hidden}
+    .spinner{width:40px;height:40px;border-radius:50%;border:4px solid rgba(0,0,0,.1);border-top-color:var(--primary-color);animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    img{aspect-ratio: attr(width) / attr(height);}
+  </style>
+
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Barra de navegação">
+      <div class="container">
+        <a href="#home" class="logo">Ismael<span class="highlight">Dev</span></a>
+        <ul id="primary-navigation" class="nav-menu">
+
+      <!-- Navegação do Blog -->
+      <ul id="primary-navigation" class="nav-menu" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html" class="nav-link">Portfólio</a></li>
+        <li role="none">
+          <button id="darkToggle" type="button" aria-label="Alternar modo escuro" class="btn-icon">
+              <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+          </li>
+        </ul>
+        <button id="menuToggle" class="hamburger" type="button" aria-controls="primary-navigation" aria-expanded="false" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+    </div>
+  </nav>
+</header>
+
+
+  <!-- LISTAGEM -->
+  <main class="blog">
+    <section class="container">
+      <h1 class="section-title">Blog de Tecnologia</h1>
+      <p class="section-subtitle">Artigos sobre <strong>React, Node.js, PWA e IA Generativa</strong></p>
+      <div id="articles-container" class="posts-grid"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="social-links" aria-label="Redes sociais">
+        <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer" aria-label="Perfil LinkedIn do desenvolvedor full stack em São Paulo">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+        <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer" aria-label="Perfil GitHub de projetos em React, Node.js e PWA">
+          <i class="fab fa-github" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer" aria-label="Conversar via WhatsApp com desenvolvedor full stack">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+      </div>
+      <p>&copy; 2025 Ismael Nunes dos Santos — Desenvolvedor Full Stack em São Paulo, especialista em React, Node.js, PWA e IA Generativa. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+  <!-- JS -->
+   <!-- JS (EmailJS + script principal) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <script src="js/script.js?v=7" defer></script>
+
+  <script src="js/blog.js?v=7" defer></script>
+  <!-- Pós-load: remover preloader + carregar Font Awesome (não bloqueia render) -->
+  <script>
+    window.addEventListener('load', function () {
+      document.getElementById('preloader')?.remove();
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+      l.crossOrigin = 'anonymous';
+      l.referrerPolicy = 'no-referrer';
+      document.head.appendChild(l);
+    });
+  </script>
+
+  <noscript>Ative o JavaScript para melhor experiência.</noscript>
+</body>
+</html>

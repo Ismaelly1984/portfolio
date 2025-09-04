@@ -250,3 +250,10 @@ const body = document.body;
 window.addEventListener("load", () => {
   document.getElementById("preloader")?.remove();
 });
+
+const currentPage = location.pathname.split("/").pop();
+document.querySelectorAll(".nav-link").forEach(link => {
+  if (link.getAttribute("href").includes(currentPage)) {
+    link.classList.add("active");
+  }
+});
