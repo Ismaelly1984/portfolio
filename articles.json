@@ -66,5 +66,19 @@
     }
   ],
   "tags": ["React", "Hooks", "JavaScript"]
+},
+{
+  "id": 2,
+  "title": "Os 5 Hábitos de Programadores de Sucesso",
+  "slug": "os-5-habitos-programadores-sucesso",
+  "excerpt": "Descubra as práticas que separam os bons programadores dos melhores.",
+  "category": "Carreira",
+  "tags": ["produtividade", "programação", "carreira"],
+  "author": "Ismael Nunes",
+  "date": "2025-08-29",
+  "readTime": "7 min de leitura",
+  "status": "published",
+  "image": "images/habitos-programacao.jpg",
+  "content": "# Os 5 Hábitos de Programadores de Sucesso\n\n📅 29 de Agosto, 2025 • ⏱️ 7 min de leitura • Categoria: **Carreira**\n\n![Imagem capa - hábitos de programadores](images/habitos-programacao.jpg)\n\n---\n\n## Introdução\nNo mundo da programação, dominar linguagens e frameworks é apenas uma parte da jornada. O que realmente diferencia os bons programadores dos grandes profissionais são os **hábitos** que cultivam no dia a dia.\n\nNeste artigo, você vai descobrir 5 práticas que podem transformar sua carreira e colocá-lo em outro patamar como desenvolvedor.\n\n---\n\n## 1. Estudo Contínuo\nA tecnologia evolui em uma velocidade impressionante. Frameworks mudam, novas ferramentas surgem e paradigmas se transformam. Programadores de sucesso entendem que o **aprendizado nunca acaba**.\n\n📌 **Exemplo prático**: Reserve 30 minutos por dia para estudar algo novo — pode ser um curso online, documentação oficial ou até pequenos experimentos no GitHub.\n\n---\n\n## 2. Código Limpo e Legível\nNão basta apenas “funcionar”. Um bom código precisa ser **legível, organizado e fácil de manter**.\n\n✅ Use nomes de variáveis claros.  \n✅ Escreva funções pequenas e objetivas.  \n✅ Documente trechos importantes.  \n\n📌 **Exemplo prático**: ao invés de `x` ou `y`, prefira nomes como `totalVendas` ou `mediaNotas`.\n\n---\n\n## 3. Controle de Versão\nNenhum programador de sucesso trabalha sem **Git**. Além de salvar versões, ele facilita o trabalho em equipe, histórico de alterações e deploys organizados.\n\n📌 **Exemplo prático**: adote uma rotina de commits claros e frequentes, como:  \n`git commit -m \"Adiciona validação de login com JWT\"`\n\n---\n\n## 4. Networking e Comunidade\nParticipar de comunidades, eventos e fóruns amplia sua visão e acelera seu crescimento. Muitas oportunidades de emprego e projetos surgem por meio dessas conexões.\n\n📌 **Exemplo prático**: compartilhe conhecimento no LinkedIn, participe de meetups ou contribua em projetos open source.\n\n---\n\n## 5. Cuidar da Saúde Mental e Física\nProgramar exige foco e concentração, mas também pede equilíbrio. Um desenvolvedor esgotado dificilmente terá boa performance.\n\n✅ Faça pausas regulares.  \n✅ Mantenha uma boa postura ao trabalhar.  \n✅ Pratique exercícios e preserve seu tempo de lazer.  \n\n📌 **Exemplo prático**: utilize a técnica Pomodoro (25min de foco + 5min de pausa) para manter a produtividade sem sobrecarregar sua mente.\n\n---\n\n## Conclusão\nSer um programador de sucesso vai muito além de aprender a próxima linguagem da moda. Os **hábitos diários** são o que realmente constroem uma carreira sólida e diferenciada.\n\nComece pequeno: escolha um desses hábitos e coloque em prática ainda hoje. Em pouco tempo, você notará uma grande diferença nos seus resultados e no reconhecimento do seu trabalho.\n"
 }
 ]

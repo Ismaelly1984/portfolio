@@ -41,9 +41,10 @@ fetch("articles.json")
 
       <img src="${article.image}" alt="${article.title}" class="article-cover" loading="lazy" />
 
-      <div class="article-body">
-        ${article.content}
-      </div>
+    <div class="article-body">
+      ${marked.parse(article.content)}
+    </div>
+
 
       <footer class="article-footer">
         <div class="tags">
