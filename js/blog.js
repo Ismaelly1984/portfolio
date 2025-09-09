@@ -1,58 +1,189 @@
-// Carregar artigos do JSON e renderizar lista no blog.html
-fetch("articles.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("articles-container");
+// blog.js – Listagem de artigos com busca + paginação + filtro por tag
+(function () {
+  const POSTS_PER_PAGE = 3;
+  let allArticles = [];
+  let currentPage = 1;
+  let filteredArticles = [];
 
-    if (!data || data.length === 0) {
-      container.innerHTML = "<p>Nenhum artigo publicado ainda.</p>";
-      return;
+  const container = document.getElementById("articles-container");
+  const paginationContainer = document.createElement("div");
+  paginationContainer.className = "pagination";
+
+  if (!container) return;
+
+  // Função: retorna classe CSS baseada na categoria
+  function getCategoryClass(category) {
+    switch ((category || "").toLowerCase()) {
+      case "react": return "category-react";
+      case "carreira": return "category-carreira";
+      case "ia": return "category-ia";
+      case "pwa": return "category-pwa";
+      default: return "category-default";
     }
+  }
 
-    data.forEach(article => {
-      // Fallbacks para evitar undefined
-      const id = article.id ?? "";
-      const title = article.title ?? "Artigo sem título";
-      const excerpt = article.excerpt ?? "Resumo não disponível.";
-      const category = article.category ?? "Sem categoria";
-      const date = article.date ?? "";
-      const readTime = article.readTime ?? "";
-      const image = article.image && article.image.trim() !== "" 
-        ? article.image 
-        : "images/placeholder.jpg"; // imagem padrão
+  // Renderizar artigos
+  function renderArticles(articles, clear = true) {
+    if (clear) container.innerHTML = "";
+    const fragment = document.createDocumentFragment();
 
-      const articleEl = document.createElement("article");
-      articleEl.className = "post-card";
+    articles.forEach(article => {
+      const { id, title, excerpt, category, date, readTime, featured, author, tags = [] } = article;
+      const categoryClass = getCategoryClass(category);
 
-      articleEl.innerHTML = `
-        <div class="post-image-container">
-          <img src="${image}" alt="${title}" class="post-image" loading="lazy">
-          <span class="post-category">${category}</span>
+      const card = document.createElement("article");
+      card.className = "post-card" + (featured ? " featured" : "");
+      card.innerHTML = `
+        <div class="post-title-banner ${categoryClass}">
+          <h2><a href="blog-post.html?id=${id}">${title}</a></h2>
         </div>
         <div class="post-content">
-          <h2 class="post-title">
-            <a href="blog-post.html?id=${id}">${title}</a>
-          </h2>
           <p class="post-excerpt">${excerpt}</p>
           <div class="post-meta">
             <span class="post-author">
-              <img src="images/avatar-ismael.jpg" alt="Foto de Ismael Nunes" class="author-avatar">
-              Ismael Nunes
+              <img src="images/avatar-ismael.jpg" alt="Foto de ${author}" class="author-avatar">
+              ${author}
             </span>
             <span>${date}</span>
             <span>${readTime}</span>
+          </div>
+          <div class="tags">
+            ${tags.map(tag => `
+              <a href="blog.html?tag=${encodeURIComponent(tag.toLowerCase())}" class="tag">#${tag}</a>
+            `).join(" ")}
           </div>
           <a href="blog-post.html?id=${id}" class="read-more">
             Ler mais <i class="fas fa-arrow-right"></i>
           </a>
         </div>
       `;
-
-      container.appendChild(articleEl);
+      fragment.appendChild(card);
     });
-  })
-  .catch(err => {
-    console.error("Erro ao carregar artigos:", err);
-    document.getElementById("articles-container").innerHTML =
-      "<p>Erro ao carregar artigos. Tente novamente mais tarde.</p>";
-  });
+
+    container.appendChild(fragment);
+  }
+
+  // Renderizar paginação
+  function renderPagination(totalPages) {
+    paginationContainer.innerHTML = "";
+
+    function addButton(label, page, disabled = false, active = false) {
+      const btn = document.createElement("button");
+      btn.textContent = label;
+      btn.className = active ? "page-numbers current" : "page-numbers";
+      btn.disabled = disabled;
+      btn.addEventListener("click", () => {
+        if (!disabled && currentPage !== page) {
+          currentPage = page;
+          updateUI();
+        }
+      });
+      paginationContainer.appendChild(btn);
+    }
+
+    function addEllipsis() {
+      const span = document.createElement("span");
+      span.textContent = "...";
+      span.className = "ellipsis";
+      paginationContainer.appendChild(span);
+    }
+
+    if (totalPages <= 1) return;
+
+    // Botão anterior
+    addButton("«", currentPage - 1, currentPage === 1);
+
+    const visiblePages = 5;
+    let start = Math.max(1, currentPage - 2);
+    let end = Math.min(totalPages, currentPage + 2);
+
+    if (end - start < visiblePages - 1) {
+      if (start === 1) {
+        end = Math.min(totalPages, start + visiblePages - 1);
+      } else if (end === totalPages) {
+        start = Math.max(1, end - visiblePages + 1);
+      }
+    }
+
+    if (start > 1) {
+      addButton("1", 1, false, currentPage === 1);
+      if (start > 2) addEllipsis();
+    }
+
+    for (let i = start; i <= end; i++) {
+      addButton(i, i, false, i === currentPage);
+    }
+
+    if (end < totalPages) {
+      if (end < totalPages - 1) addEllipsis();
+      addButton(totalPages, totalPages, false, currentPage === totalPages);
+    }
+
+    // Botão próximo
+    addButton("»", currentPage + 1, currentPage === totalPages);
+
+    if (!paginationContainer.parentNode) {
+      container.parentNode.appendChild(paginationContainer);
+    }
+  }
+
+  // Atualizar UI
+  function updateUI() {
+    const start = (currentPage - 1) * POSTS_PER_PAGE;
+    const end = start + POSTS_PER_PAGE;
+    renderArticles(filteredArticles.slice(start, end));
+    renderPagination(Math.ceil(filteredArticles.length / POSTS_PER_PAGE));
+  }
+
+  // Filtro de busca
+  function applyFilter() {
+    const term = (document.getElementById("searchInput")?.value || "").toLowerCase().trim();
+    filteredArticles = allArticles.filter(a => {
+      const title = a.title.toLowerCase();
+      const tags = (a.tags || []).map(t => t.toLowerCase());
+      return title.includes(term) || tags.some(t => t.includes(term));
+    });
+    currentPage = 1;
+    updateUI();
+  }
+
+  // Buscar artigos
+  fetch("articles.json")
+    .then(res => res.json())
+    .then(data => {
+      allArticles = data
+        .filter(a => a.status === "published")
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      filteredArticles = [...allArticles];
+
+      // Detectar ?tag= na URL e aplicar filtro
+      const params = new URLSearchParams(window.location.search);
+      const tagParam = params.get("tag");
+      if (tagParam) {
+        filteredArticles = allArticles.filter(a =>
+          (a.tags || []).map(t => t.toLowerCase()).includes(tagParam.toLowerCase())
+        );
+        document.getElementById("searchInput").value = tagParam;
+      }
+
+      updateUI();
+    })
+    .catch(err => {
+      console.error("Erro ao carregar artigos:", err);
+      container.innerHTML = "<p role='alert'>Erro ao carregar artigos. Tente novamente mais tarde.</p>";
+    });
+
+  // Busca com debounce
+  const searchInput = document.getElementById("searchInput");
+  if (searchInput) {
+    const debounce = (fn, delay = 200) => {
+      let timer;
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+      };
+    };
+    searchInput.addEventListener("input", debounce(applyFilter, 200));
+  }
+})();

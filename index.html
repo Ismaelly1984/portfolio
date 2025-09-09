@@ -3,6 +3,17 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.emailjs.com 'unsafe-inline';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+  font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
+  img-src 'self' data:;
+  connect-src 'self' https://cdn.emailjs.com;
+  object-src 'none';
+  frame-ancestors 'none';
+">
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- SEO -->
@@ -494,81 +505,80 @@
 
     <!-- PROJETOS -->
     <section id="projetos-web" class="projects" aria-label="Projetos em Destaque">
-      <div class="container">
-        <h2 class="section-title">Projetos em Destaque</h2>
+  <div class="container">
+    <h2 class="section-title">Projetos em Destaque</h2>
 
-        <div class="projects-grid">
-          <!-- MeuFinanceiro -->
-          <article class="project-card">
-            <div class="project-image">
-              <picture>
-                <source type="image/avif"
-                  srcset="images/meufinanceiro-400.avif 400w, images/meufinanceiro-800.avif 800w"
-                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                <source type="image/webp"
-                  srcset="images/meufinanceiro-400.webp 400w, images/meufinanceiro-800.webp 800w"
-                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                <img src="images/meufinanceiro-800.jpg" width="800" height="450" loading="lazy" decoding="async"
-                  fetchpriority="low"
-                  alt="Projeto MeuFinanceiro em PWA por desenvolvedor full stack em São Paulo com React e Node.js" />
-              </picture>
+    <div class="projects-grid">
+      <article class="project-card">
+        <div class="project-image">
+          <picture>
+            <source type="image/avif"
+              srcset="images/portifolio/meufinanceiro-400.avif 400w, images/portifolio/meufinanceiro-800.avif 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <source type="image/webp"
+              srcset="images/portifolio/meufinanceiro-400.webp 400w, images/portifolio/meufinanceiro-800.webp 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <img src="images/portifolio/meufinanceiro-800.jpg" width="800" height="450" loading="lazy" decoding="async"
+              fetchpriority="low"
+              alt="Projeto MeuFinanceiro em PWA por desenvolvedor full stack em São Paulo com React e Node.js" />
+          </picture>
 
-              <div class="project-overlay" aria-hidden="true">
-                <div class="project-links">
-                  <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer"
-                    aria-label="Abrir projeto PWA MeuFinanceiro em nova aba">
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer"
-                    aria-label="Abrir repositório do projeto MeuFinanceiro no GitHub">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
+          <div class="project-overlay" aria-hidden="true">
+            <div class="project-links">
+              <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer"
+                aria-label="Abrir projeto PWA MeuFinanceiro em nova aba">
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer"
+                aria-label="Abrir repositório do projeto MeuFinanceiro no GitHub">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
             </div>
-
-            <div class="project-info">
-              <h3>MeuFinanceiro (PWA)</h3>
-              <p>Controle financeiro completo com suporte offline, React e melhores práticas de PWA.</p>
-              <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
-            </div>
-          </article>
-
-          <!-- E-commerce Flask -->
-          <article class="project-card">
-            <div class="project-image">
-              <picture>
-                <source type="image/avif" srcset="images/premiumstore-400.avif 400w, images/premiumstore-800.avif 800w"
-                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                <source type="image/webp" srcset="images/premiumstore-400.webp 400w, images/premiumstore-800.webp 800w"
-                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-                <img src="images/flask-ecommerce-800.jpg" width="800" height="450" loading="lazy" decoding="async"
-                  alt="Projeto E-commerce com backend em Python Flask por desenvolvedor full stack em São Paulo" />
-              </picture>
-
-              <div class="project-overlay" aria-hidden="true">
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    aria-label="Abrir demonstração do E-commerce Flask">
-                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank"
-                    rel="noopener noreferrer" aria-label="Abrir repositório do E-commerce Flask no GitHub">
-                    <i class="fab fa-github" aria-hidden="true"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="project-info">
-              <h3>E-commerce Flask</h3>
-              <p>Loja virtual completa com backend Python (Flask), performance e boas práticas de SEO técnico.</p>
-              <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
-            </div>
-          </article>
+          </div>
         </div>
-      </div>
-    </section>
+
+        <div class="project-info">
+          <h3>MeuFinanceiro (PWA)</h3>
+          <p>Controle financeiro completo com suporte offline, React e melhores práticas de PWA.</p>
+          <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-image">
+          <picture>
+            <source type="image/avif"
+              srcset="images/portifolio/premiumstore-400.avif 400w, images/portifolio/premiumstore-800.avif 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <source type="image/webp"
+              srcset="images/portifolio/premiumstore-400.webp 400w, images/portifolio/premiumstore-800.webp 800w"
+              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+            <img src="images/portifolio/flask-ecommerce-800.jpg" width="800" height="450" loading="lazy" decoding="async"
+              alt="Projeto E-commerce com backend em Python Flask por desenvolvedor full stack em São Paulo" />
+          </picture>
+
+          <div class="project-overlay" aria-hidden="true">
+            <div class="project-links">
+              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir demonstração do E-commerce Flask">
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank"
+                rel="noopener noreferrer" aria-label="Abrir repositório do E-commerce Flask no GitHub">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-info">
+          <h3>E-commerce Flask</h3>
+          <p>Loja virtual completa com backend Python (Flask), performance e boas práticas de SEO técnico.</p>
+          <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
     <!-- CONTATO -->
     <section id="contato" class="contact" aria-label="Contato">
