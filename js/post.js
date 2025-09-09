@@ -1,10 +1,10 @@
-// post.js – Artigo individual otimizado
+// post.js – Artigo individual otimizado + relacionados
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"), 10);
 
 // Função para montar imagens responsivas
 function buildResponsiveImage(src, alt, sizes = ["400", "600", "800"]) {
-  const name = src.replace(/\.(jpg|jpeg|png|webp)$/i, ""); // remove extensão caso venha
+  const name = src.replace(/\.(jpg|jpeg|png|webp)$/i, ""); 
   const webpSrcSet = sizes.map(s => `${name}-${s}.webp ${s}w`).join(", ");
   const jpgSrcSet = sizes.map(s => `${name}-${s}.jpg ${s}w`).join(", ");
 
@@ -54,24 +54,19 @@ fetch("articles.json")
     const url = `${location.origin}${location.pathname}?id=${id}`;
     const imageBase = article.image || "images/placeholder";
 
-    // Open Graph
-    const ogTags = [
+    // Open Graph + Twitter
+    const metaTags = [
       { property: "og:title", content: article.title },
       { property: "og:description", content: desc },
       { property: "og:type", content: "article" },
       { property: "og:url", content: url },
-      { property: "og:image", content: `${location.origin}/${imageBase}-800.jpg` }
-    ];
-
-    // Twitter
-    const twitterTags = [
+      { property: "og:image", content: `${location.origin}/${imageBase}-800.jpg` },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: article.title },
       { name: "twitter:description", content: desc },
       { name: "twitter:image", content: `${location.origin}/${imageBase}-800.jpg` }
     ];
-
-    [...ogTags, ...twitterTags].forEach(tag => {
+    metaTags.forEach(tag => {
       const meta = document.createElement("meta");
       if (tag.property) meta.setAttribute("property", tag.property);
       if (tag.name) meta.setAttribute("name", tag.name);
@@ -79,23 +74,19 @@ fetch("articles.json")
       document.head.appendChild(meta);
     });
 
-    // Monta as tags clicáveis
-    const tagsHTML = article.tags
+    // Tags clicáveis
+    const tagsHTML = (article.tags || [])
       .map(tag => `<a href="blog.html?tag=${encodeURIComponent(tag.toLowerCase())}" class="tag">#${tag}</a>`)
       .join(" ");
 
-    // Monta as referências (se existirem)
+    // Referências
     let referencesHTML = "";
     if (article.references && article.references.length > 0) {
       const refsList = article.references
-        .map(ref => {
-          if (ref.startsWith("http")) {
-            return `<li><a href="${ref}" target="_blank" rel="noopener noreferrer">${ref}</a></li>`;
-          } else {
-            return `<li>${ref}</li>`;
-          }
-        })
-        .join("");
+        .map(ref => ref.startsWith("http")
+          ? `<li><a href="${ref}" target="_blank" rel="noopener noreferrer">${ref}</a></li>`
+          : `<li>${ref}</li>`
+        ).join("");
       referencesHTML = `
         <section class="references">
           <h3>Referências</h3>
@@ -104,7 +95,37 @@ fetch("articles.json")
       `;
     }
 
-    // Renderiza artigo
+    // Relacionados: até 3 artigos com tags em comum
+    const related = data
+      .filter(a => a.id !== article.id && a.status === "published")
+      .map(a => ({
+        ...a,
+        similarity: (a.tags || []).filter(tag =>
+          (article.tags || []).map(t => t.toLowerCase()).includes(tag.toLowerCase())
+        ).length
+      }))
+      .filter(a => a.similarity > 0)
+      .sort((a, b) => b.similarity - a.similarity)
+      .slice(0, 3);
+
+    let relatedHTML = "";
+    if (related.length > 0) {
+      relatedHTML = `
+        <section class="related-posts">
+          <h3>Artigos Relacionados</h3>
+          <div class="related-grid">
+            ${related.map(r => `
+              <div class="related-card">
+                <h4><a href="blog-post.html?id=${r.id}">${r.title}</a></h4>
+                <p>${r.excerpt}</p>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    // Render final
     container.innerHTML = `
       <header class="article-header">
         <h1 class="article-title">${article.title}</h1>
@@ -113,17 +134,17 @@ fetch("articles.json")
 
       ${buildResponsiveImage(imageBase, article.title)}
 
-      <div class="article-body">
+      <div class="article-content">
         ${marked.parse(article.content)}
       </div>
 
       <footer class="article-footer">
-        <div class="tags">
-          ${tagsHTML}
-        </div>
+        <div class="tags">${tagsHTML}</div>
         ${referencesHTML}
         <a href="blog.html" class="btn btn-primary">← Voltar ao Blog</a>
       </footer>
+
+      ${relatedHTML}
     `;
 
     // Scroll suave ao topo

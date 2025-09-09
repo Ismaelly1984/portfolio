@@ -4,29 +4,95 @@
     "title": "O que são React Hooks?",
     "slug": "o-que-sao-react-hooks",
     "excerpt": "Aprenda como os Hooks permitem adicionar estado, efeitos e contexto a componentes funcionais no React.",
-    "content": "# O que são React Hooks?\n\nHooks são funções que permitem que você “ligue” componentes funcionais ao **estado interno do React** e a outros recursos da biblioteca, como ciclo de vida, contexto, efeitos colaterais e refs.\n\n## Principais Hooks e Seu Uso\n\n### useState\nPermite adicionar estado local em componentes funcionais.\n```js\nconst [contador, setContador] = useState(0);\n```\n\n### useEffect\nExecuta efeitos colaterais, como chamadas API ou timers.\n```js\nuseEffect(() => {\n  fetchDados();\n}, [id]);\n```\n\n### useContext\nFacilita o compartilhamento de dados sem precisar prop drilling.\n\n---\n\n## Ganchos Customizados\nVocê pode criar seus próprios hooks para **reutilizar lógica** entre componentes.\n\n---\n\n## Benefícios\n- Código mais limpo e legível\n- Reutilização de lógica\n- Melhor separação de preocupações\n- Ecossistema crescente\n\n---\n\n## Dicas para começar\n1. Domine `useState` e `useEffect` primeiro.\n2. Explore exemplos na documentação oficial.\n3. Use hooks customizados para lógica recorrente.\n4. Utilize linters para evitar erros comuns.\n\n---\n\nReact Hooks trouxeram uma nova era para o React: mais simples, mais funcional e alinhado com as melhores práticas modernas.",
+    "content": "# O que são React Hooks?\n\nHooks são funções que permitem que você “ligue” componentes funcionais ao **estado interno do React** e a outros recursos da biblioteca, como ciclo de vida, contexto, efeitos colaterais e refs.\n\n## Principais Hooks e Seu Uso\n\n### useState\nPermite adicionar estado local em componentes funcionais.\n```js\nconst [contador, setContador] = useState(0);\n```\n\n### useEffect\nExecuta efeitos colaterais, como chamadas API ou timers.\n```js\nuseEffect(() => {\n  fetchDados();\n}, [id]);\n```\n\n### useContext\nFacilita o compartilhamento de dados sem precisar prop drilling.\n\n---\n\n## Ganchos Customizados\nVocê pode criar seus próprios hooks para **reutilizar lógica** entre componentes.\n\n---\n\n## Benefícios\n- Código mais limpo e legível\n- Reutilização de lógica\n- Melhor separação de preocupações\n- Ecossistema crescente\n\n---\n\nReact Hooks trouxeram uma nova era para o React: mais simples, mais funcional e alinhado com as melhores práticas modernas.",
     "category": "React",
-    "tags": ["React", "Hooks", "JavaScript"],
+    "tags": ["React", "Hooks", "JavaScript", "Frontend"],
     "author": "Ismael Nunes",
     "date": "2025-01-15",
     "readTime": "6 min",
     "status": "published",
     "featured": false,
-    "image": "images/blog/react-hooks"
+    "image": "images/blog/react-hooks",
+    "references": [
+      "https://react.dev/learn/hooks-intro",
+      "https://blog.logrocket.com/guide-to-react-hooks/"
+    ]
   },
   {
     "id": 2,
     "title": "Os 5 Hábitos de Programadores de Sucesso",
     "slug": "os-5-habitos-programadores-sucesso",
     "excerpt": "Descubra os hábitos que diferenciam programadores comuns dos excepcionais e como aplicá-los na sua rotina.",
-    "content": "# Os 5 Hábitos de Programadores de Sucesso\n\nO sucesso vai além do domínio técnico: está em **hábitos diários** que transformam esforço em resultados.\n\n## 1. Aprendizado Contínuo e Adaptabilidade\n- Dedique tempo diário para aprender algo novo.\n- Cultive uma mentalidade de crescimento.\n- Use GitHub, Stack Overflow, blogs técnicos e newsletters.\n\n## 2. Código Limpo e de Qualidade\n- Nomes descritivos para variáveis e funções.\n- Comentários estratégicos.\n- Refatoração constante.\n- Testes automatizados.\n\n## 3. Gestão de Tempo e Foco\n- Técnica Pomodoro.\n- Matriz de Eisenhower.\n- Ambiente sem distrações.\n- Checklists diários.\n\n## 4. Resolução Sistemática de Problemas\n- Decomposição em partes menores.\n- Planejamento antes de codar.\n- Prototipagem rápida.\n- Pensamento crítico.\n\n## 5. Colaboração e Comunicação Efetiva\n- Code reviews construtivos.\n- Compartilhamento de conhecimento.\n- Comunicação clara.\n- Participação em comunidades.\n\n---\n\n## Implementação Prática\n1. Escolha **um hábito** e pratique por semanas.\n2. Use métricas para medir progresso.\n3. Ajuste a rotina com consistência.\n\n---\n\n## Benefícios\n- Crescimento acelerado\n- Melhor qualidade do código\n- Rede de contatos sólida\n- Satisfação pessoal e profissional\n\n---\n\n> \"O sucesso não é produto de talento, mas de hábitos consistentes ao longo do tempo.\"",
+    "content": "# Os 5 Hábitos de Programadores de Sucesso\n\nO sucesso vai além do domínio técnico: está em **hábitos diários** que transformam esforço em resultados.\n\n## 1. Aprendizado Contínuo\nEstude todos os dias.\n\n## 2. Código Limpo\nEscreva nomes claros, faça refatorações.\n\n## 3. Gestão de Tempo\nUse Pomodoro e listas.\n\n## 4. Resolução de Problemas\nPlaneje antes de codar.\n\n## 5. Comunicação\nCompartilhe conhecimento.\n\n---\n\n> \"O sucesso não é produto de talento, mas de hábitos consistentes ao longo do tempo.\"",
     "category": "Carreira",
-    "tags": ["produtividade", "programação", "carreira"],
+    "tags": ["Produtividade", "Programação", "Carreira", "Boas Práticas"],
     "author": "Ismael Nunes",
     "date": "2025-08-29",
     "readTime": "10 min",
     "status": "published",
     "featured": true,
-    "image": "images/blog/habitos-programacao"
+    "image": "images/blog/habitos-programacao",
+    "references": [
+      "https://martinfowler.com/bliki/CleanCode.html",
+      "https://pt.wikipedia.org/wiki/T%C3%A9cnica_pomodoro",
+      "Atomic Habits - James Clear"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Por que investir em PWAs?",
+    "slug": "por-que-investir-em-pwas",
+    "excerpt": "Progressive Web Apps unem o melhor da web com a experiência dos aplicativos nativos.",
+    "content": "# Por que investir em PWAs?\n\nUm **PWA (Progressive Web App)** combina recursos modernos da web com funcionalidades típicas de apps nativos.\n\n## Vantagens\n- Funciona offline com Service Workers\n- Instalável direto no navegador\n- Push notifications\n- Melhor desempenho em dispositivos móveis\n\n## Exemplos de Sucesso\n- Twitter Lite\n- Uber\n- Pinterest\n\n---\n\nPWAs são ideais para **startups e empresas** que querem entregar uma experiência completa sem os custos de app stores.",
+    "category": "PWA",
+    "tags": ["PWA", "Frontend", "Mobile", "Web"],
+    "author": "Ismael Nunes",
+    "date": "2025-06-10",
+    "readTime": "7 min",
+    "status": "published",
+    "featured": false,
+    "image": "images/blog/pwa",
+    "references": [
+      "https://web.dev/what-are-pwas/",
+      "https://developer.mozilla.org/pt-BR/docs/Web/Progressive_web_apps"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "IA Generativa: O Futuro da Programação",
+    "slug": "ia-generativa-o-futuro",
+    "excerpt": "Entenda como a IA generativa está transformando a forma de desenvolver software e criar soluções.",
+    "content": "# IA Generativa: O Futuro da Programação\n\nA **IA generativa** já auxilia desenvolvedores com:\n- Autocompletar código\n- Refatoração automática\n- Geração de testes\n- Criação de documentação\n\n## Benefícios\n- Aumento de produtividade\n- Redução de erros\n- Mais foco em lógica e arquitetura\n\n---\n\nFerramentas como **ChatGPT, Copilot e Codeium** mostram que a IA não substitui programadores, mas **potencializa seu trabalho**.",
+    "category": "IA",
+    "tags": ["IA", "Inteligência Artificial", "DevTools", "Produtividade"],
+    "author": "Ismael Nunes",
+    "date": "2025-04-22",
+    "readTime": "8 min",
+    "status": "published",
+    "featured": false,
+    "image": "images/blog/ia-generativa",
+    "references": [
+      "https://openai.com/",
+      "https://copilot.github.com/"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Node.js: O Motor da Web Moderna",
+    "slug": "node-js-o-motor-da-web",
+    "excerpt": "Por que o Node.js se tornou a base de tantos aplicativos modernos?",
+    "content": "# Node.js: O Motor da Web Moderna\n\nO **Node.js** é um runtime baseado em V8 que permite rodar JavaScript no servidor.\n\n## Principais Casos de Uso\n- APIs REST e GraphQL\n- Aplicações em tempo real (chat, jogos)\n- Ferramentas de build\n\n## Vantagens\n- Event loop não bloqueante\n- Grande ecossistema (NPM)\n- Alto desempenho em I/O\n\n---\n\nNode.js mudou o paradigma: agora você pode usar **JavaScript em toda a stack**.",
+    "category": "Backend",
+    "tags": ["Node.js", "Backend", "JavaScript", "APIs"],
+    "author": "Ismael Nunes",
+    "date": "2025-07-12",
+    "readTime": "9 min",
+    "status": "published",
+    "featured": false,
+    "image": "images/blog/nodejs",
+    "references": [
+      "https://nodejs.org/",
+      "https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Node_server_without_framework"
+    ]
   }
 ]

@@ -28,7 +28,18 @@
     const fragment = document.createDocumentFragment();
 
     articles.forEach(article => {
-      const { id, title, excerpt, category, date, readTime, featured, author, tags = [] } = article;
+      const {
+        id,
+        title,
+        excerpt,
+        category,
+        date,
+        readTime,
+        featured,
+        author,
+        tags = []
+      } = article;
+
       const categoryClass = getCategoryClass(category);
 
       const card = document.createElement("article");
@@ -76,6 +87,7 @@
         if (!disabled && currentPage !== page) {
           currentPage = page;
           updateUI();
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       });
       paginationContainer.appendChild(btn);
@@ -135,14 +147,22 @@
     renderPagination(Math.ceil(filteredArticles.length / POSTS_PER_PAGE));
   }
 
-  // Filtro de busca
+  // Aplicar filtros por busca/tag
   function applyFilter() {
     const term = (document.getElementById("searchInput")?.value || "").toLowerCase().trim();
+    const params = new URLSearchParams(window.location.search);
+    const tagParam = params.get("tag");
+
     filteredArticles = allArticles.filter(a => {
       const title = a.title.toLowerCase();
       const tags = (a.tags || []).map(t => t.toLowerCase());
-      return title.includes(term) || tags.some(t => t.includes(term));
+
+      const matchSearch = term ? (title.includes(term) || tags.some(t => t.includes(term))) : true;
+      const matchTag = tagParam ? tags.includes(tagParam.toLowerCase()) : true;
+
+      return matchSearch && matchTag;
     });
+
     currentPage = 1;
     updateUI();
   }
@@ -155,19 +175,16 @@
         .filter(a => a.status === "published")
         .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-      filteredArticles = [...allArticles];
-
-      // Detectar ?tag= na URL e aplicar filtro
       const params = new URLSearchParams(window.location.search);
+      const searchParam = params.get("search");
       const tagParam = params.get("tag");
-      if (tagParam) {
-        filteredArticles = allArticles.filter(a =>
-          (a.tags || []).map(t => t.toLowerCase()).includes(tagParam.toLowerCase())
-        );
-        document.getElementById("searchInput").value = tagParam;
+
+      if (searchParam) {
+        document.getElementById("searchInput").value = searchParam;
       }
 
-      updateUI();
+      filteredArticles = [...allArticles];
+      applyFilter();
     })
     .catch(err => {
       console.error("Erro ao carregar artigos:", err);
@@ -184,6 +201,11 @@
         timer = setTimeout(() => fn(...args), delay);
       };
     };
-    searchInput.addEventListener("input", debounce(applyFilter, 200));
+    searchInput.addEventListener("input", debounce(() => {
+      const params = new URLSearchParams(window.location.search);
+      params.set("search", searchInput.value.trim());
+      history.replaceState(null, "", "?" + params.toString());
+      applyFilter();
+    }, 200));
   }
 })();
