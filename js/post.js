@@ -1,4 +1,4 @@
-// post.js – Artigo individual otimizado + relacionados
+// post.js – Artigo individual otimizado + relacionados com mini cards
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"), 10);
 
@@ -21,6 +21,17 @@ function buildResponsiveImage(src, alt, sizes = ["400", "600", "800"]) {
            height="450">
     </picture>
   `;
+}
+
+// Retorna a classe de cor por categoria
+function getCategoryClass(category) {
+  switch ((category || "").toLowerCase()) {
+    case "react": return "category-react";
+    case "carreira": return "category-carreira";
+    case "ia": return "category-ia";
+    case "pwa": return "category-pwa";
+    default: return "category-default";
+  }
 }
 
 fetch("articles.json")
@@ -116,8 +127,17 @@ fetch("articles.json")
           <div class="related-grid">
             ${related.map(r => `
               <div class="related-card">
-                <h4><a href="blog-post.html?id=${r.id}">${r.title}</a></h4>
-                <p>${r.excerpt}</p>
+                <div class="related-image">
+                  <img src="${r.image ? r.image + '-400.jpg' : 'images/placeholder-400.jpg'}" 
+                       alt="${r.title}" loading="lazy">
+                </div>
+                <div class="related-content">
+                  <span class="related-category ${getCategoryClass(r.category)}">
+                    ${r.category || ""}
+                  </span>
+                  <h4><a href="blog-post.html?id=${r.id}">${r.title}</a></h4>
+                  <p>${r.excerpt}</p>
+                </div>
               </div>
             `).join("")}
           </div>
