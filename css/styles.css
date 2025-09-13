@@ -427,3 +427,8 @@ i.fas, i.fab, i.far { display:inline-block; width:1.25em; text-align:center; lin
   animation: preloaderAutoHide 1.2s ease 0.3s forwards;
 }
 @keyframes preloaderAutoHide { to { opacity: 0; visibility: hidden; } }
+@font-face {
+  font-family: "Font Awesome 5 Brands";
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-brands-400.woff2") format("woff2");
+  font-display: swap;
+}
