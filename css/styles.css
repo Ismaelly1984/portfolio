@@ -432,3 +432,7 @@ i.fas, i.fab, i.far { display:inline-block; width:1.25em; text-align:center; lin
   src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-brands-400.woff2") format("woff2");
   font-display: swap;
 }
+.hero-subtitle{
+  /* antes: color: var(--text-muted); */
+  color: #f1f5f9; /* melhora contraste sobre o gradiente roxo */
+}
