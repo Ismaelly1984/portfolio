@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
-  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.emailjs.com 'unsafe-inline';
+  script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
   font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
   img-src 'self' data:;
-  connect-src 'self' https://cdn.emailjs.com;
+  connect-src 'self';
   object-src 'none';
   frame-ancestors 'none';
 ">
@@ -584,24 +584,11 @@
         <div class="contact-content" id="contactContent">
           <div class="contact-info">
             <h3>Entre em Contato</h3>
-            <p>Atendo São Paulo e remoto. Envie uma mensagem para falar sobre seu projeto em React, Node.js, PWA ou IA
-              Generativa.</p>
-            <div class="contact-item">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <div>
-                <h4>Email</h4>
-                <p><a href="mailto:ismael.nunes.dev@gmail.com"
-                    aria-label="Enviar email para ismael.nunes.dev@gmail.com">ismael.nunes.dev@gmail.com</a></p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone" aria-hidden="true"></i>
-              <div>
-                <h4>WhatsApp</h4>
-                <p><a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer"
-                    aria-label="Abrir WhatsApp para 14 99192-0560">+55 14 99192-0560</a></p>
-              </div>
-            </div>
+            <p>Atendo São Paulo e remoto. Vamos falar sobre seu projeto em React, Node.js, PWA ou IA Generativa.</p>
+            <a class="btn btn-primary contact-cta" href="https://wa.me/5514991920560" target="_blank"
+              rel="noopener noreferrer" aria-label="Conversar via WhatsApp com Ismael Nunes">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar no WhatsApp
+            </a>
             <div class="contact-item">
               <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
               <div>
@@ -611,24 +598,24 @@
             </div>
           </div>
 
-          <!-- Formulário -->
-          <form id="contactForm" class="contact-form" aria-label="Formulário de contato">
-            <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" style="display:none"
-              aria-hidden="true" />
-            <label class="sr-only" for="name">Seu Nome</label>
-            <input id="name" name="user_name" type="text" placeholder="Seu Nome" required data-required="true" />
-            <label class="sr-only" for="email">Seu Email</label>
-            <input id="email" name="user_email" type="email" placeholder="Seu Email" required data-required="true" />
-            <label class="sr-only" for="subject">Assunto</label>
-            <input id="subject" name="subject" type="text" placeholder="Assunto" required data-required="true" />
-            <label class="sr-only" for="message">Sua Mensagem</label>
-            <textarea id="message" name="message" placeholder="Sua Mensagem" rows="5" required
-              data-required="true"></textarea>
-            <div id="formStatus" aria-live="polite"></div>
-            <button type="submit" class="btn btn-primary" aria-label="Enviar mensagem pelo formulário">
-              <i class="fas fa-paper-plane" aria-hidden="true"></i> Enviar
-            </button>
-          </form>
+          <div class="contact-social" aria-label="Redes sociais">
+            <h4>Conecte-se também nas redes</h4>
+            <p>Acompanhe os projetos e conteúdos mais recentes.</p>
+            <div class="social-links contact-social-links">
+              <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
+                aria-label="Perfil LinkedIn do desenvolvedor full stack em São Paulo">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
+                aria-label="Perfil GitHub de projetos em React, Node.js e PWA">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
+              <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer"
+                aria-label="Conversar via WhatsApp com desenvolvedor full stack">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -637,27 +624,12 @@
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="container">
-      <div class="social-links" aria-label="Redes sociais">
-        <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
-          aria-label="Perfil LinkedIn do desenvolvedor full stack em São Paulo">
-          <i class="fab fa-linkedin" aria-hidden="true"></i>
-        </a>
-        <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
-          aria-label="Perfil GitHub de projetos em React, Node.js e PWA">
-          <i class="fab fa-github" aria-hidden="true"></i>
-        </a>
-        <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer"
-          aria-label="Conversar via WhatsApp com desenvolvedor full stack">
-          <i class="fab fa-whatsapp" aria-hidden="true"></i>
-        </a>
-      </div>
       <p>&copy; 2025 Ismael Nunes dos Santos — Desenvolvedor Full Stack em São Paulo, especialista em React, Node.js,
         PWA e IA Generativa. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <!-- JS (EmailJS + script principal) -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
+  <!-- JS principal -->
   <script src="js/script.js?v=7" defer></script>
 
   <!-- Pós-load: remover preloader + carregar Font Awesome (não bloqueia render) -->
