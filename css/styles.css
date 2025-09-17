@@ -327,7 +327,13 @@ body.dark-mode .project-tech span{background:#0b1220;color:#e2e8f0;border:1px so
 .contact-social-links{margin-bottom:0;justify-content:flex-start}
 .contact-social-links a{color:var(--primary-color)}
 body.dark-mode .contact-social-links a{color:#fff}
-@media(max-width:768px){.contact-social-links{justify-content:center}}
+@media(max-width:768px){
+  .contact-cta{margin:1.5rem auto}
+  .contact-item{flex-direction:column;align-items:center;text-align:center}
+  .contact-item i{margin-bottom:.5rem}
+  .contact-social{align-items:center;text-align:center}
+  .contact-social-links{justify-content:center}
+}
 
 /* ==========================================
    FOOTER
