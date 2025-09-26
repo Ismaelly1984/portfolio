@@ -3,21 +3,80 @@ const $$ = (l, t = document) => Array.from(t.querySelectorAll(l));
 const body = document.body;
 
 (function () {
-  const t = $("#menuToggle");
-  const e = $(".nav-menu");
-  if (!t || !e) return;
+  const toggle = $("#menuToggle");
+  const nav = $("#primary-navigation");
+  if (!toggle || !nav) return;
 
-  const r = () => {
-    const n = e.classList.toggle("active");
-    t.setAttribute("aria-expanded", String(n));
+  const links = Array.from(nav.querySelectorAll("a"));
+  const mq = window.matchMedia?.("(min-width: 769px)");
+  const isDesktop = () => mq?.matches ?? window.innerWidth >= 769;
+
+  const setMenuState = (isOpen) => {
+    if (isDesktop()) {
+      nav.classList.remove("active");
+      nav.setAttribute("data-state", "open");
+      nav.setAttribute("aria-hidden", "false");
+      toggle.setAttribute("aria-expanded", "false");
+      body.classList.remove("menu-open");
+      return;
+    }
+
+    nav.classList.toggle("active", isOpen);
+    nav.setAttribute("data-state", isOpen ? "open" : "closed");
+    nav.setAttribute("aria-hidden", String(!isOpen));
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    body.classList.toggle("menu-open", isOpen);
   };
 
-  t.addEventListener("click", r);
-  $$(".nav-menu a").forEach((n) => {
-    n.addEventListener("click", () => {
-      e.classList.remove("active");
+  const closeMenu = () => setMenuState(false);
+  const toggleMenu = () => {
+    if (isDesktop()) return;
+    const isOpen = nav.getAttribute("data-state") === "open";
+    setMenuState(!isOpen);
+  };
+
+  setMenuState(false);
+
+  toggle.addEventListener("click", (event) => {
+    if (isDesktop()) return;
+    event.stopPropagation();
+    toggleMenu();
+    if (nav.getAttribute("data-state") === "open") {
+      links[0]?.focus({ preventScroll: true });
+    }
+  });
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      closeMenu();
     });
   });
+
+  document.addEventListener("keydown", (event) => {
+    if (isDesktop()) return;
+    if (event.key === "Escape") {
+      closeMenu();
+      toggle.focus({ preventScroll: true });
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (isDesktop()) return;
+    const isOpen = nav.getAttribute("data-state") === "open";
+    if (!isOpen) return;
+    if (nav.contains(event.target) || toggle.contains(event.target)) return;
+    closeMenu();
+  });
+
+  if (mq) {
+    const handleMqChange = (event) => {
+      if (event.matches) {
+        closeMenu();
+      }
+    };
+
+    mq.addEventListener?.("change", handleMqChange) ?? mq.addListener(handleMqChange);
+  }
 })();
 
 (function () {
@@ -94,10 +153,6 @@ const body = document.body;
     });
   });
 })();
-
-window.addEventListener("load", () => {
-  document.getElementById("preloader")?.remove();
-});
 
 const currentPage = location.pathname.split("/").pop();
 document.querySelectorAll(".nav-link").forEach(link => {

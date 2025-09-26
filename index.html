@@ -8,21 +8,21 @@
   script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline';
   style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
   font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:;
-  img-src 'self' data:;
+  img-src 'self' data: blob:;
   connect-src 'self';
   object-src 'none';
-  frame-ancestors 'none';
 ">
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- SEO -->
-  <title>Desenvolvedor Full Stack em São Paulo | React, Node.js, PWA e IA Generativa – Ismael Nunes</title>
+  <title>Ismael Nunes – Dev Full Stack | React, Node.js e PWA</title>
   <meta name="description"
     content="Portfólio do desenvolvedor full stack em São Paulo, especialista em React, Node.js, PWA e IA Generativa. Veja projetos web performáticos, acessíveis e entre em contato." />
-  <meta name="keywords"
-    content="desenvolvedor full stack, React, Node.js, PWA, IA Generativa, São Paulo, portfolio, frontend, backend, web performance, acessibilidade" />
   <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Desenvolvedor Full Stack | React, Node.js, PWA e IA – Ismael Nunes" />
@@ -34,9 +34,10 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Favicons / Preload -->
-  <link rel="icon" type="image/png" sizes="32x32" href="images/fav-IN-32.png?v=7">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/fav-IN-16.png?v=7">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/fav-IN-180.png?v=7">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/fav-IN-32.png?v=8">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/fav-IN-16.png?v=8">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=8" sizes="any">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/fav-IN-180.png?v=8">
   <meta name="theme-color" content="#6366f1">
 
   <!-- Fonts com font-display: swap (reduz CLS) -->
@@ -209,39 +210,113 @@
     }
 
     .btn-secondary {
-      background: transparent;
+      background: rgba(255, 255, 255, .18);
       color: #fff;
-      border: 2px solid #fff
+      border: 2px solid rgba(255, 255, 255, .75);
+      transition: background .3s ease, color .3s ease, border-color .3s ease
     }
 
-    #preloader {
-      position: fixed;
-      inset: 0;
-      background: var(--bg-color);
+    :where(a, button, input, textarea, select):focus-visible {
+      outline: 3px solid var(--primary-color);
+      outline-offset: 2px;
+      border-radius: 8px
+    }
+
+    @supports not selector(:focus-visible) {
+      :where(a, button, input, textarea, select):focus {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+        border-radius: 8px
+      }
+    }
+
+    .contact-info {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      transition: opacity .4s ease, visibility .4s ease
+      flex-direction: column;
+      gap: 1.5rem
     }
 
-    #preloader.hidden {
-      opacity: 0;
-      visibility: hidden
+    .contact-form-wrapper {
+      background: var(--bg-subtle, #f8fafc);
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: var(--shadow, 0 4px 6px -1px rgba(0, 0, 0, .08))
     }
 
-    .spinner {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 4px solid rgba(0, 0, 0, .1);
-      border-top-color: var(--primary-color);
-      animation: spin 1s linear infinite
+    .contact-form-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem
     }
 
-    @keyframes spin {
-      to {
-        transform: rotate(360deg)
+    .contact-form {
+      display: grid;
+      gap: 1.25rem
+    }
+
+    .contact-form .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .contact-form label {
+      font-weight: 600;
+      color: var(--text-color)
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: .85rem 1rem;
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 10px;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: border-color .3s ease, box-shadow .3s ease
+    }
+
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, .15)
+    }
+
+    .contact-form .form-actions {
+      display: flex;
+      justify-content: flex-end
+    }
+
+    body.dark-mode .contact-form-wrapper {
+      background: #0b1220;
+      box-shadow: none;
+      border: 1px solid var(--border-color, #334155)
+    }
+
+    body.dark-mode .contact-form input,
+    body.dark-mode .contact-form textarea {
+      background: #0f172a;
+      border-color: var(--border-color, #334155);
+      color: var(--text-color)
+    }
+
+    body.dark-mode .contact-form input:focus,
+    body.dark-mode .contact-form textarea:focus {
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, .3)
+    }
+
+    @media (max-width:768px) {
+      .contact-form-wrapper {
+        padding: 1.75rem 1.5rem
+      }
+
+      .contact-form .form-actions {
+        justify-content: center
       }
     }
 
@@ -273,33 +348,105 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Ismael Nunes dos Santos",
-    "jobTitle": "Desenvolvedor Full Stack",
-    "description": "Desenvolvedor full stack em São Paulo com foco em React, Node.js, PWA e IA Generativa.",
-    "url": "https://ismaelly1984.github.io/portif-lio/",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Canitar",
-      "addressRegion": "SP",
-      "addressCountry": "BR"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/ismaelnunes6094",
-      "https://github.com/Ismaelly1984",
-      "https://wa.me/5514991920560"
-    ],
-    "knowsAbout": ["React", "Node.js", "JavaScript", "IA Generativa", "PWA"]
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ismaelly1984.github.io/portif-lio/#website",
+        "url": "https://ismaelly1984.github.io/portif-lio/",
+        "name": "Portfólio de Ismael Nunes",
+        "inLanguage": "pt-BR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://ismaelly1984.github.io/portif-lio/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+          "@id": "https://ismaelly1984.github.io/portif-lio/#organization"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://ismaelly1984.github.io/portif-lio/#person",
+        "name": "Ismael Nunes dos Santos",
+        "alternateName": "Ismael Nunes",
+        "jobTitle": "Desenvolvedor Full Stack",
+        "description": "Desenvolvedor Full Stack em São Paulo, especialista em React, Node.js, PWA e IA Generativa.",
+        "url": "https://ismaelly1984.github.io/portif-lio/",
+        "image": "https://ismaelly1984.github.io/portif-lio/images/og-image.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Canitar",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/ismaelnunes6094",
+          "https://github.com/Ismaelly1984",
+          "https://wa.me/5514991920560"
+        ],
+        "knowsAbout": [
+          "React",
+          "Node.js",
+          "JavaScript",
+          "IA Generativa",
+          "PWA"
+        ],
+        "worksFor": {
+          "@id": "https://ismaelly1984.github.io/portif-lio/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ismaelly1984.github.io/portif-lio/#organization",
+        "name": "IsmaelDev",
+        "url": "https://ismaelly1984.github.io/portif-lio/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ismaelly1984.github.io/portif-lio/images/fav-IN-180.png"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/ismaelnunes6094",
+          "https://github.com/Ismaelly1984"
+        ],
+        "founder": {
+          "@id": "https://ismaelly1984.github.io/portif-lio/#person"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://ismaelly1984.github.io/portif-lio/#inicio"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Projetos",
+            "item": "https://ismaelly1984.github.io/portif-lio/#projetos"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Sobre",
+            "item": "https://ismaelly1984.github.io/portif-lio/#sobre"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Contato",
+            "item": "https://ismaelly1984.github.io/portif-lio/#contato"
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
 
 <body>
-  <!-- Preloader -->
-  <div id="preloader" aria-hidden="true">
-    <div class="spinner"></div>
-  </div>
-
   <!-- HEADER / NAV -->
   <header>
     <nav class="navbar" aria-label="Barra de navegação">
@@ -596,25 +743,50 @@
                 <p>Canitar, SP – Brasil</p>
               </div>
             </div>
+
+            <div class="contact-social" aria-label="Redes sociais">
+              <h4>Conecte-se também nas redes</h4>
+              <p>Acompanhe os projetos e conteúdos mais recentes.</p>
+              <div class="social-links contact-social-links">
+                <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
+                  aria-label="Perfil LinkedIn do desenvolvedor full stack em São Paulo">
+                  <i class="fab fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
+                  aria-label="Perfil GitHub de projetos em React, Node.js e PWA">
+                  <i class="fab fa-github" aria-hidden="true"></i>
+                </a>
+                <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer"
+                  aria-label="Conversar via WhatsApp com desenvolvedor full stack">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div class="contact-social" aria-label="Redes sociais">
-            <h4>Conecte-se também nas redes</h4>
-            <p>Acompanhe os projetos e conteúdos mais recentes.</p>
-            <div class="social-links contact-social-links">
-              <a href="https://www.linkedin.com/in/ismaelnunes6094" target="_blank" rel="noopener noreferrer"
-                aria-label="Perfil LinkedIn do desenvolvedor full stack em São Paulo">
-                <i class="fab fa-linkedin" aria-hidden="true"></i>
-              </a>
-              <a href="https://github.com/Ismaelly1984" target="_blank" rel="noopener noreferrer"
-                aria-label="Perfil GitHub de projetos em React, Node.js e PWA">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </a>
-              <a href="https://wa.me/5514991920560" target="_blank" rel="noopener noreferrer"
-                aria-label="Conversar via WhatsApp com desenvolvedor full stack">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              </a>
-            </div>
+          <div class="contact-form-wrapper">
+            <h3 class="contact-form-title">Envie uma mensagem</h3>
+            <form class="contact-form" action="#" method="post">
+              <div class="form-group">
+                <label for="contact-name">Nome</label>
+                <input type="text" id="contact-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">E-mail</label>
+                <input type="email" id="contact-email" name="email" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-subject">Assunto</label>
+                <input type="text" id="contact-subject" name="subject" autocomplete="off" required>
+              </div>
+              <div class="form-group">
+                <label for="contact-message">Mensagem</label>
+                <textarea id="contact-message" name="message" rows="5" required></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -632,10 +804,9 @@
   <!-- JS principal -->
   <script src="js/script.js?v=7" defer></script>
 
-  <!-- Pós-load: remover preloader + carregar Font Awesome (não bloqueia render) -->
+  <!-- Pós-load: carregar Font Awesome (não bloqueia render) -->
   <script>
     window.addEventListener('load', function () {
-      document.getElementById('preloader')?.remove();
       var l = document.createElement('link');
       l.rel = 'stylesheet';
       l.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';

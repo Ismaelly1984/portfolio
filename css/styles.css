@@ -108,7 +108,12 @@ main {
   overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
 }
 :where(a,button,input,textarea,select):focus-visible{
-  outline:3px solid var(--secondary-color);outline-offset:3px;border-radius:8px;
+  outline:3px solid var(--primary-color);outline-offset:2px;border-radius:8px;
+}
+@supports not selector(:focus-visible){
+  :where(a,button,input,textarea,select):focus{
+    outline:3px solid var(--primary-color);outline-offset:2px;border-radius:8px;
+  }
 }
 
 /* ==========================================
@@ -140,9 +145,10 @@ main {
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(79,70,229,.25)}
 .btn-primary:active{transform:translateY(0)}
 .btn-secondary{
-  background:transparent;color:#fff;border:2px solid #fff;
+  background:rgba(255,255,255,.18);color:#fff;border:2px solid rgba(255,255,255,.75);
+  transition:background var(--t-base),color var(--t-base),border-color var(--t-base);
 }
-.btn-secondary:hover{transform:translateY(-2px);color:#0f172a;background:#fff}
+.btn-secondary:hover{transform:translateY(-2px);color:var(--primary-color);background:#fff;border-color:#fff}
 
 /* ==========================================
    NAVBAR (anti-CLS: altura mínima)
@@ -159,6 +165,7 @@ body.dark-mode .navbar{background:rgba(15,23,42,.9)}
 .nav-menu{display:flex;list-style:none;gap:2rem}
 .nav-link{font-weight:600;color:var(--text-color)}
 .nav-link:hover,.nav-link:focus-visible{color:var(--primary-color);text-decoration:underline}
+body.menu-open{overflow:hidden}
 
 /* ==========================================
    HERO (sem opacidade em texto -> AA)
@@ -317,22 +324,66 @@ body.dark-mode .project-tech span{background:#0b1220;color:#e2e8f0;border:1px so
    CONTACT
 ========================================== */
 .contact{padding:80px 0;background:var(--bg-color)}
-.contact-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-@media(max-width:768px){.contact-content{grid-template-columns:1fr;text-align:center}}
-.contact-item{display:flex;gap:1rem;margin-bottom:1.25rem}
+.contact-content{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4rem;align-items:flex-start;
+}
+.contact-info{
+  display:flex;flex-direction:column;gap:1.75rem;
+}
+.contact-info p{color:var(--text-muted)}
+.contact-item{display:flex;gap:1rem;align-items:flex-start}
 .contact-item i{font-size:1.5rem;color:var(--primary-color)}
 .contact-cta{display:inline-flex;align-items:center;gap:.6rem;margin:1.5rem 0;font-weight:600}
-.contact-social{display:flex;flex-direction:column;gap:1.5rem;justify-content:center}
+.contact-social{display:flex;flex-direction:column;gap:1rem}
 .contact-social p{color:var(--text-muted)}
 .contact-social-links{margin-bottom:0;justify-content:flex-start}
 .contact-social-links a{color:var(--primary-color)}
+
+.contact-form-wrapper{
+  background:var(--bg-subtle);padding:2.25rem;border-radius:var(--radius-md);
+  box-shadow:var(--shadow);transition:box-shadow var(--t-base),transform var(--t-base);
+}
+.contact-form-title{font-size:1.35rem;font-weight:700;margin-bottom:1rem;color:var(--text-color)}
+.contact-form{display:grid;gap:1.25rem}
+.contact-form .form-group{display:flex;flex-direction:column;gap:.5rem}
+.contact-form label{font-weight:600;color:var(--text-color)}
+.contact-form input,
+.contact-form textarea{
+  width:100%;padding:.85rem 1rem;border:1px solid var(--border-color);
+  border-radius:var(--radius-sm);background:var(--bg-color);color:var(--text-color);
+  transition:border-color var(--t-base),box-shadow var(--t-base),background-color var(--t-base);
+}
+.contact-form textarea{min-height:160px;resize:vertical}
+.contact-form input::placeholder,
+.contact-form textarea::placeholder{color:var(--text-muted)}
+.contact-form input:focus,
+.contact-form textarea:focus{border-color:var(--primary-color);box-shadow:0 0 0 3px rgba(99,102,241,.15)}
+.contact-form .form-actions{display:flex;justify-content:flex-end}
+
+body.dark-mode .contact-form-wrapper{background:#0b1220;box-shadow:none;border:1px solid var(--border-color)}
+body.dark-mode .contact-form input,
+body.dark-mode .contact-form textarea{background:#0f172a;border-color:var(--border-color);color:var(--text-color)}
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form textarea:focus{box-shadow:0 0 0 3px rgba(99,102,241,.3)}
 body.dark-mode .contact-social-links a{color:#fff}
+
+@media(max-width:1024px){
+  .contact-content{gap:3rem}
+}
+
 @media(max-width:768px){
-  .contact-cta{margin:1.5rem auto}
+  .contact-content{grid-template-columns:1fr;text-align:center}
+  .contact-info{align-items:center}
   .contact-item{flex-direction:column;align-items:center;text-align:center}
   .contact-item i{margin-bottom:.5rem}
-  .contact-social{align-items:center;text-align:center}
+  .contact-social{align-items:center}
   .contact-social-links{justify-content:center}
+  .contact-form-wrapper{width:100%;padding:2rem 1.75rem;text-align:left}
+  .contact-form .form-actions{justify-content:center}
+}
+
+@media(max-width:480px){
+  .contact-form-wrapper{padding:1.75rem 1.5rem}
 }
 
 /* ==========================================
@@ -345,33 +396,33 @@ body.dark-mode .footer{background:#0b1220}
 .social-links a:hover{transform:translateY(-2px)}
 
 /* ==========================================
-   PRELOADER (fixo, não gera CLS)
-========================================== */
-#preloader{
-  position:fixed;inset:0;background:var(--bg-color);display:flex;align-items:center;justify-content:center;z-index:2000;
-}
-.spinner{
-  width:40px;height:40px;border-radius:50%;border:4px solid rgba(0,0,0,.1);border-top-color:var(--primary-color);
-  animation:spin 1s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* ==========================================
    RESPONSIVO
 ========================================== */
 @media (max-width:1024px){.container{max-width:1000px}}
 @media (max-width:768px){
   .hamburger{display:flex}
   .nav-menu{
-    position:fixed;left:0;right:0;top:70px;flex-direction:column;background:var(--bg-color);width:100%;
-    text-align:center;gap:1rem;padding:2rem 0;box-shadow:0 10px 27px rgba(0,0,0,.05);
-    transform:translateX(-100%);transition:transform var(--t-base);
+    position:fixed;top:68px;left:0;right:0;flex-direction:column;background:var(--bg-color);width:100%;
+    text-align:center;gap:1.25rem;padding:2rem 1.5rem 3rem;box-shadow:0 10px 27px rgba(0,0,0,.12);
+    transform:translateY(-16px);opacity:0;visibility:hidden;pointer-events:none;
+    transition:transform var(--t-base),opacity var(--t-base);max-height:calc(100vh - 68px);overflow-y:auto;
   }
-  .nav-menu.active{transform:translateX(0)}
+  .nav-menu.active,
+  .nav-menu[data-state="open"]{transform:translateY(0);opacity:1;visibility:visible;pointer-events:auto}
+  body.dark-mode .nav-menu{background:var(--bg-color);box-shadow:0 10px 27px rgba(15,23,42,.75)}
+  .nav-menu a{font-size:1.05rem}
   .hero-center,.contact-content{grid-template-columns:1fr;text-align:center}
   .projects-grid,.education-grid,.skills-showcase{grid-template-columns:1fr}
 }
-@media (max-width:480px){.hero-title{font-size:clamp(2rem,1.6rem + 2.5vw,2.4rem)}}
+@media (max-width:480px){
+  .hero-title{font-size:clamp(2rem,1.6rem + 2.5vw,2.4rem)}
+  .hero-buttons{gap:.8rem;width:100%}
+  .btn{padding:10px 22px;font-size:.95rem}
+}
+@media (max-width:360px){
+  .hero-buttons{flex-direction:column}
+  .btn{width:100%;padding:10px 20px}
+}
 @media (min-width:1440px){.container{max-width:1320px}}
 
 /* ==========================================
@@ -404,7 +455,7 @@ i.fas, i.fab, i.far { display:inline-block; width:1.25em; text-align:center; lin
    IMPRESSÃO
 ========================================== */
 @media print{
-  .navbar,#darkToggle,#preloader,.social-links{display:none}
+  .navbar,#darkToggle,.social-links{display:none}
   body{background:#fff;color:#000}
   .section-title{color:#000}
 }
@@ -416,19 +467,6 @@ i.fas, i.fab, i.far { display:inline-block; width:1.25em; text-align:center; lin
   background:transparent;border:2px solid currentColor;color:inherit;
   padding:.4rem .6rem;border-radius:50%;font-size:1rem;cursor:pointer;
 }
-/* Preloader não bloqueante – se ficar na árvore por algum motivo */
-#preloader{
-  position: fixed;
-  inset: 0;
-  background: var(--bg-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-  /* se o JS atrasar, ele some sozinho em 1.2s para não estragar SI */
-  animation: preloaderAutoHide 1.2s ease 0.3s forwards;
-}
-@keyframes preloaderAutoHide { to { opacity: 0; visibility: hidden; } }
 @font-face {
   font-family: "Font Awesome 5 Brands";
   src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-brands-400.woff2") format("woff2");
