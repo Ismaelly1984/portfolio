@@ -1,8 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página inicial -->
   <url>
     <loc>https://ismaelly1984.github.io/portif-lio/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Seção Início -->
+  <url>
+    <loc>https://ismaelly1984.github.io/portif-lio/#inicio</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Seção Projetos -->
+  <url>
+    <loc>https://ismaelly1984.github.io/portif-lio/#projetos</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Seção Sobre -->
+  <url>
+    <loc>https://ismaelly1984.github.io/portif-lio/#sobre</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Seção Contato -->
+  <url>
+    <loc>https://ismaelly1984.github.io/portif-lio/#contato</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>
