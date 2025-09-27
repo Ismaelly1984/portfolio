@@ -1,43 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
   <url>
     <loc>https://ismaelly1984.github.io/portif-lio/</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Início (só manter se for página real) -->
   <url>
     <loc>https://ismaelly1984.github.io/portif-lio/inicio.html</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Projetos -->
   <url>
     <loc>https://ismaelly1984.github.io/portif-lio/projetos.html</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Sobre -->
   <url>
     <loc>https://ismaelly1984.github.io/portif-lio/sobre.html</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Contato -->
   <url>
     <loc>https://ismaelly1984.github.io/portif-lio/contato.html</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Formação -->
   <url>
-    <loc>https://ismaelly1984.github.io/portif-lio/#formacao</loc>
+    <loc>https://ismaelly1984.github.io/portif-lio/formacao.html</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- Habilidades -->
   <url>
-    <loc>https://ismaelly1984.github.io/portif-lio/#habilidades</loc>
+    <loc>https://ismaelly1984.github.io/portif-lio/habilidades.html</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+
+  <!-- BlogTech -->
   <url>
     <loc>https://ismaelly1984.github.io/blogtech/</loc>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+
 </urlset>

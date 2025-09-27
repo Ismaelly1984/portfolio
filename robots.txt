@@ -1,5 +1,5 @@
-# /robots.txt
 User-agent: *
 Allow: /
 
 Sitemap: https://ismaelly1984.github.io/portif-lio/sitemap.xml
+Sitemap: https://ismaelly1984.github.io/blogtech/sitemap.xml
