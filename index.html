@@ -16,9 +16,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- SEO -->
-  <title>Ismael Nunes – Dev Full Stack | React, Node.js e PWA</title>
+  <title>Ismael Nunes – Desenvolvedor Full Stack React/Node Remoto</title>
   <meta name="description"
-    content="Portfólio do desenvolvedor full stack em São Paulo, especialista em React, Node.js, PWA e IA Generativa. Veja projetos web performáticos, acessíveis e entre em contato." />
+    content="Desenvolvedor Full Stack (React, Node.js, Flask). Portfólio com projetos PWA, SEO e IA Generativa. Disponível imediato para trabalho remoto ou híbrido." />
   <link rel="canonical" href="https://ismaelly1984.github.io/portif-lio/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,17 +27,17 @@
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ismaelly1984.github.io/portif-lio/" />
-  <meta property="og:title" content="Ismael Nunes – Desenvolvedor Full Stack" />
+  <meta property="og:title" content="Ismael Nunes – Full Stack Developer React/Node Remoto" />
   <meta property="og:description"
-    content="Portfólio de Ismael Nunes, especialista em React, Node.js, PWA e IA Generativa. Explore projetos e entre em contato." />
+    content="Portfólio de Ismael Nunes, desenvolvedor full stack React, Node.js, Flask e PWA. Disponível para contratação imediata em regime remoto ou híbrido." />
   <meta property="og:image" content="https://ismaelly1984.github.io/portif-lio/images/og-image.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://ismaelly1984.github.io/portif-lio/" />
-  <meta name="twitter:title" content="Ismael Nunes – Desenvolvedor Full Stack" />
+  <meta name="twitter:title" content="Ismael Nunes – Full Stack Developer React/Node Remoto" />
   <meta name="twitter:description"
-    content="Portfólio de Ismael Nunes, especialista em React, Node.js, PWA e IA Generativa. Explore projetos e entre em contato." />
+    content="Portfólio Full Stack React, Node.js e Flask. Projetos PWA, SEO e IA Generativa. Disponível para contratação imediata remoto ou híbrido." />
   <meta name="twitter:image" content="https://ismaelly1984.github.io/portif-lio/images/og-image.png" />
 
   <!-- Favicons / Preload -->
@@ -157,8 +157,18 @@
       justify-content: center;
       padding: 120px 20px 80px;
       color: #fff;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #1d1b4f 0%, #312e81 45%, #06021d 100%);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15, 23, 42, .88) 0%, rgba(79, 70, 229, .55) 45%, rgba(17, 24, 39, .9) 100%);
+      pointer-events: none;
     }
 
     .hero-center {
@@ -168,28 +178,77 @@
       justify-content: center;
       text-align: center;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.75rem;
     }
 
     .hero-title {
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
-      font-size: clamp(2.25rem, 2rem + 2vw, 3.5rem);
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Noto Sans', Arial, sans-serif;
+      font-size: clamp(2rem, 1.65rem + 2.2vw, 3.75rem);
       font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0;
       min-height: 3rem;
       /* reserva espaço para evitar CLS */
     }
 
+    .hero-line {
+      display: inline-block;
+      margin: 0 auto;
+      color: #fff;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+    }
+
+    .hero-line + .hero-line {
+      margin-top: .35rem;
+    }
+
+    .hero-line-one {
+      background-image: linear-gradient(90deg, #3b82f6 0%, #d8b4fe 100%);
+      white-space: nowrap;
+      font-size: clamp(1.25rem, 0.8rem + 2.4vw, 3.6rem);
+    }
+
+    .hero-line-two {
+      background-image: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
+      font-size: clamp(1.45rem, 1rem + 2.1vw, 3rem);
+      white-space: nowrap;
+    }
+
+    .hero-line-three {
+      background-image: linear-gradient(90deg, #f59e0b 0%, #ec4899 100%);
+      font-size: clamp(1.6rem, 1.05rem + 2.6vw, 3.1rem);
+    }
+
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      .hero-line {
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+      }
+    }
+
     .hero-subtitle {
-      font-size: 1.125rem;
-      margin: 1.25rem 0 1.75rem;
-      opacity: .95;
-      max-width: 56ch;
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, .92);
+      font-weight: 400;
+      line-height: 1.7;
+      margin: 0;
+      opacity: 1;
+      max-width: 600px;
       min-height: 4rem;
       /* reserva espaço para evitar CLS */
     }
@@ -201,6 +260,35 @@
       justify-content: center
     }
 
+    .hero-buttons .btn {
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .hero-buttons .btn-primary {
+      background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+      color: #fff;
+      box-shadow: 0 16px 32px -18px rgba(79, 70, 229, .75);
+    }
+
+    .hero-buttons .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 46px -22px rgba(79, 70, 229, .8);
+    }
+
+    .hero-buttons .btn-secondary {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, .7);
+      color: rgba(255, 255, 255, .9);
+    }
+
+    .hero-buttons .btn-secondary:hover {
+      background: linear-gradient(90deg, rgba(59, 130, 246, .85) 0%, rgba(139, 92, 246, .85) 100%);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 20px 40px -22px rgba(79, 70, 229, .75);
+    }
+
     .btn {
       padding: 12px 30px;
       border: none;
@@ -208,7 +296,8 @@
       font-weight: 600;
       cursor: pointer;
       text-decoration: none;
-      display: inline-block
+      display: inline-block;
+      transition: transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease, border-color .3s ease
     }
 
     .btn-primary {
@@ -330,10 +419,10 @@
   </style>
 
   <!-- CSS principal -->
-  <link rel="preload" href="css/styles.css?v=7" as="style">
-  <link rel="stylesheet" href="css/styles.css?v=7" media="print" onload="this.media='all'">
+  <link rel="preload" href="css/styles.min.css?v=8" as="style">
+  <link rel="stylesheet" href="css/styles.min.css?v=8" media="print" onload="this.media='all'">
   <noscript>
-    <link rel="stylesheet" href="css/styles.css?v=7">
+    <link rel="stylesheet" href="css/styles.min.css?v=8">
   </noscript>
   <!-- Poppins async -->
   <style>
@@ -351,7 +440,7 @@
     })();
   </script>
 
-  <!-- Structured Data JSON-LD -->
+ <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -360,23 +449,45 @@
         "@type": "WebSite",
         "url": "https://ismaelly1984.github.io/portif-lio/",
         "name": "Ismael Nunes – Desenvolvedor Full Stack",
-        "description": "Portfólio de Ismael Nunes, desenvolvedor full stack especializado em React, Node.js, PWA e IA Generativa.",
+        "description": "Portfólio de Ismael Nunes, desenvolvedor full stack especializado em React, Node.js, Flask, PWA e IA Generativa.",
         "inLanguage": "pt-BR"
       },
       {
         "@type": "Person",
+        "@id": "#perfil-dev",
         "name": "Ismael Nunes dos Santos",
+        "jobTitle": "Full Stack Web Developer",
+        "description": "Desenvolvedor Full Stack (React, Node.js, Flask). Experiência em PWA, SEO, performance e IA Generativa. Disponível imediato remoto ou híbrido.",
+        "skills": ["HTML5","CSS3","JavaScript ES6+","React","Tailwind CSS","Node.js","Express","Flask","SQLite","MySQL","PWA","Cypress","SEO"],
+        "knowsLanguage": ["Portuguese","English"],
         "url": "https://ismaelly1984.github.io/portif-lio/",
         "sameAs": [
           "https://github.com/Ismaelly1984",
           "https://www.linkedin.com/in/ismaelnunes6094",
           "https://wa.me/5514997306053"
         ],
-        "jobTitle": "Desenvolvedor Full Stack",
         "worksFor": {
           "@type": "Organization",
           "name": "Freelancer"
         }
+      },
+      {
+        "@type": "JobPosting",
+        "title": "Desenvolvedor Full Stack React/Node – Remoto",
+        "description": "Desenvolvedor Full Stack pleno, especialista em React, Node.js/Express e Python Flask. Disponível para contratação imediata em regime remoto ou híbrido.",
+        "datePosted": "2025-09-28",
+        "employmentType": ["FULL_TIME","CONTRACTOR","REMOTE"],
+        "applicantLocationRequirements": {
+          "@type": "Country",
+          "name": "BR"
+        },
+        "jobLocationType": "TELECOMMUTE",
+        "hiringOrganization": {
+          "@type": "Person",
+          "name": "Ismael Nunes dos Santos",
+          "sameAs": "https://ismaelly1984.github.io/portif-lio/#perfil-dev"
+        },
+        "validThrough": "2025-12-31"
       }
     ]
   }
@@ -415,10 +526,12 @@
     <section class="hero" aria-label="Início">
       <div class="container hero-center">
         <div class="hero-content">
-          <h1 class="hero-title">Desenvolvedor Full Stack em São Paulo <span class="highlight">Ismael Nunes</span></h1>
-          <p class="hero-subtitle">Especialista em <strong>React</strong>, <strong>Node.js</strong>,
-            <strong>PWA</strong> e <strong>IA Generativa</strong>. Crio experiências rápidas, acessíveis e escaláveis
-            para web.</p>
+          <h1 class="hero-title">
+            <span class="hero-line hero-line-one">Desenvolvedor Full Stack</span>
+            <span class="hero-line hero-line-two">React/Node.js – Disponível Remoto</span>
+            <span class="hero-line hero-line-three">Ismael Nunes</span>
+          </h1>
+          <p class="hero-subtitle">Especialista em React, Node.js, PWA e IA Generativa. Crio experiências rápidas, acessíveis e escaláveis para web.</p>
           <div class="hero-buttons">
             <a href="#projetos-web" class="btn btn-primary">Ver Projetos</a>
             <a href="#contato" class="btn btn-secondary">Entrar em Contato</a>
@@ -430,11 +543,12 @@
     <!-- SOBRE -->
     <section id="sobre" class="about" aria-label="Sobre mim">
       <div class="container">
-        <h2 class="section-title">Sobre Mim</h2>
+        <h2 class="section-title">Sobre Mim – Desenvolvedor Front-End React/Tailwind</h2>
         <div class="about-content">
-          <p>Sou desenvolvedor web formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com foco em
-            <strong>React</strong>, <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>,
-            transformo ideias em produtos digitais performáticos e acessíveis a partir de São Paulo (Canitar, SP).</p>
+          <p>Sou desenvolvedor web pleno formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com foco em
+            <strong>React Tailwind</strong>, <strong>Node.js Flask</strong>, <strong>PWA</strong> e
+            <strong>IA Generativa</strong>, transformo ideias em produtos digitais performáticos e acessíveis a
+            partir de São Paulo (Canitar, SP) e estou disponível imediato remoto ou híbrido.</p>
           <ul class="about-highlights">
             <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado ADS –
                 UNIMAR</span></li>
@@ -450,7 +564,7 @@
     <!-- FORMAÇÃO -->
     <section id="formacao" class="education" aria-label="Formação e Certificações">
       <div class="container">
-        <h2 class="section-title">Formação & Certificações</h2>
+        <h2 class="section-title">Formação & Certificações – Desenvolvedor Back-End Node.js & Flask (APIs REST)</h2>
         <div class="education-grid">
           <article class="education-card">
             <i class="fas fa-university" aria-hidden="true"></i>
@@ -483,8 +597,8 @@
     <!-- HABILIDADES -->
     <section id="habilidades" class="skills" aria-label="Habilidades e Tecnologias">
       <div class="container">
-        <h2 class="section-title">Habilidades & Tecnologias</h2>
-        <p class="section-subtitle">Stack completa para criar soluções digitais com <strong>React</strong>,
+        <h2 class="section-title">Habilidades & Tecnologias – Banco de Dados MySQL & SQLite</h2>
+        <p class="section-subtitle">Stack completa de desenvolvedor front-end React/Tailwind e desenvolvedor back-end Node.js & Flask (APIs REST), com experiência em Banco de Dados MySQL & SQLite para criar soluções digitais com <strong>React</strong>,
           <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>.</p>
 
         <div class="skills-showcase">
@@ -566,18 +680,18 @@
               <h3>Ferramentas & IA</h3>
             </div>
             <div class="tech-icons">
-              <div class="tech-icon" data-tooltip="Git/GitHub" aria-label="Git e GitHub"><i class="fab fa-git-alt"
-                  aria-hidden="true"></i></div>
-              <div class="tech-icon" data-tooltip="Figma" aria-label="Figma"><i class="fab fa-figma"
-                  aria-hidden="true"></i></div>
-              <div class="tech-icon" data-tooltip="VS Code" aria-label="VS Code"><i class="fas fa-code"
-                  aria-hidden="true"></i></div>
-              <div class="tech-icon" data-tooltip="IA Generativa" aria-label="IA Generativa"><i class="fas fa-robot"
-                  aria-hidden="true"></i></div>
-              <div class="tech-icon" data-tooltip="Docker" aria-label="Docker"><i class="fab fa-docker"
-                  aria-hidden="true"></i></div>
-              <div class="tech-icon" data-tooltip="AWS" aria-label="AWS"><i class="fab fa-aws" aria-hidden="true"></i>
-              </div>
+              <div class="tech-icon" data-tooltip="Git/GitHub"><i class="fab fa-git-alt" aria-hidden="true"></i><span
+                  class="sr-only">Git e GitHub</span></div>
+              <div class="tech-icon" data-tooltip="Figma"><i class="fab fa-figma" aria-hidden="true"></i><span
+                  class="sr-only">Figma</span></div>
+              <div class="tech-icon" data-tooltip="VS Code"><i class="fas fa-code" aria-hidden="true"></i><span
+                  class="sr-only">VS Code</span></div>
+              <div class="tech-icon" data-tooltip="IA Generativa"><i class="fas fa-robot" aria-hidden="true"></i><span
+                  class="sr-only">IA Generativa</span></div>
+              <div class="tech-icon" data-tooltip="Docker"><i class="fab fa-docker" aria-hidden="true"></i><span
+                  class="sr-only">Docker</span></div>
+              <div class="tech-icon" data-tooltip="AWS"><i class="fab fa-aws" aria-hidden="true"></i><span
+                  class="sr-only">AWS</span></div>
             </div>
           </div>
         </div>
@@ -601,7 +715,7 @@
               sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
             <img src="images/portifolio/meufinanceiro-800.jpg" width="800" height="450" loading="lazy" decoding="async"
               fetchpriority="low"
-              alt="Projeto MeuFinanceiro em PWA por desenvolvedor full stack em São Paulo com React e Node.js" />
+              alt="Projeto MeuFinanceiro – PWA em React e Node.js por desenvolvedor full stack remoto no Brasil" />
           </picture>
 
           <div class="project-overlay" aria-hidden="true">
@@ -635,7 +749,7 @@
               srcset="images/portifolio/premiumstore-400.webp 400w, images/portifolio/premiumstore-800.webp 800w"
               sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
             <img src="images/portifolio/flask-ecommerce-800.jpg" width="800" height="450" loading="lazy" decoding="async"
-              alt="Projeto E-commerce com backend em Python Flask por desenvolvedor full stack em São Paulo" />
+              alt="Projeto E-commerce Flask – loja virtual Python Flask + SQLite com SEO por desenvolvedor full stack em São Paulo" />
           </picture>
 
           <div class="project-overlay" aria-hidden="true">
@@ -664,7 +778,7 @@
     <!-- CONTATO -->
     <section id="contato" class="contact" aria-label="Contato">
       <div class="container">
-        <h2 class="section-title">Vamos Trabalhar Juntos</h2>
+        <h2 class="section-title">Vamos Trabalhar Juntos – Disponível para contratação imediata remoto ou híbrido</h2>
         <div class="contact-content" id="contactContent">
           <div class="contact-info">
             <h3>Entre em Contato</h3>
@@ -739,7 +853,7 @@
   </footer>
 
   <!-- JS principal -->
-  <script src="js/script.js?v=7" defer></script>
+  <script src="js/script.min.js?v=8" defer></script>
 
   <!-- Pós-load: carregar Font Awesome (não bloqueia render) -->
   <script>
@@ -753,7 +867,7 @@
     });
   </script>
 
-  <noscript>Ative o JavaScript para melhor experiência.</noscript>
+  <noscript>Seu navegador não suporta JavaScript. Alguns recursos podem não funcionar.</noscript>
 </body>
 
 </html>
