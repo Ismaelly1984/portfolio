@@ -164,7 +164,14 @@ body.dark-mode .navbar{background:rgba(15,23,42,.9)}
 .logo{font-size:1.5rem;font-weight:800;color:var(--primary-color)}
 .nav-menu{display:flex;list-style:none;gap:2rem}
 .nav-link{font-weight:600;color:var(--text-color)}
+.nav-link.active{
+  color:var(--primary-color);
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+}
 .nav-link:hover,.nav-link:focus-visible{color:var(--primary-color);text-decoration:underline}
+body.dark-mode .nav-link.active{color:#c7d2fe}
 body.menu-open{overflow:hidden}
 
 /* ==========================================
@@ -321,6 +328,44 @@ body.dark-mode .project-card{background:#0b1220;box-shadow:none;border:1px solid
 body.dark-mode .project-tech span{background:#0b1220;color:#e2e8f0;border:1px solid var(--border-color)}
 
 /* ==========================================
+   LIGHTHOUSE RESULTS
+========================================== */
+.lighthouse{padding:90px 0;background:var(--bg-color)}
+body.dark-mode .lighthouse{background:linear-gradient(135deg,#0b1220 0%,#111827 100%)}
+.lighthouse__header{max-width:720px;margin:0 auto 3rem;text-align:center}
+.lighthouse__header .section-subtitle{margin-top:1rem}
+.lighthouse__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.lighthouse-card{
+  background:#fff;border-radius:var(--radius-md);padding:2.25rem;box-shadow:var(--shadow);
+  display:flex;flex-direction:column;gap:1.5rem;transition:transform var(--t-base),box-shadow var(--t-base);
+}
+body.dark-mode .lighthouse-card{background:#0f172a;border:1px solid var(--border-color);box-shadow:none}
+.lighthouse-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.lighthouse-card__header{display:flex;flex-direction:column;gap:.35rem}
+.lighthouse-card__title{font-size:1.25rem;font-weight:700;color:var(--text-color)}
+.lighthouse-card__date{font-size:.9rem;color:var(--text-muted)}
+.lighthouse-card__scores{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem}
+.lighthouse-score{border-radius:var(--radius-sm);padding:1rem 1.1rem;text-align:center;background:linear-gradient(135deg,rgba(99,102,241,.12),rgba(139,92,246,.18));border:1px solid rgba(99,102,241,.12)}
+.lighthouse-score__label{font-size:.85rem;font-weight:600;color:var(--text-muted);display:block;margin-bottom:.35rem;text-transform:uppercase;letter-spacing:.05em}
+.lighthouse-score__value{font-size:1.8rem;font-weight:700;color:var(--text-color)}
+.lighthouse-score--performance{background:linear-gradient(135deg,#60a5fa 0%,#2563eb 100%);color:#fff;border:none}
+.lighthouse-score--performance .lighthouse-score__label,
+.lighthouse-score--performance .lighthouse-score__value{color:#fff}
+.lighthouse-score--accessibility{background:linear-gradient(135deg,#34d399 0%,#10b981 100%);color:#fff;border:none}
+.lighthouse-score--accessibility .lighthouse-score__label,
+.lighthouse-score--accessibility .lighthouse-score__value{color:#fff}
+.lighthouse-score--bestpractices{background:linear-gradient(135deg,#a855f7 0%,#7c3aed 100%);color:#fff;border:none}
+.lighthouse-score--bestpractices .lighthouse-score__label,
+.lighthouse-score--bestpractices .lighthouse-score__value{color:#fff}
+.lighthouse-score--seo{background:linear-gradient(135deg,#f59e0b 0%,#f97316 100%);color:#fff;border:none}
+.lighthouse-score--seo .lighthouse-score__label,
+.lighthouse-score--seo .lighthouse-score__value{color:#fff}
+.lighthouse-card__metrics{list-style:none;padding:0;margin:0;display:flex;gap:1.5rem;flex-wrap:wrap}
+.lighthouse-metric{display:flex;flex-direction:column;gap:.25rem}
+.lighthouse-metric__label{font-size:.85rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.04em}
+.lighthouse-metric__value{font-size:1.1rem;font-weight:700;color:var(--text-color)}
+
+/* ==========================================
    CONTACT
 ========================================== */
 .contact{padding:80px 0;background:var(--bg-color)}
@@ -369,6 +414,7 @@ body.dark-mode .contact-social-links a{color:#fff}
 
 @media(max-width:1024px){
   .contact-content{gap:3rem}
+  .lighthouse-card{padding:2rem}
 }
 
 @media(max-width:768px){
@@ -380,6 +426,8 @@ body.dark-mode .contact-social-links a{color:#fff}
   .contact-social-links{justify-content:center}
   .contact-form-wrapper{width:100%;padding:2rem 1.75rem;text-align:left}
   .contact-form .form-actions{justify-content:center}
+  .lighthouse-card__scores{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .lighthouse-card__metrics{gap:1rem}
 }
 
 @media(max-width:480px){
@@ -412,7 +460,7 @@ body.dark-mode .footer{background:#0b1220}
   body.dark-mode .nav-menu{background:var(--bg-color);box-shadow:0 10px 27px rgba(15,23,42,.75)}
   .nav-menu a{font-size:1.05rem}
   .hero-center,.contact-content{grid-template-columns:1fr;text-align:center}
-  .projects-grid,.education-grid,.skills-showcase{grid-template-columns:1fr}
+  .projects-grid,.education-grid,.skills-showcase,.lighthouse__grid{grid-template-columns:1fr}
 }
 @media (max-width:480px){
   .hero-title{font-size:clamp(2rem,1.6rem + 2.5vw,2.4rem)}

@@ -523,6 +523,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
   <!-- HEADER / NAV -->
   <header>
     <nav class="navbar" aria-label="Barra de navegação">
@@ -532,6 +533,7 @@
           <li><a href="#sobre" class="nav-link">Sobre</a></li>
           <li><a href="#formacao" class="nav-link">Formação</a></li>
           <li><a href="#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#lighthouse" class="nav-link">Resultados</a></li>
           <li><a href="#projetos-web" class="nav-link">Projetos</a></li>
           <li><a href="https://ismaelly1984.github.io/blogtech/" class="nav-link">Blog</a></li>
           <li><a href="#contato" class="nav-link">Contato</a></li>
@@ -549,9 +551,9 @@
     </nav>
   </header>
 
-  <main id="home">
+  <main id="conteudo-principal" tabindex="-1">
     <!-- HERO -->
-    <section class="hero" aria-label="Início">
+    <section id="home" class="hero" aria-label="Início">
       <div class="container hero-center">
         <div class="hero-content">
           <h1 class="hero-title">
@@ -802,6 +804,96 @@
     </div>
   </div>
 </section>
+
+    <!-- RESULTADOS LIGHTHOUSE -->
+    <section id="lighthouse" class="lighthouse" aria-label="Resultados Lighthouse">
+      <div class="container">
+        <div class="lighthouse__header">
+          <h2 class="section-title">Resultados Lighthouse</h2>
+          <p class="section-subtitle">Monitoro continuamente as auditorias do Lighthouse para garantir que cada
+            experiência entregue mantenha desempenho, acessibilidade e SEO de excelência.</p>
+        </div>
+        <div class="lighthouse__grid">
+          <article class="lighthouse-card">
+            <header class="lighthouse-card__header">
+              <h3 class="lighthouse-card__title">Portfólio – Home</h3>
+              <span class="lighthouse-card__date">Atualizado: set 2025</span>
+            </header>
+            <div class="lighthouse-card__scores" aria-label="Notas Lighthouse do Portfólio – Home">
+              <div class="lighthouse-score lighthouse-score--performance">
+                <span class="lighthouse-score__label">Performance</span>
+                <span class="lighthouse-score__value">96</span>
+              </div>
+              <div class="lighthouse-score lighthouse-score--accessibility">
+                <span class="lighthouse-score__label">Acessibilidade</span>
+                <span class="lighthouse-score__value">100</span>
+              </div>
+              <div class="lighthouse-score lighthouse-score--bestpractices">
+                <span class="lighthouse-score__label">Boas Práticas</span>
+                <span class="lighthouse-score__value">100</span>
+              </div>
+              <div class="lighthouse-score lighthouse-score--seo">
+                <span class="lighthouse-score__label">SEO</span>
+                <span class="lighthouse-score__value">100</span>
+              </div>
+            </div>
+            <ul class="lighthouse-card__metrics" aria-label="Métricas complementares">
+              <li class="lighthouse-metric">
+                <span class="lighthouse-metric__label">TBT</span>
+                <span class="lighthouse-metric__value">0&nbsp;ms</span>
+              </li>
+              <li class="lighthouse-metric">
+                <span class="lighthouse-metric__label">CLS</span>
+                <span class="lighthouse-metric__value">0.099</span>
+              </li>
+              <li class="lighthouse-metric">
+                <span class="lighthouse-metric__label">INP</span>
+                <span class="lighthouse-metric__value">120&nbsp;ms</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="lighthouse-card">
+            <header class="lighthouse-card__header">
+              <h3 class="lighthouse-card__title">Portfólio – Projetos</h3>
+              <span class="lighthouse-card__date">Atualizado: set 2025</span>
+            </header>
+            <div class="lighthouse-card__scores" aria-label="Notas Lighthouse do Portfólio – Projetos">
+              <div class="lighthouse-score lighthouse-score--performance">
+                <span class="lighthouse-score__label">Performance</span>
+                <span class="lighthouse-score__value">94</span>
+              </div>
+              <div class="lighthouse-score lighthouse-score--accessibility">
+                <span class="lighthouse-score__label">Acessibilidade</span>
+                <span class="lighthouse-score__value">100</span>
+              </div>
+              <div class="lighthouse-score lighthouse-score--bestpractices">
+                <span class="lighthouse-score__label">Boas Práticas</span>
+                <span class="lighthouse-score__value">100</span>
+              </div>
+              <div class="lighthouse-score lighthouse-score--seo">
+                <span class="lighthouse-score__label">SEO</span>
+                <span class="lighthouse-score__value">100</span>
+              </div>
+            </div>
+            <ul class="lighthouse-card__metrics" aria-label="Métricas complementares">
+              <li class="lighthouse-metric">
+                <span class="lighthouse-metric__label">TBT</span>
+                <span class="lighthouse-metric__value">10&nbsp;ms</span>
+              </li>
+              <li class="lighthouse-metric">
+                <span class="lighthouse-metric__label">CLS</span>
+                <span class="lighthouse-metric__value">0.082</span>
+              </li>
+              <li class="lighthouse-metric">
+                <span class="lighthouse-metric__label">INP</span>
+                <span class="lighthouse-metric__value">108&nbsp;ms</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- CONTATO -->
     <section id="contato" class="contact" aria-label="Contato">

@@ -154,9 +154,41 @@ const body = document.body;
   });
 })();
 
-const currentPage = location.pathname.split("/").pop();
-document.querySelectorAll(".nav-link").forEach(link => {
-  if (link.getAttribute("href").includes(currentPage)) {
-    link.classList.add("active");
+(function () {
+  const navLinks = new Map(
+    $$('#primary-navigation a[href^="#"]').map((link) => [link.getAttribute('href').slice(1), link])
+  );
+  if (!navLinks.size) return;
+
+  const sections = $$('main section[id]');
+  if (!sections.length) return;
+
+  const setActive = (id) => {
+    navLinks.forEach((link, key) => {
+      link.classList.toggle('active', key === id);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    },
+    {
+      rootMargin: '-45% 0px -45% 0px',
+      threshold: 0.2
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+
+  const currentHash = location.hash.replace('#', '');
+  if (currentHash && navLinks.has(currentHash)) {
+    setActive(currentHash);
+  } else {
+    setActive(sections[0].id);
   }
-});
+})();
