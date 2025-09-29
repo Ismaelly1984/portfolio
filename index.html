@@ -218,18 +218,18 @@
     .hero-line-one {
       background-image: linear-gradient(90deg, #3b82f6 0%, #d8b4fe 100%);
       white-space: nowrap;
-      font-size: clamp(1.25rem, 0.8rem + 2.4vw, 3.6rem);
+      font-size: clamp(1.15rem, 0.7rem + 2.6vw, 3.2rem);
     }
 
     .hero-line-two {
       background-image: linear-gradient(90deg, #10b981 0%, #3b82f6 100%);
-      font-size: clamp(1.45rem, 1rem + 2.1vw, 3rem);
+      font-size: clamp(1.075rem, 0.65rem + 2.4vw, 2.75rem);
       white-space: nowrap;
     }
 
     .hero-line-three {
       background-image: linear-gradient(90deg, #f59e0b 0%, #ec4899 100%);
-      font-size: clamp(1.6rem, 1.05rem + 2.6vw, 3.1rem);
+      font-size: clamp(1.1rem, 0.7rem + 2.5vw, 2.9rem);
     }
 
     @supports ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -310,6 +310,34 @@
       color: #fff;
       border: 2px solid rgba(255, 255, 255, .75);
       transition: background .3s ease, color .3s ease, border-color .3s ease
+    }
+
+    @media (max-width: 540px) {
+      .hero {
+        padding: 110px 16px 70px;
+      }
+
+      .hero-content {
+        gap: 1.4rem;
+      }
+
+      .hero-title {
+        min-height: unset;
+      }
+
+      .hero-subtitle {
+        font-size: .98rem;
+        max-width: 100%;
+      }
+
+      .hero-buttons {
+        gap: .75rem;
+      }
+
+      .hero-buttons .btn {
+        min-width: 0;
+        width: 100%;
+      }
     }
 
     :where(a, button, input, textarea, select):focus-visible {
