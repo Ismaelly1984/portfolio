@@ -1,11 +1,11 @@
 # 🌐 Portfólio + Blog – Ismael Nunes  
 
 <p align="center">
-  <img src="https://img.shields.io/github/repo-size/Ismaelly1984/portif-lio?color=6366f1&style=for-the-badge" alt="Repo size">
-  <img src="https://img.shields.io/github/last-commit/Ismaelly1984/portif-lio?color=10b981&style=for-the-badge" alt="Last commit">
-  <img src="https://img.shields.io/github/issues/Ismaelly1984/portif-lio?color=f97316&style=for-the-badge" alt="Issues">
-  <img src="https://img.shields.io/github/stars/Ismaelly1984/portif-lio?color=8b5cf6&style=for-the-badge" alt="Stars">
-  <img src="https://img.shields.io/github/forks/Ismaelly1984/portif-lio?color=3b82f6&style=for-the-badge" alt="Forks">
+  <img src="https://img.shields.io/github/repo-size/Ismaelly1984/portifolio?color=6366f1&style=for-the-badge" alt="Repo size">
+  <img src="https://img.shields.io/github/last-commit/Ismaelly1984/portifolio?color=10b981&style=for-the-badge" alt="Last commit">
+  <img src="https://img.shields.io/github/issues/Ismaelly1984/portifolio?color=f97316&style=for-the-badge" alt="Issues">
+  <img src="https://img.shields.io/github/stars/Ismaelly1984/portifolio?color=8b5cf6&style=for-the-badge" alt="Stars">
+  <img src="https://img.shields.io/github/forks/Ismaelly1984/portifolio?color=3b82f6&style=for-the-badge" alt="Forks">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="License">
 </p>
 
@@ -55,7 +55,7 @@ Projeto desenvolvido do zero utilizando **HTML, CSS e JavaScript puro**, com foc
 ## 📂 Estrutura de Pastas  
 
 ```bash
-portif-lio/
+portifolio/
 ├── css/
 │   ├── styles.css        # Estilo global
 │   ├── blog.css          # Estilo da listagem de artigos
@@ -84,8 +84,8 @@ portif-lio/
 Clone o repositório:
 
 ```bash
-git clone https://github.com/Ismaelly1984/portif-lio.git
-cd portif-lio
+git clone https://github.com/Ismaelly1984/portifolio.git
+cd portifolio
 ```
 
 Abra o `index.html` no navegador  
@@ -109,7 +109,7 @@ Para acessar o blog:
 ## 🌍 Deploy
 
 🔗 Disponível em:  
-👉 [ismaelly1984.github.io/portif-lio](https://ismaelly1984.github.io/portif-lio)
+👉 [ismaelly1984.github.io/portifolio](https://ismaelly1984.github.io/portifolio)
 
 ---
 

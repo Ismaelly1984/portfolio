@@ -1,5 +1,5 @@
 {
-  "name": "portif-lio",
+  "name": "portifolio",
   "private": true,
   "scripts": {
     "build:images": "node scripts/build-images.mjs",
