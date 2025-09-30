@@ -211,7 +211,7 @@
       text-shadow: 0 10px 30px rgba(0, 0, 0, .45);
     }
 
-    .hero-line + .hero-line {
+    .hero-line+.hero-line {
       margin-top: .35rem;
     }
 
@@ -443,7 +443,6 @@
         justify-content: center
       }
     }
-
   </style>
 
   <!-- CSS principal -->
@@ -467,59 +466,72 @@
       document.head.appendChild(l);
     })();
   </script>
-
- <!-- Structured Data JSON-LD -->
+  
+  <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "url": "https://ismaelly1984.github.io/portfolio/",
-        "name": "Ismael Nunes – Desenvolvedor Full Stack",
-        "description": "Portfólio de Ismael Nunes, desenvolvedor full stack especializado em React, Node.js, Flask, PWA e IA Generativa.",
-        "inLanguage": "pt-BR"
-      },
-      {
-        "@type": "Person",
-        "@id": "#perfil-dev",
-        "name": "Ismael Nunes dos Santos",
-        "jobTitle": "Full Stack Web Developer",
-        "description": "Desenvolvedor Full Stack (React, Node.js, Flask). Experiência em PWA, SEO, performance e IA Generativa. Disponível imediato remoto ou híbrido.",
-        "skills": ["HTML5","CSS3","JavaScript ES6+","React","Tailwind CSS","Node.js","Express","Flask","SQLite","MySQL","PWA","Cypress","SEO"],
-        "knowsLanguage": ["Portuguese","English"],
-        "url": "https://ismaelly1984.github.io/portfolio/",
-        "sameAs": [
-          "https://github.com/Ismaelly1984",
-          "https://www.linkedin.com/in/ismaelnunes6094",
-          "https://wa.me/5514997306053"
-        ],
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Freelancer"
-        }
-      },
-      {
-        "@type": "JobPosting",
-        "title": "Desenvolvedor Full Stack React/Node – Remoto",
-        "description": "Desenvolvedor Full Stack pleno, especialista em React, Node.js/Express e Python Flask. Disponível para contratação imediata em regime remoto ou híbrido.",
-        "datePosted": "2025-09-28",
-        "employmentType": ["FULL_TIME","CONTRACTOR","REMOTE"],
-        "applicantLocationRequirements": {
-          "@type": "Country",
-          "name": "BR"
-        },
-        "jobLocationType": "TELECOMMUTE",
-        "hiringOrganization": {
-          "@type": "Person",
-          "name": "Ismael Nunes dos Santos",
-          "sameAs": "https://ismaelly1984.github.io/portfolio/#perfil-dev"
-        },
-        "validThrough": "2025-12-31"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "url": "https://ismaelly1984.github.io/portfolio/",
+      "name": "Ismael Nunes – Desenvolvedor Full Stack",
+      "description": "Portfólio de Ismael Nunes, desenvolvedor full stack especializado em React, Node.js, Flask, PWA e IA Generativa.",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "Person",
+      "@id": "#perfil-dev",
+      "name": "Ismael Nunes dos Santos",
+      "jobTitle": "Full Stack Web Developer",
+      "description": "Desenvolvedor Full Stack (React, Node.js, Flask). Experiência em PWA, SEO, performance e IA Generativa. Disponível imediato remoto ou híbrido.",
+      "skills": [
+        "HTML5","CSS3","JavaScript ES6+","React","Tailwind CSS","Node.js","Express",
+        "Flask","SQLite","MySQL","PWA","Cypress","SEO"
+      ],
+      "knowsLanguage": ["Portuguese","English"],
+      "url": "https://ismaelly1984.github.io/portfolio/",
+      "sameAs": [
+        "https://github.com/Ismaelly1984",
+        "https://www.linkedin.com/in/ismaelnunes6094",
+        "https://wa.me/5514997306053"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Freelancer"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "JobPosting",
+      "title": "Desenvolvedor Full Stack React/Node – Remoto",
+      "description": "Desenvolvedor Full Stack pleno, especialista em React, Node.js/Express e Python Flask. Disponível para contratação imediata em regime remoto ou híbrido.",
+      "datePosted": "2025-09-28",
+      "validThrough": "2025-12-31",
+      "employmentType": ["FULL_TIME","REMOTE"],
+      "applicantLocationRequirements": {
+        "@type": "Country",
+        "name": "BR"
+      },
+      "jobLocationType": "TELECOMMUTE",
+      "hiringOrganization": {
+        "@type": "Organization",
+        "name": "IsmaelDev",
+        "sameAs": "https://ismaelly1984.github.io/portfolio/"
+      },
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "BRL",
+        "value": {
+          "@type": "QuantitativeValue",
+          "value": "8000",
+          "unitText": "MONTH"
+        }
+      }
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body>
@@ -561,7 +573,8 @@
             <span class="hero-line hero-line-two">React/Node.js – Disponível Remoto</span>
             <span class="hero-line hero-line-three">Ismael Nunes</span>
           </h1>
-          <p class="hero-subtitle">Especialista em React, Node.js, PWA e IA Generativa. Crio experiências rápidas, acessíveis e escaláveis para web.</p>
+          <p class="hero-subtitle">Especialista em React, Node.js, PWA e IA Generativa. Crio experiências rápidas,
+            acessíveis e escaláveis para web.</p>
           <div class="hero-buttons">
             <a href="#projetos-web" class="btn btn-primary">Ver Projetos</a>
             <a href="#contato" class="btn btn-secondary">Entrar em Contato</a>
@@ -578,7 +591,8 @@
           <p>Sou desenvolvedor web pleno formado em Análise e Desenvolvimento de Sistemas pela UNIMAR. Com foco em
             <strong>React Tailwind</strong>, <strong>Node.js Flask</strong>, <strong>PWA</strong> e
             <strong>IA Generativa</strong>, transformo ideias em produtos digitais performáticos e acessíveis a
-            partir de São Paulo (Canitar, SP) e estou disponível imediato remoto ou híbrido.</p>
+            partir de São Paulo (Canitar, SP) e estou disponível imediato remoto ou híbrido.
+          </p>
           <ul class="about-highlights">
             <li class="highlight-item"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span>Graduado ADS –
                 UNIMAR</span></li>
@@ -628,8 +642,11 @@
     <section id="habilidades" class="skills" aria-label="Habilidades e Tecnologias">
       <div class="container">
         <h2 class="section-title">Habilidades & Tecnologias – Banco de Dados MySQL & SQLite</h2>
-        <p class="section-subtitle">Stack completa de desenvolvedor front-end React/Tailwind e desenvolvedor back-end Node.js & Flask (APIs REST), com experiência em Banco de Dados MySQL & SQLite para criar soluções digitais com <strong>React</strong>,
-          <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>.</p>
+        <p class="section-subtitle">Stack completa de desenvolvedor front-end React/Tailwind e desenvolvedor back-end
+          Node.js & Flask (APIs REST), com experiência em Banco de Dados MySQL & SQLite para criar soluções digitais com
+          <strong>React</strong>,
+          <strong>Node.js</strong>, <strong>PWA</strong> e <strong>IA Generativa</strong>.
+        </p>
 
         <div class="skills-showcase">
           <!-- Frontend -->
@@ -730,80 +747,82 @@
 
     <!-- PROJETOS -->
     <section id="projetos-web" class="projects" aria-label="Projetos em Destaque">
-  <div class="container">
-    <h2 class="section-title">Projetos em Destaque</h2>
+      <div class="container">
+        <h2 class="section-title">Projetos em Destaque</h2>
 
-    <div class="projects-grid">
-      <article class="project-card">
-        <div class="project-image">
-          <picture>
-            <source type="image/avif"
-              srcset="images/portifolio/meufinanceiro-400.avif 400w, images/portifolio/meufinanceiro-800.avif 800w"
-              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-            <source type="image/webp"
-              srcset="images/portifolio/meufinanceiro-400.webp 400w, images/portifolio/meufinanceiro-800.webp 800w"
-              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-            <img src="images/portifolio/meufinanceiro-800.jpg" width="800" height="450" loading="lazy" decoding="async"
-              fetchpriority="low"
-              alt="Projeto MeuFinanceiro – PWA em React e Node.js por desenvolvedor full stack remoto no Brasil" />
-          </picture>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-image">
+              <picture>
+                <source type="image/avif"
+                  srcset="images/portifolio/meufinanceiro-400.avif 400w, images/portifolio/meufinanceiro-800.avif 800w"
+                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <source type="image/webp"
+                  srcset="images/portifolio/meufinanceiro-400.webp 400w, images/portifolio/meufinanceiro-800.webp 800w"
+                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <img src="images/portifolio/meufinanceiro-800.jpg" width="800" height="450" loading="lazy"
+                  decoding="async" fetchpriority="low"
+                  alt="Projeto MeuFinanceiro – PWA em React e Node.js por desenvolvedor full stack remoto no Brasil" />
+              </picture>
 
-          <div class="project-overlay" aria-hidden="true">
-            <div class="project-links">
-              <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer"
-                aria-label="Abrir projeto PWA MeuFinanceiro em nova aba">
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-              <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer"
-                aria-label="Abrir repositório do projeto MeuFinanceiro no GitHub">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </a>
+              <div class="project-overlay" aria-hidden="true">
+                <div class="project-links">
+                  <a href="https://ismaelly1984.github.io/financeiro/" target="_blank" rel="noopener noreferrer"
+                    aria-label="Abrir projeto PWA MeuFinanceiro em nova aba">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://github.com/Ismaelly1984/financeiro" target="_blank" rel="noopener noreferrer"
+                    aria-label="Abrir repositório do projeto MeuFinanceiro no GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div class="project-info">
-          <h3>MeuFinanceiro (PWA)</h3>
-          <p>Controle financeiro completo com suporte offline, React e melhores práticas de PWA.</p>
-          <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-image">
-          <picture>
-            <source type="image/avif"
-              srcset="images/portifolio/premiumstore-400.avif 400w, images/portifolio/premiumstore-800.avif 800w"
-              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-            <source type="image/webp"
-              srcset="images/portifolio/premiumstore-400.webp 400w, images/portifolio/premiumstore-800.webp 800w"
-              sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
-            <img src="images/portifolio/flask-ecommerce-800.jpg" width="800" height="450" loading="lazy" decoding="async"
-              alt="Projeto E-commerce Flask – loja virtual Python Flask + SQLite com SEO por desenvolvedor full stack em São Paulo" />
-          </picture>
-
-          <div class="project-overlay" aria-hidden="true">
-            <div class="project-links">
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Abrir demonstração do E-commerce Flask">
-                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-              <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank"
-                rel="noopener noreferrer" aria-label="Abrir repositório do E-commerce Flask no GitHub">
-                <i class="fab fa-github" aria-hidden="true"></i>
-              </a>
+            <div class="project-info">
+              <h3>MeuFinanceiro (PWA)</h3>
+              <p>Controle financeiro completo com suporte offline, React e melhores práticas de PWA.</p>
+              <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
             </div>
-          </div>
-        </div>
+          </article>
 
-        <div class="project-info">
-          <h3>E-commerce Flask</h3>
-          <p>Loja virtual completa com backend Python (Flask), performance e boas práticas de SEO técnico.</p>
-          <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
+          <article class="project-card">
+            <div class="project-image">
+              <picture>
+                <source type="image/avif"
+                  srcset="images/portifolio/premiumstore-400.avif 400w, images/portifolio/premiumstore-800.avif 800w"
+                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <source type="image/webp"
+                  srcset="images/portifolio/premiumstore-400.webp 400w, images/portifolio/premiumstore-800.webp 800w"
+                  sizes="(min-width:1200px) 360px, (min-width:768px) 50vw, calc(100vw - 40px)">
+                <img src="images/portifolio/flask-ecommerce-800.jpg" width="800" height="450" loading="lazy"
+                  decoding="async"
+                  alt="Projeto E-commerce Flask – loja virtual Python Flask + SQLite com SEO por desenvolvedor full stack em São Paulo" />
+              </picture>
+
+              <div class="project-overlay" aria-hidden="true">
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    aria-label="Abrir demonstração do E-commerce Flask">
+                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                  </a>
+                  <a href="https://github.com/Ismaelly1984/ecommerce_projeto_integrador" target="_blank"
+                    rel="noopener noreferrer" aria-label="Abrir repositório do E-commerce Flask no GitHub">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <h3>E-commerce Flask</h3>
+              <p>Loja virtual completa com backend Python (Flask), performance e boas práticas de SEO técnico.</p>
+              <div class="project-tech"><span>Flask</span><span>SQLite</span></div>
+            </div>
+          </article>
         </div>
-      </article>
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
     <!-- RESULTADOS LIGHTHOUSE -->
     <section id="lighthouse" class="lighthouse" aria-label="Resultados Lighthouse">
