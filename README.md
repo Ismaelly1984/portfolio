@@ -1,15 +1,15 @@
 # 🌐 Portfólio + Blog – Ismael Nunes  
 
 <p align="center">
-  <img src="https://img.shields.io/github/repo-size/Ismaelly1984/portifolio?color=6366f1&style=for-the-badge" alt="Repo size">
-  <img src="https://img.shields.io/github/last-commit/Ismaelly1984/portifolio?color=10b981&style=for-the-badge" alt="Last commit">
-  <img src="https://img.shields.io/github/issues/Ismaelly1984/portifolio?color=f97316&style=for-the-badge" alt="Issues">
-  <img src="https://img.shields.io/github/stars/Ismaelly1984/portifolio?color=8b5cf6&style=for-the-badge" alt="Stars">
-  <img src="https://img.shields.io/github/forks/Ismaelly1984/portifolio?color=3b82f6&style=for-the-badge" alt="Forks">
+  <img src="https://img.shields.io/github/repo-size/Ismaelly1984/portfolio?color=6366f1&style=for-the-badge" alt="Repo size">
+  <img src="https://img.shields.io/github/last-commit/Ismaelly1984/portfolio?color=10b981&style=for-the-badge" alt="Last commit">
+  <img src="https://img.shields.io/github/issues/Ismaelly1984/portfolio?color=f97316&style=for-the-badge" alt="Issues">
+  <img src="https://img.shields.io/github/stars/Ismaelly1984/portfolio?color=8b5cf6&style=for-the-badge" alt="Stars">
+  <img src="https://img.shields.io/github/forks/Ismaelly1984/portfolio?color=3b82f6&style=for-the-badge" alt="Forks">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge" alt="License">
 </p>
 
-Este é meu **portfólio profissional** com integração de **blog técnico**, onde compartilho artigos sobre **React, Node.js, PWA e IA Generativa**.  
+Este é meu **portfolio profissional** com integração de **blog técnico**, onde compartilho artigos sobre **React, Node.js, PWA e IA Generativa**.  
 Projeto desenvolvido do zero utilizando **HTML, CSS e JavaScript puro**, com foco em **responsividade, SEO e boas práticas**.  
 
 ---
@@ -29,7 +29,7 @@ Projeto desenvolvido do zero utilizando **HTML, CSS e JavaScript puro**, com foc
 
 ## ✨ Funcionalidades  
 
-✅ **Portfólio** com apresentação profissional, habilidades e projetos.  
+✅ **Portfolio** com apresentação profissional, habilidades e projetos.  
 ✅ **Blog integrado** com:  
    - Listagem de artigos com **paginação** e **busca por título/tag**  
    - Página individual para cada artigo (`blog-post.html`)  
@@ -55,7 +55,7 @@ Projeto desenvolvido do zero utilizando **HTML, CSS e JavaScript puro**, com foc
 ## 📂 Estrutura de Pastas  
 
 ```bash
-portifolio/
+portfolio/
 ├── css/
 │   ├── styles.css        # Estilo global
 │   ├── blog.css          # Estilo da listagem de artigos
@@ -68,7 +68,7 @@ portifolio/
 │
 ├── images/
 │   ├── blog/             # Imagens dos artigos
-│   └── portifolio/       # Imagens do portfólio
+│   └── portfolio/       # Imagens do portfólio
 │
 ├── articles.json         # Base de dados dos artigos
 ├── blog.html             # Página do blog
@@ -84,8 +84,8 @@ portifolio/
 Clone o repositório:
 
 ```bash
-git clone https://github.com/Ismaelly1984/portifolio.git
-cd portifolio
+git clone https://github.com/Ismaelly1984/portfolio.git
+cd portfolio
 ```
 
 Abra o `index.html` no navegador  
@@ -100,7 +100,7 @@ Para acessar o blog:
 
 ## 📸 Screenshots
 
-💼 Portfólio
+💼 Portfolio
 
 📝 Blog
 
@@ -109,7 +109,7 @@ Para acessar o blog:
 ## 🌍 Deploy
 
 🔗 Disponível em:  
-👉 [ismaelly1984.github.io/portifolio](https://ismaelly1984.github.io/portifolio)
+👉 [ismaelly1984.github.io/portfolio](https://ismaelly1984.github.io/portfolio)
 
 ---
 

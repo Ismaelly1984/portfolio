@@ -1,5 +1,5 @@
 {
-  "name": "portifolio",
+  "name": "portfolio",
   "private": true,
   "scripts": {
     "build:images": "node scripts/build-images.mjs",
